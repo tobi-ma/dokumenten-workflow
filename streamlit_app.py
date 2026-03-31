@@ -2,8 +2,32 @@ import streamlit as st
 import json
 import os
 from datetime import datetime
+import hmac
 
 st.set_page_config(page_title="ScanSnap Organizer", layout="wide")
+
+# Password check
+def check_password():
+    """Returns True if the user had the correct password."""
+    def password_entered():
+        if hmac.compare_digest(st.session_state["password"], st.secrets["auth"]["password"]):
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # Don't store password
+        else:
+            st.session_state["password_correct"] = False
+
+    if st.session_state.get("password_correct", False):
+        return True
+
+    st.text_input(
+        "Passwort", type="password", on_change=password_entered, key="password"
+    )
+    if "password_correct" in st.session_state:
+        st.error("😕 Falsches Passwort")
+    return False
+
+if not check_password():
+    st.stop()  # Do not continue if check_password is not True
 
 # Load data
 @st.cache_data
@@ -25,10 +49,25 @@ def load_decisions():
 
 # Save decisions
 def save_decisions(decisions):
+    """Save decisions and auto-commit to GitHub"""
     os.makedirs("data", exist_ok=True)
     decisions["last_updated"] = datetime.now().isoformat()
     with open("data/decisions.json", "w") as f:
         json.dump(decisions, f, indent=2)
+    
+    # Auto-commit to GitHub
+    try:
+        import subprocess
+        subprocess.run(["git", "add", "data/decisions.json"], check=True, capture_output=True)
+        subprocess.run(
+            ["git", "commit", "-m", f"Update decisions: {len(decisions.get('moves', []))} moves, {len(decisions.get('deletions', []))} deletions"],
+            check=True, capture_output=True
+        )
+        subprocess.run(["git", "push", "origin", "main"], check=True, capture_output=True)
+        st.success("✅ Änderungen gespeichert & zu GitHub gepusht!")
+    except Exception as e:
+        st.warning(f"⚠️ Lokal gespeichert, aber Push fehlgeschlagen: {e}")
+        st.info("💡 Sag Tim Bescheid, dass er manuell pullen soll!")
 
 # Folders
 FOLDERS = [
