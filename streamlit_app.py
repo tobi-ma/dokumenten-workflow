@@ -140,7 +140,7 @@ else:
                 st.caption(f"📅 {file.get('date', 'unbekannt')}")
                 
                 # Thumbnail if available
-                thumb_path = f".thumbnails/{file['id']}_medium.jpg"
+                thumb_path = f"thumbnails/{file['id']}_medium.jpg"
                 if os.path.exists(thumb_path):
                     st.image(thumb_path, width=150)
                 else:
