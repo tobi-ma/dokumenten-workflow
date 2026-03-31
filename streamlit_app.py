@@ -1,38 +1,118 @@
 import streamlit as st
 import json
 import os
+import requests
 from datetime import datetime
 import hmac
 
 st.set_page_config(page_title="ScanSnap Organizer", layout="wide")
 
-# Password check
+# --- OneDrive Integration ---
+def get_onedrive_headers():
+    """Get auth headers from secrets"""
+    if "onedrive_token" not in st.secrets:
+        return None
+    return {"Authorization": f"Bearer {st.secrets['onedrive_token']}"}
+
+def load_files_from_onedrive():
+    """Fetch file list from OneDrive"""
+    headers = get_onedrive_headers()
+    if not headers:
+        return None, "Kein OneDrive Token konfiguriert"
+    
+    try:
+        url = "https://graph.microsoft.com/v1.0/me/drive/root:/ScanSnap:/children"
+        resp = requests.get(url, headers=headers, timeout=30)
+        
+        if resp.status_code == 200:
+            items = resp.json().get('value', [])
+            files = []
+            for item in items:
+                if not item.get('folder'):
+                    files.append({
+                        'id': item['id'],
+                        'name': item['name'],
+                        'date': item.get('lastModifiedDateTime', '')[:10],
+                        'suggested': classify_file(item['name']),
+                        'index': len(files) + 1
+                    })
+            return files, None
+        elif resp.status_code == 401:
+            return None, "Token abgelaufen - Tim muss Token erneuern"
+        else:
+            return None, f"Fehler: {resp.status_code}"
+    except Exception as e:
+        return None, str(e)
+
+def get_thumbnail_url(file_id):
+    """Get thumbnail URL from OneDrive"""
+    headers = get_onedrive_headers()
+    if not headers:
+        return None
+    
+    try:
+        url = f"https://graph.microsoft.com/v1.0/me/drive/items/{file_id}/thumbnails/0/medium"
+        resp = requests.get(url, headers=headers, timeout=30)
+        if resp.status_code == 200:
+            return resp.json().get('url')
+    except:
+        pass
+    return None
+
+def classify_file(filename):
+    """Classify document based on filename"""
+    fn = filename.lower()
+    import re
+    patterns = [
+        (r'rechnung|invoice', 'Rechnungen'),
+        (r'vertrag|contract|bhw', 'Verträge'),
+        (r'kündigung', 'Wichtig'),
+        (r'versicherung', 'Versicherungen'),
+        (r'arzt|kranken|medical', 'Gesundheit'),
+        (r'gehalt|lohn', 'Finanzen'),
+        (r'bank|konto', 'Finanzen'),
+        (r'bescheid|behörde', 'Behörden'),
+        (r'steuer|finanzamt', 'Steuern'),
+    ]
+    for pattern, folder in patterns:
+        if re.search(pattern, fn):
+            return folder
+    if re.search(r'20\d{2}', fn):
+        return 'Dokumente'
+    return 'Sonstiges'
+
+# --- Password Protection ---
 def check_password():
     """Returns True if the user had the correct password."""
     def password_entered():
         if hmac.compare_digest(st.session_state["password"], st.secrets["auth"]["password"]):
             st.session_state["password_correct"] = True
-            del st.session_state["password"]  # Don't store password
+            del st.session_state["password"]
         else:
             st.session_state["password_correct"] = False
 
     if st.session_state.get("password_correct", False):
         return True
 
-    st.text_input(
-        "Passwort", type="password", on_change=password_entered, key="password"
-    )
+    st.text_input("Passwort", type="password", on_change=password_entered, key="password")
     if "password_correct" in st.session_state:
         st.error("😕 Falsches Passwort")
     return False
 
 if not check_password():
-    st.stop()  # Do not continue if check_password is not True
+    st.stop()
 
 # Load data
-@st.cache_data
+@st.cache_data(ttl=300)
 def load_files():
-    """Load file list from JSON"""
+    """Load files from OneDrive or fallback to local JSON"""
+    # Try OneDrive first
+    od_files, error = load_files_from_onedrive()
+    if od_files:
+        return od_files
+    
+    # Fallback to local JSON
+    st.warning(f"⚠️ OneDrive nicht verfügbar: {error}" if error else "⚠️ Offline-Modus")
     data_file = "data/files.json"
     if os.path.exists(data_file):
         with open(data_file) as f:
@@ -139,12 +219,22 @@ else:
                 st.markdown(f"**{file['name'][:40]}**")
                 st.caption(f"📅 {file.get('date', 'unbekannt')}")
                 
-                # Thumbnail if available
-                thumb_path = f"thumbnails/{file['id']}_medium.jpg"
-                if os.path.exists(thumb_path):
-                    st.image(thumb_path, width=150)
+                # Thumbnail
+            with cols[1]:
+                st.markdown(f"**{file['name'][:40]}**")
+                st.caption(f"📅 {file.get('date', 'unbekannt')}")
+                
+                # Try to get thumbnail from OneDrive
+                thumb_url = get_thumbnail_url(file['id'])
+                if thumb_url:
+                    st.image(thumb_url, width=150)
                 else:
-                    st.info("🖼️ Kein Thumbnail")
+                    # Fallback to local
+                    thumb_path = f"thumbnails/{file['id']}_medium.jpg"
+                    if os.path.exists(thumb_path):
+                        st.image(thumb_path, width=150)
+                    else:
+                        st.info("🖼️ Kein Thumbnail")
             
             # Suggested folder
             with cols[2]:
