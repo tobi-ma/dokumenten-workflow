@@ -118,16 +118,16 @@ else:
                 st.markdown(f"**{file['name'][:50]}**")
                 st.caption(f"📅 {file.get('date', 'unbekannt')}")
                 
-                # Thumbnail - larger size
-                thumb_path = f"thumbnails/{file['id']}_large.jpg"
+                # Thumbnail - try large first
+                thumb_path_large = f"thumbnails/{file['id']}_large.jpg"
                 thumb_path_medium = f"thumbnails/{file['id']}_medium.jpg"
                 
-                if os.path.exists(thumb_path):
-                    st.image(thumb_path, width=400)
+                if os.path.exists(thumb_path_large):
+                    st.image(thumb_path_large, width=400)
                 elif os.path.exists(thumb_path_medium):
                     st.image(thumb_path_medium, width=400)
                 else:
-                    st.info("🖼️ Thumbnail in Bearbeitung...")
+                    st.info("🖼️ Thumbnail in Bearbeitung... (kommt bald)")
             
             with cols[2]:
                 st.markdown(f"📁 **{file.get('suggested', 'Dokumente')}**")
