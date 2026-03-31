@@ -118,16 +118,19 @@ else:
                 st.markdown(f"**{file['name'][:50]}**")
                 st.caption(f"📅 {file.get('date', 'unbekannt')}")
                 
-                # Thumbnail - try large first
-                thumb_path_large = f"thumbnails/{file['id']}_large.jpg"
-                thumb_path_medium = f"thumbnails/{file['id']}_medium.jpg"
+                # Thumbnail - priority: PyMuPDF (page1) > OneDrive large > OneDrive medium
+                thumb_pymupdf = f"thumbnails/{file['id']}_page1.jpg"
+                thumb_large = f"thumbnails/{file['id']}_large.jpg"
+                thumb_medium = f"thumbnails/{file['id']}_medium.jpg"
                 
-                if os.path.exists(thumb_path_large):
-                    st.image(thumb_path_large, width=400)
-                elif os.path.exists(thumb_path_medium):
-                    st.image(thumb_path_medium, width=400)
+                if os.path.exists(thumb_pymupdf):
+                    st.image(thumb_pymupdf, width=400)
+                elif os.path.exists(thumb_large):
+                    st.image(thumb_large, width=400)
+                elif os.path.exists(thumb_medium):
+                    st.image(thumb_medium, width=400)
                 else:
-                    st.info("🖼️ Thumbnail in Bearbeitung... (kommt bald)")
+                    st.info("🖼️ Thumbnail wird erstellt... (kommt bald)")
             
             with cols[2]:
                 st.markdown(f"📁 **{file.get('suggested', 'Dokumente')}**")
