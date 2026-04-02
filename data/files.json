@@ -1,12 +1,1185 @@
 [
-  {"id": "D0B75638021B19A6!201590", "name": "2023-01-23_Arbeltsunfähjgkelts- beschelnlgung.pdf", "date": "2023-01-23", "suggested": "Gesundheit", "index": 1},
-  {"id": "D0B75638021B19A6!201591", "name": "2023-02-02_Abrechnung der BruttoNetto-Bezüge.pdf", "date": "2023-02-02", "suggested": "Finanzen", "index": 2},
-  {"id": "D0B75638021B19A6!201592", "name": "2024-12-31_BHW.pdf", "date": "2024-12-31", "suggested": "Verträge", "index": 3},
-  {"id": "D0B75638021B19A6!201593", "name": "2023-02-02_Ihre Mitgliedschaft im VDI.pdf", "date": "2023-02-02", "suggested": "Vereine", "index": 4},
-  {"id": "D0B75638021B19A6!201594", "name": "2023-02-02.pdf", "date": "2023-02-02", "suggested": "Dokumente", "index": 5},
-  {"id": "D0B75638021B19A6!201595", "name": "2023-02-02_Garantie für Nähmaschine.pdf", "date": "2023-02-02", "suggested": "Dokumente", "index": 6},
-  {"id": "D0B75638021B19A6!201597", "name": "2023-02-02_liebe ABC-Strolche.pdf", "date": "2023-02-02", "suggested": "Kita/Schule", "index": 7},
-  {"id": "D0B75638021B19A6!201598", "name": "2023-02-02_rhion..pdf", "date": "2023-02-02", "suggested": "Dokumente", "index": 8},
-  {"id": "D0B75638021B19A6!201599", "name": "2219-10-20_(DokTitel).pdf", "date": "2023-02-02", "suggested": "Sonstiges", "index": 9},
-  {"id": "D0B75638021B19A6!201600", "name": "2023-02-02_001.pdf", "date": "2023-02-02", "suggested": "Dokumente", "index": 10}
+  {
+    "id": "D0B75638021B19A6!sf63cdf711a154b4e9718165b3f25ecb9",
+    "name": "1987-01-21_Freudenberg 1119.pdf",
+    "date": "2025-12-18",
+    "suggested": "Dokumente",
+    "index": 23
+  },
+  {
+    "id": "D0B75638021B19A6!s344b37eb8cd24dbf8b4728abe680a903",
+    "name": "1987-05-11_LBS.pdf",
+    "date": "2025-10-23",
+    "suggested": "Dokumente",
+    "index": 24
+  },
+  {
+    "id": "D0B75638021B19A6!s00fc332f78e14468927931930fc0406e",
+    "name": "2018-03-23_BausparUrkunde.pdf",
+    "date": "2025-10-23",
+    "suggested": "Vertr\u00e4ge",
+    "index": 25
+  },
+  {
+    "id": "D0B75638021B19A6!sb43cc8577a824831bacfdf10f7d67af2",
+    "name": "2018-03-23_BausparUrkunde_Tobi.pdf",
+    "date": "2025-10-23",
+    "suggested": "Vertr\u00e4ge",
+    "index": 26
+  },
+  {
+    "id": "D0B75638021B19A6!201558",
+    "name": "2023-01-23_Arbeltsunf\u00e4hjgkelts- beschelnlgung XErstbescheinigung.pdf",
+    "date": "2023-02-02",
+    "suggested": "Dokumente",
+    "index": 27
+  },
+  {
+    "id": "D0B75638021B19A6!201581",
+    "name": "2023-02-02.pdf",
+    "date": "2023-02-02",
+    "suggested": "Dokumente",
+    "index": 28
+  },
+  {
+    "id": "D0B75638021B19A6!201592",
+    "name": "2023-02-02_001.pdf",
+    "date": "2023-02-02",
+    "suggested": "Dokumente",
+    "index": 29
+  },
+  {
+    "id": "D0B75638021B19A6!201563",
+    "name": "2023-02-02_Abrechnung der BruttoNetto-Bez\u00fcge f\u00fcr Deze^er 2022 -S.pdf",
+    "date": "2023-02-02",
+    "suggested": "Rechnungen",
+    "index": 30
+  },
+  {
+    "id": "D0B75638021B19A6!201586",
+    "name": "2023-02-02_Garantie f\u00fcr N\u00e4hmaschine.pdf",
+    "date": "2023-02-02",
+    "suggested": "Dokumente",
+    "index": 31
+  },
+  {
+    "id": "D0B75638021B19A6!201578",
+    "name": "2023-02-02_Ihre Mitgliedschaft im VDI Beitragsmitteilung f\u00fcr  20.pdf",
+    "date": "2023-02-02",
+    "suggested": "Vereine",
+    "index": 32
+  },
+  {
+    "id": "D0B75638021B19A6!201588",
+    "name": "2023-02-02_liebe ABC-Strolche, liebe Eltern!.pdf",
+    "date": "2023-02-02",
+    "suggested": "Dokumente",
+    "index": 33
+  },
+  {
+    "id": "D0B75638021B19A6!201589",
+    "name": "2023-02-02_rhion..pdf",
+    "date": "2023-02-02",
+    "suggested": "Dokumente",
+    "index": 34
+  },
+  {
+    "id": "D0B75638021B19A6!201596",
+    "name": "2023-02-02_TUV.pdf",
+    "date": "2023-02-02",
+    "suggested": "Dokumente",
+    "index": 35
+  },
+  {
+    "id": "D0B75638021B19A6!201741",
+    "name": "2023-02-24_Daumenschlinge Kontralndikat!onen Komplette Bandruptu.pdf",
+    "date": "2023-02-24",
+    "suggested": "Dokumente",
+    "index": 36
+  },
+  {
+    "id": "D0B75638021B19A6!201742",
+    "name": "2023-02-25_Netzwerk der Wndertagesst\u00e4tten und Grundschulen.pdf",
+    "date": "2023-02-25",
+    "suggested": "Kita/Schule",
+    "index": 37
+  },
+  {
+    "id": "D0B75638021B19A6!201771",
+    "name": "2023-03-05.pdf",
+    "date": "2023-03-05",
+    "suggested": "Dokumente",
+    "index": 38
+  },
+  {
+    "id": "D0B75638021B19A6!201801",
+    "name": "2023-03-08.pdf",
+    "date": "2023-03-08",
+    "suggested": "Dokumente",
+    "index": 39
+  },
+  {
+    "id": "D0B75638021B19A6!201802",
+    "name": "2023-03-08_001.pdf",
+    "date": "2023-03-08",
+    "suggested": "Dokumente",
+    "index": 40
+  },
+  {
+    "id": "D0B75638021B19A6!201792",
+    "name": "2023-03-08_1. Personen, bei denen es bereits zuvor zu einer Auto.pdf",
+    "date": "2023-03-08",
+    "suggested": "Dokumente",
+    "index": 41
+  },
+  {
+    "id": "D0B75638021B19A6!201794",
+    "name": "2023-03-08_Liste der Autoimmunkrankhelten.pdf",
+    "date": "2023-03-08",
+    "suggested": "Gesundheit",
+    "index": 42
+  },
+  {
+    "id": "D0B75638021B19A6!201793",
+    "name": "2023-03-08_NOTFALL -Information.pdf",
+    "date": "2023-03-08",
+    "suggested": "Dokumente",
+    "index": 43
+  },
+  {
+    "id": "D0B75638021B19A6!201800",
+    "name": "2023-03-08_Vle.seltlg und durchsatzstark.pdf",
+    "date": "2023-03-08",
+    "suggested": "Dokumente",
+    "index": 44
+  },
+  {
+    "id": "D0B75638021B19A6!201796",
+    "name": "2023-03-08_Vorgehen zur \u00a3\u0662!3\u0e17\u0e23\u0e19\u0e17\u0e23 eines !mpfattestes (Belsple!).pdf",
+    "date": "2023-03-08",
+    "suggested": "Dokumente",
+    "index": 45
+  },
+  {
+    "id": "D0B75638021B19A6!201795",
+    "name": "2023-03-08_\u064aSOUND CHOICE.pdf",
+    "date": "2023-03-08",
+    "suggested": "Dokumente",
+    "index": 46
+  },
+  {
+    "id": "D0B75638021B19A6!201817",
+    "name": "2023-03-11.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 47
+  },
+  {
+    "id": "D0B75638021B19A6!201821",
+    "name": "2023-03-11_001.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 48
+  },
+  {
+    "id": "D0B75638021B19A6!201825",
+    "name": "2023-03-11_002.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 49
+  },
+  {
+    "id": "D0B75638021B19A6!201827",
+    "name": "2023-03-11_003.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 50
+  },
+  {
+    "id": "D0B75638021B19A6!201818",
+    "name": "2023-03-11_Chapter 11.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 51
+  },
+  {
+    "id": "D0B75638021B19A6!201810",
+    "name": "2023-03-11_Costs.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 52
+  },
+  {
+    "id": "D0B75638021B19A6!201813",
+    "name": "2023-03-11_Effectif Wording to Impro^ Risk Allocation IN Lump Su.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 53
+  },
+  {
+    "id": "D0B75638021B19A6!201826",
+    "name": "2023-03-11_Eine Ballade f\u00fcr Christof.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 54
+  },
+  {
+    "id": "D0B75638021B19A6!201816",
+    "name": "2023-03-11_Ma\u0e01ag\u0627ng Project Uncertainty From Variation to Chaos.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 55
+  },
+  {
+    "id": "D0B75638021B19A6!201820",
+    "name": "2023-03-11_m\u00eet k\u00e0\u00ectf Beraluwg und \u00c7e^e^ng.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 56
+  },
+  {
+    "id": "D0B75638021B19A6!201815",
+    "name": "2023-03-11_Project Ri'sk Management.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 57
+  },
+  {
+    "id": "D0B75638021B19A6!201811",
+    "name": "2023-03-11_Risk Allocation in Lump-Sum Contacts\u2014Conceit of Laten.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 58
+  },
+  {
+    "id": "D0B75638021B19A6!201812",
+    "name": "2023-03-11_Space project ^nagement.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 59
+  },
+  {
+    "id": "D0B75638021B19A6!201814",
+    "name": "2023-03-11_The usefulness of combining UAI and MAS foi studying.pdf",
+    "date": "2023-03-11",
+    "suggested": "Dokumente",
+    "index": 60
+  },
+  {
+    "id": "D0B75638021B19A6!202817",
+    "name": "2023-03-19.pdf",
+    "date": "2023-03-19",
+    "suggested": "Dokumente",
+    "index": 61
+  },
+  {
+    "id": "D0B75638021B19A6!201982",
+    "name": "2023-03-19_.silverette.de.pdf",
+    "date": "2023-03-19",
+    "suggested": "Dokumente",
+    "index": 62
+  },
+  {
+    "id": "D0B75638021B19A6!201980",
+    "name": "2023-03-19_Leitfaden zum Begleiten f\u00fcr The Work of Byron Katie v.pdf",
+    "date": "2023-03-19",
+    "suggested": "Dokumente",
+    "index": 63
+  },
+  {
+    "id": "D0B75638021B19A6!201981",
+    "name": "2023-03-19_You Become What You Focus .n.pdf",
+    "date": "2023-03-19",
+    "suggested": "Dokumente",
+    "index": 64
+  },
+  {
+    "id": "D0B75638021B19A6!202819",
+    "name": "2023-03-20 Fragebogen Personalvermittlung Mauksch.pdf",
+    "date": "2023-03-20",
+    "suggested": "Dokumente",
+    "index": 65
+  },
+  {
+    "id": "D0B75638021B19A6!203968",
+    "name": "2023-03-20_Arbeltsunf\u00e4hlgkeits- bescheinigung XErstbescheinigung.pdf",
+    "date": "2023-05-02",
+    "suggested": "Dokumente",
+    "index": 66
+  },
+  {
+    "id": "D0B75638021B19A6!202839",
+    "name": "2023-03-21 Beratungsvertrag Dornseifer Mauksch.pdf",
+    "date": "2023-03-21",
+    "suggested": "Vertr\u00e4ge",
+    "index": 67
+  },
+  {
+    "id": "D0B75638021B19A6!202838",
+    "name": "2023-03-21_Antrag f\u00fcr Sparkassen-Card (Debitkarte).pdf",
+    "date": "2023-03-21",
+    "suggested": "Dokumente",
+    "index": 68
+  },
+  {
+    "id": "D0B75638021B19A6!202857",
+    "name": "2023-03-23.pdf",
+    "date": "2023-03-23",
+    "suggested": "Dokumente",
+    "index": 69
+  },
+  {
+    "id": "D0B75638021B19A6!202858",
+    "name": "2023-03-23_\u1ec2-KISSEN -ANARIL.pdf",
+    "date": "2023-03-23",
+    "suggested": "Dokumente",
+    "index": 70
+  },
+  {
+    "id": "D0B75638021B19A6!203359",
+    "name": "2023-03-23_Kreispo.lzelbehOrde Slegen. Wittgenstein.pdf",
+    "date": "2023-04-06",
+    "suggested": "Dokumente",
+    "index": 71
+  },
+  {
+    "id": "D0B75638021B19A6!203357",
+    "name": "2023-04-04_\u0628\u0621\u0639\u0637\u0641\u0627\u0641\u0646\u062b\u063a\u0641.pdf",
+    "date": "2023-04-06",
+    "suggested": "Dokumente",
+    "index": 72
+  },
+  {
+    "id": "D0B75638021B19A6!204349",
+    "name": "2023-04-08_PROVINZIAL.pdf",
+    "date": "2023-06-23",
+    "suggested": "Dokumente",
+    "index": 73
+  },
+  {
+    "id": "D0B75638021B19A6!204146",
+    "name": "2023-04-18_AUFTRAGSBEST\u00c4TIGUNG zu UNSEREM ANGEBOT.pdf",
+    "date": "2023-05-12",
+    "suggested": "Dokumente",
+    "index": 74
+  },
+  {
+    "id": "D0B75638021B19A6!203568",
+    "name": "2023-04-21_\u0646\u0633\u0641\u0644\u062a\u0642\u0629.pdf",
+    "date": "2023-04-21",
+    "suggested": "Dokumente",
+    "index": 75
+  },
+  {
+    "id": "D0B75638021B19A6!203905",
+    "name": "2023-04-24_ARBE!TS\u0667ERTRAG.pdf",
+    "date": "2023-04-24",
+    "suggested": "Dokumente",
+    "index": 76
+  },
+  {
+    "id": "D0B75638021B19A6!234923",
+    "name": "2023-05-15_Arbeitszeugnis U-CI.pdf",
+    "date": "2024-01-23",
+    "suggested": "Dokumente",
+    "index": 77
+  },
+  {
+    "id": "D0B75638021B19A6!204738",
+    "name": "2023-05-15_Besteuerungsgrund.agen aus der Beteiligung an der Geb.pdf",
+    "date": "2023-08-27",
+    "suggested": "Steuern",
+    "index": 78
+  },
+  {
+    "id": "D0B75638021B19A6!204184",
+    "name": "2023-05-15_Pers\u00f6nlichVertraulich Frau Claudia Mauksch Bahnhofstr.pdf",
+    "date": "2023-05-17",
+    "suggested": "Dokumente",
+    "index": 79
+  },
+  {
+    "id": "D0B75638021B19A6!204148",
+    "name": "2023-05-25_KAWAI.pdf",
+    "date": "2023-05-12",
+    "suggested": "Dokumente",
+    "index": 80
+  },
+  {
+    "id": "D0B75638021B19A6!204147",
+    "name": "2023-05-30_\u0649Bundesagentur f\u00fcr Arbeit Agentur f\u00fcr A\u0662be!t Dortmund.pdf",
+    "date": "2023-05-12",
+    "suggested": "Dokumente",
+    "index": 81
+  },
+  {
+    "id": "D0B75638021B19A6!204306",
+    "name": "2023-06-18_\u062f.pdf",
+    "date": "2023-06-18",
+    "suggested": "Dokumente",
+    "index": 82
+  },
+  {
+    "id": "D0B75638021B19A6!204307",
+    "name": "2023-06-18_\u0644\u0e45 -\u0e1f.pdf",
+    "date": "2023-06-18",
+    "suggested": "Dokumente",
+    "index": 83
+  },
+  {
+    "id": "D0B75638021B19A6!204371",
+    "name": "2023-06-29_rh\u00edon..pdf",
+    "date": "2023-06-29",
+    "suggested": "Dokumente",
+    "index": 84
+  },
+  {
+    "id": "D0B75638021B19A6!204433",
+    "name": "2023-07-05_Anmeldung Ihres Sohnes Emilian Mauksch f\u00fcr die verl\u00e4s.pdf",
+    "date": "2023-07-07",
+    "suggested": "Dokumente",
+    "index": 85
+  },
+  {
+    "id": "D0B75638021B19A6!204490",
+    "name": "2023-07-14_3. An\u0660ab\u0665n zur Sach, fffreiwillioe Angaben).pdf",
+    "date": "2023-07-14",
+    "suggested": "Dokumente",
+    "index": 86
+  },
+  {
+    "id": "D0B75638021B19A6!204533",
+    "name": "2023-07-18_\u03bd5\u0391.pdf",
+    "date": "2023-07-21",
+    "suggested": "Dokumente",
+    "index": 87
+  },
+  {
+    "id": "D0B75638021B19A6!204650",
+    "name": "2023-08-09_\u00ccH.og.\u0129o\u0129a.pdf",
+    "date": "2023-08-09",
+    "suggested": "Dokumente",
+    "index": 88
+  },
+  {
+    "id": "D0B75638021B19A6!204769",
+    "name": "2023-09-02_Herr Tobias Mauksch -Bahnhofstr. 53 57258 Freudenbe.pdf",
+    "date": "2023-09-02",
+    "suggested": "Dokumente",
+    "index": 89
+  },
+  {
+    "id": "D0B75638021B19A6!201594",
+    "name": "2023-09-20_rhion..pdf",
+    "date": "2023-02-02",
+    "suggested": "Dokumente",
+    "index": 90
+  },
+  {
+    "id": "D0B75638021B19A6!228578",
+    "name": "2023-10-09_JUlMIu.pdf",
+    "date": "2023-10-11",
+    "suggested": "Dokumente",
+    "index": 91
+  },
+  {
+    "id": "D0B75638021B19A6!228751",
+    "name": "2023-10-11_Amtsgericht Siegeil..pdf",
+    "date": "2023-10-16",
+    "suggested": "Beh\u00f6rden",
+    "index": 92
+  },
+  {
+    "id": "D0B75638021B19A6!228750",
+    "name": "2023-10-16_Vorblatt zur.pdf",
+    "date": "2023-10-16",
+    "suggested": "Dokumente",
+    "index": 93
+  },
+  {
+    "id": "D0B75638021B19A6!228800",
+    "name": "2023-10-18_Arbeltsunf\u00e4higkelts- beschejnlgung XErstbescheinigung.pdf",
+    "date": "2023-10-20",
+    "suggested": "Dokumente",
+    "index": 94
+  },
+  {
+    "id": "D0B75638021B19A6!228818",
+    "name": "2023-10-20_EGEN!\u061f CHULE\u061f.pdf",
+    "date": "2023-10-23",
+    "suggested": "Dokumente",
+    "index": 95
+  },
+  {
+    "id": "D0B75638021B19A6!228819",
+    "name": "2023-10-23_ANDERUNG 02 -ARBE\u00cdTSVERTRAG.pdf",
+    "date": "2023-10-23",
+    "suggested": "Vertr\u00e4ge",
+    "index": 96
+  },
+  {
+    "id": "D0B75638021B19A6!228862",
+    "name": "2023-10-26.pdf",
+    "date": "2023-10-26",
+    "suggested": "Dokumente",
+    "index": 97
+  },
+  {
+    "id": "D0B75638021B19A6!228952",
+    "name": "2023-11-05_ADAC.pdf",
+    "date": "2023-11-05",
+    "suggested": "Dokumente",
+    "index": 98
+  },
+  {
+    "id": "D0B75638021B19A6!229123",
+    "name": "2023-11-28_Bescheid.pdf",
+    "date": "2023-11-30",
+    "suggested": "Dokumente",
+    "index": 99
+  },
+  {
+    "id": "D0B75638021B19A6!233906",
+    "name": "2023-11-29_Amtsgericht Slegen.pdf",
+    "date": "2024-01-12",
+    "suggested": "Beh\u00f6rden",
+    "index": 100
+  },
+  {
+    "id": "D0B75638021B19A6!231526",
+    "name": "2023-12-17.pdf",
+    "date": "2023-12-17",
+    "suggested": "Dokumente",
+    "index": 101
+  },
+  {
+    "id": "D0B75638021B19A6!233951",
+    "name": "2024-01-02_K\u00fcndigung Ihres Arbeitsvertrages.pdf",
+    "date": "2024-01-14",
+    "suggested": "Vertr\u00e4ge",
+    "index": 102
+  },
+  {
+    "id": "D0B75638021B19A6!233907",
+    "name": "2024-01-25_0Bundesagentur f\u00fcr Arbeit Agentur f\u00fcr Arbeit Siegen.pdf",
+    "date": "2024-01-12",
+    "suggested": "Dokumente",
+    "index": 103
+  },
+  {
+    "id": "D0B75638021B19A6!235744",
+    "name": "2024-01-26.pdf",
+    "date": "2024-01-26",
+    "suggested": "Dokumente",
+    "index": 104
+  },
+  {
+    "id": "D0B75638021B19A6!236072",
+    "name": "2024-01-26_Centra\u061b. Hotel &Restaurant Stadtplatz 24 84478 Waidkr.pdf",
+    "date": "2024-03-06",
+    "suggested": "Dokumente",
+    "index": 105
+  },
+  {
+    "id": "D0B75638021B19A6!235887",
+    "name": "2024-01-31_Bundesagentur fiJr Arbeit Agentur f\u00fcr Arbe!t siegen-\u0665.pdf",
+    "date": "2024-02-15",
+    "suggested": "Dokumente",
+    "index": 106
+  },
+  {
+    "id": "D0B75638021B19A6!235779",
+    "name": "2024-01-31_DORNSEIFER MAUKSCH.pdf",
+    "date": "2024-01-30",
+    "suggested": "Dokumente",
+    "index": 107
+  },
+  {
+    "id": "D0B75638021B19A6!236397",
+    "name": "2024-02-01_Bundesagentur f\u00fcr Arbeit Agentur f\u00fcr Arbeit Dortmund.pdf",
+    "date": "2024-03-11",
+    "suggested": "Dokumente",
+    "index": 108
+  },
+  {
+    "id": "D0B75638021B19A6!235822",
+    "name": "2024-02-01_\u1ee2BGETEM.pdf",
+    "date": "2024-02-07",
+    "suggested": "Dokumente",
+    "index": 109
+  },
+  {
+    "id": "D0B75638021B19A6!235821",
+    "name": "2024-02-02_Best\u00e4tigung.pdf",
+    "date": "2024-02-02",
+    "suggested": "Dokumente",
+    "index": 110
+  },
+  {
+    "id": "D0B75638021B19A6!235853",
+    "name": "2024-02-08_Unser Zeichens 86110026 Name Mauksch Vorname Tobias.pdf",
+    "date": "2024-02-08",
+    "suggested": "Dokumente",
+    "index": 111
+  },
+  {
+    "id": "D0B75638021B19A6!235949",
+    "name": "2024-02-22_\u043eBundesagentur f\u00fcr Arbeit Agentur f\u00fcr Arbeit siegen.pdf",
+    "date": "2024-02-22",
+    "suggested": "Dokumente",
+    "index": 112
+  },
+  {
+    "id": "D0B75638021B19A6!294624",
+    "name": "2024-02-29_SAMMELBESCHEINIGUNG 1011138.pdf",
+    "date": "2024-09-26",
+    "suggested": "Dokumente",
+    "index": 113
+  },
+  {
+    "id": "D0B75638021B19A6!236071",
+    "name": "2024-03-04_Bildungsgutschein_Entwurf_Mauksch.pdf",
+    "date": "2024-03-04",
+    "suggested": "Dokumente",
+    "index": 114
+  },
+  {
+    "id": "D0B75638021B19A6!236070",
+    "name": "2024-03-04_Fragebogen_Mauksch.pdf",
+    "date": "2024-03-04",
+    "suggested": "Dokumente",
+    "index": 115
+  },
+  {
+    "id": "D0B75638021B19A6!236073",
+    "name": "2024-03-06_Chorleitervertrag.pdf",
+    "date": "2024-03-06",
+    "suggested": "Vertr\u00e4ge",
+    "index": 116
+  },
+  {
+    "id": "D0B75638021B19A6!240209",
+    "name": "2024-03-10_Bundesagentur f\u00fcr Arbeit Agentu\u0662 f\u00fcr Arbeit Dortmund.pdf",
+    "date": "2024-03-28",
+    "suggested": "Dokumente",
+    "index": 117
+  },
+  {
+    "id": "D0B75638021B19A6!240377",
+    "name": "2024-04-05_\u0660.pdf",
+    "date": "2024-04-05",
+    "suggested": "Dokumente",
+    "index": 118
+  },
+  {
+    "id": "D0B75638021B19A6!240470",
+    "name": "2024-04-09_Schriftliche Anh\u00f6rung ZeuginZeuge.pdf",
+    "date": "2024-04-09",
+    "suggested": "Dokumente",
+    "index": 119
+  },
+  {
+    "id": "D0B75638021B19A6!241056",
+    "name": "2024-04-30_s\u0662\u061fvl\u00e7e Onl\u00edne-Anhorung htt^sowlg.slegen-wIttgenste!n.pdf",
+    "date": "2024-05-30",
+    "suggested": "Dokumente",
+    "index": 120
+  },
+  {
+    "id": "D0B75638021B19A6!293726",
+    "name": "2024-06-30_\u00caLV1877.pdf",
+    "date": "2024-07-29",
+    "suggested": "Dokumente",
+    "index": 121
+  },
+  {
+    "id": "D0B75638021B19A6!293988",
+    "name": "2024-07-08_.BGETEM.pdf",
+    "date": "2024-08-14",
+    "suggested": "Dokumente",
+    "index": 122
+  },
+  {
+    "id": "D0B75638021B19A6!293958",
+    "name": "2024-07-12_Bundesagentur f\u00fcr Arbeit Agentur f\u00fcr Arbeit Dortmund.pdf",
+    "date": "2024-08-12",
+    "suggested": "Dokumente",
+    "index": 123
+  },
+  {
+    "id": "D0B75638021B19A6!293725",
+    "name": "2024-07-23_\u0647\u0647\u0647\u0662\u0647.pdf",
+    "date": "2024-07-29",
+    "suggested": "Dokumente",
+    "index": 124
+  },
+  {
+    "id": "D0B75638021B19A6!293724",
+    "name": "2024-07-24_\u06474\u0621\u0647\u0635.pdf",
+    "date": "2024-07-29",
+    "suggested": "Dokumente",
+    "index": 125
+  },
+  {
+    "id": "D0B75638021B19A6!293953",
+    "name": "2024-07-29_[\u00bf]sailer.pdf",
+    "date": "2024-08-12",
+    "suggested": "Dokumente",
+    "index": 126
+  },
+  {
+    "id": "D0B75638021B19A6!293987",
+    "name": "2024-08-14.pdf",
+    "date": "2024-08-14",
+    "suggested": "Dokumente",
+    "index": 127
+  },
+  {
+    "id": "D0B75638021B19A6!294425",
+    "name": "2024-08-15_Kontoauszug.pdf",
+    "date": "2024-09-12",
+    "suggested": "Dokumente",
+    "index": 128
+  },
+  {
+    "id": "D0B75638021B19A6!294608",
+    "name": "2024-09-16 Erstes Schreiben GA.pdf",
+    "date": "2024-09-25",
+    "suggested": "Dokumente",
+    "index": 129
+  },
+  {
+    "id": "D0B75638021B19A6!293723",
+    "name": "2024-09-20_rhlon..pdf",
+    "date": "2024-07-29",
+    "suggested": "Dokumente",
+    "index": 130
+  },
+  {
+    "id": "D0B75638021B19A6!294900",
+    "name": "2024-10-28 Mauksch Antrag Fristverl\u00e4ngerung.pdf",
+    "date": "2024-10-28",
+    "suggested": "Dokumente",
+    "index": 131
+  },
+  {
+    "id": "D0B75638021B19A6!295272",
+    "name": "2024-11-05 Kostenvoranschlag.pdf",
+    "date": "2024-11-07",
+    "suggested": "Dokumente",
+    "index": 132
+  },
+  {
+    "id": "D0B75638021B19A6!296765",
+    "name": "2024-11-23_Rechnung.pdf",
+    "date": "2025-01-05",
+    "suggested": "Rechnungen",
+    "index": 133
+  },
+  {
+    "id": "D0B75638021B19A6!295593",
+    "name": "2024-11-26_1. Risiken und Bedeutung der Individuellen Nutzen-Ris.pdf",
+    "date": "2024-11-26",
+    "suggested": "Dokumente",
+    "index": 134
+  },
+  {
+    "id": "D0B75638021B19A6!295639",
+    "name": "2024-12-01_Datenschutznchtlinie.pdf",
+    "date": "2024-12-01",
+    "suggested": "Dokumente",
+    "index": 135
+  },
+  {
+    "id": "D0B75638021B19A6!295644",
+    "name": "2024-12-01_Einwilligung der MitarbeiterInnen zur Verwendung von.pdf",
+    "date": "2024-12-01",
+    "suggested": "Dokumente",
+    "index": 136
+  },
+  {
+    "id": "D0B75638021B19A6!295641",
+    "name": "2024-12-01_HDATASEC.pdf",
+    "date": "2024-12-01",
+    "suggested": "Dokumente",
+    "index": 137
+  },
+  {
+    "id": "D0B75638021B19A6!295643",
+    "name": "2024-12-01_HDATASEC_001.pdf",
+    "date": "2024-12-01",
+    "suggested": "Dokumente",
+    "index": 138
+  },
+  {
+    "id": "D0B75638021B19A6!295645",
+    "name": "2024-12-01_Verpflichtung auf dle Vertraulichkeit nach DSGVO.pdf",
+    "date": "2024-12-01",
+    "suggested": "Dokumente",
+    "index": 139
+  },
+  {
+    "id": "D0B75638021B19A6!295640",
+    "name": "2024-12-01_\u0629\u0629\u063a\u0642\u0647\u0644\u0645\u0628\u0647.pdf",
+    "date": "2024-12-01",
+    "suggested": "Dokumente",
+    "index": 140
+  },
+  {
+    "id": "D0B75638021B19A6!295642",
+    "name": "2024-12-01_\u062d\u0639\u06685\u0627\u064b0\u0668\u0647.pdf",
+    "date": "2024-12-01",
+    "suggested": "Dokumente",
+    "index": 141
+  },
+  {
+    "id": "D0B75638021B19A6!201568",
+    "name": "2024-12-31_BHW.pdf",
+    "date": "2023-02-02",
+    "suggested": "Dokumente",
+    "index": 142
+  },
+  {
+    "id": "D0B75638021B19A6!297152",
+    "name": "2025-01-15_SOLMECKE.pdf",
+    "date": "2025-01-15",
+    "suggested": "Dokumente",
+    "index": 143
+  },
+  {
+    "id": "D0B75638021B19A6!297150",
+    "name": "2025-01-15_Stadt Freudenberg.pdf",
+    "date": "2025-01-15",
+    "suggested": "Dokumente",
+    "index": 144
+  },
+  {
+    "id": "D0B75638021B19A6!297277",
+    "name": "2025-01-24_KALTEICH.pdf",
+    "date": "2025-01-30",
+    "suggested": "Dokumente",
+    "index": 145
+  },
+  {
+    "id": "D0B75638021B19A6!297278",
+    "name": "2025-01-26_R509262998 Rechtsschutz Versicherung Folgebeitrag dar.pdf",
+    "date": "2025-01-30",
+    "suggested": "Versicherungen",
+    "index": 146
+  },
+  {
+    "id": "D0B75638021B19A6!297294",
+    "name": "2025-02-02.pdf",
+    "date": "2025-02-02",
+    "suggested": "Dokumente",
+    "index": 147
+  },
+  {
+    "id": "D0B75638021B19A6!297410",
+    "name": "2025-02-05_Kre!spollzelbeh\u00f6rde SlegenWlttgensteln.pdf",
+    "date": "2025-02-13",
+    "suggested": "Beh\u00f6rden",
+    "index": 148
+  },
+  {
+    "id": "D0B75638021B19A6!297295",
+    "name": "2025-02-28_EGEN!\u061f CHULE\u061f.pdf",
+    "date": "2025-02-02",
+    "suggested": "Dokumente",
+    "index": 149
+  },
+  {
+    "id": "D0B75638021B19A6!s0a0922b8dd8f4dc4bae7f9cbe427467a",
+    "name": "2025-04-05_Rechnung_Probenwochenende_04_25.pdf",
+    "date": "2025-07-03",
+    "suggested": "Rechnungen",
+    "index": 150
+  },
+  {
+    "id": "D0B75638021B19A6!s7568d8216c054e759a5ac809afa67d50",
+    "name": "2025-06-15_Erkl\u00e4rung.pdf",
+    "date": "2025-06-15",
+    "suggested": "Dokumente",
+    "index": 151
+  },
+  {
+    "id": "D0B75638021B19A6!sae2121759d7e4a31b39a6f72f8f49e9a",
+    "name": "2025-06-15_Erkl\u00e4rung_001.pdf",
+    "date": "2025-06-15",
+    "suggested": "Dokumente",
+    "index": 152
+  },
+  {
+    "id": "D0B75638021B19A6!se73ac054d1674ac4b0f9f16dc31945a3",
+    "name": "2025-06-17_NRV.pdf",
+    "date": "2025-06-25",
+    "suggested": "Dokumente",
+    "index": 153
+  },
+  {
+    "id": "D0B75638021B19A6!s56e9f44323ed434eb10b0cb535372b84",
+    "name": "2025-07-03_Auftritt_Bielstein_Pfingsten.pdf",
+    "date": "2025-07-03",
+    "suggested": "Dokumente",
+    "index": 154
+  },
+  {
+    "id": "D0B75638021B19A6!s9fad9d60369e45b28b14cfd5fef9edae",
+    "name": "2025-07-07_\u0660BG ETEM.pdf",
+    "date": "2025-07-26",
+    "suggested": "Dokumente",
+    "index": 155
+  },
+  {
+    "id": "D0B75638021B19A6!s89e0c4605e794175a5921ce0ac08e1e4",
+    "name": "2025-07-26_\u0647\u0661\u0629\u0626\u061f1.pdf",
+    "date": "2025-07-26",
+    "suggested": "Dokumente",
+    "index": 156
+  },
+  {
+    "id": "D0B75638021B19A6!203399",
+    "name": "2025-08-01_Stadt Freudenberg.pdf",
+    "date": "2023-04-12",
+    "suggested": "Dokumente",
+    "index": 157
+  },
+  {
+    "id": "D0B75638021B19A6!s14fa74ba2712412fb32c4bbf3580ea21",
+    "name": "2025-10-08_Festnetz-Rechnung f\u00fcr oktober 2025.pdf",
+    "date": "2025-10-15",
+    "suggested": "Rechnungen",
+    "index": 158
+  },
+  {
+    "id": "D0B75638021B19A6!s9b33e5bde7a24026b1d8e4fe9d8e5236",
+    "name": "2025-10-14_.^ENZLER Immobilien.pdf",
+    "date": "2025-10-14",
+    "suggested": "Dokumente",
+    "index": 159
+  },
+  {
+    "id": "D0B75638021B19A6!sc879809c3d9c4e74b56f347388df6c86",
+    "name": "2025-10-14_.^ENZLER Immobilien_001.pdf",
+    "date": "2025-10-14",
+    "suggested": "Dokumente",
+    "index": 160
+  },
+  {
+    "id": "D0B75638021B19A6!s3a8dc1d06b494cb99a737f7f306fd84b",
+    "name": "2025-10-28_Selbstauskunft_Mauksch.pdf",
+    "date": "2025-10-28",
+    "suggested": "Dokumente",
+    "index": 161
+  },
+  {
+    "id": "D0B75638021B19A6!s4b66d3dce4754c11b41c455bf8650969",
+    "name": "2025-10-30_K\u00fcndigung Claudia & Tobias Mauksch.pdf",
+    "date": "2025-10-30",
+    "suggested": "Dokumente",
+    "index": 162
+  },
+  {
+    "id": "D0B75638021B19A6!s51650f9f6d694bc5a95dbe62af9367aa",
+    "name": "2025-10-31_Stadt Freudenberg.pdf",
+    "date": "2025-11-20",
+    "suggested": "Dokumente",
+    "index": 163
+  },
+  {
+    "id": "D0B75638021B19A6!sc0335973805242d1bfefc0e419224b1b",
+    "name": "2025-11-11_Verwaltungsgericht Arnsberg.pdf",
+    "date": "2025-11-11",
+    "suggested": "Dokumente",
+    "index": 164
+  },
+  {
+    "id": "D0B75638021B19A6!s0467bb38128b4cafb04a86ae48c159bd",
+    "name": "2025-11-17_Heb Deinen Aktivierungscode bitte gut auf und gib ihn.pdf",
+    "date": "2025-11-21",
+    "suggested": "Dokumente",
+    "index": 165
+  },
+  {
+    "id": "D0B75638021B19A6!s6e8ebb93dceb4dc8a98b8a812c7084a3",
+    "name": "2025-11-18_BergMaukschGKV.pdf",
+    "date": "2025-11-20",
+    "suggested": "Dokumente",
+    "index": 166
+  },
+  {
+    "id": "D0B75638021B19A6!s949107198b13450aa21b455b3cb4f260",
+    "name": "2025-12-04_Festnetz-Rechnung f\u00fcr Dezember 2025.pdf",
+    "date": "2025-12-10",
+    "suggested": "Rechnungen",
+    "index": 167
+  },
+  {
+    "id": "D0B75638021B19A6!s361c1299e5eb4bddb21d952ed2ebf4d9",
+    "name": "2025-12-07_Jetzt \u0665R-Code scannen.pdf",
+    "date": "2025-12-18",
+    "suggested": "Dokumente",
+    "index": 168
+  },
+  {
+    "id": "D0B75638021B19A6!s2b20e868e206432baee815bc959bfad3",
+    "name": "2025-12-18_\u00edrkenho.pdf",
+    "date": "2025-12-18",
+    "suggested": "Dokumente",
+    "index": 169
+  },
+  {
+    "id": "D0B75638021B19A6!201590",
+    "name": "2219-10-20_(DokTitel).pdf",
+    "date": "2023-02-02",
+    "suggested": "Dokumente",
+    "index": 170
+  },
+  {
+    "id": "D0B75638021B19A6!sc061810322ad46d6a2b6b4112885e34d",
+    "name": "2518-11-15_Ergebnis der Schuleingangsuntersuchung vom.pdf",
+    "date": "2025-05-04",
+    "suggested": "Kita/Schule",
+    "index": 171
+  },
+  {
+    "id": "D0B75638021B19A6!295675",
+    "name": "2524-12-06_iilill tabel ist..pdf",
+    "date": "2024-12-07",
+    "suggested": "Dokumente",
+    "index": 172
+  },
+  {
+    "id": "D0B75638021B19A6!203569",
+    "name": "5164-08-04_sSparkasse Gummersbach.pdf",
+    "date": "2023-04-21",
+    "suggested": "Dokumente",
+    "index": 173
+  },
+  {
+    "id": "D0B75638021B19A6!293989",
+    "name": "Anamnesebogen Dana 2024-08.pdf",
+    "date": "2024-08-14",
+    "suggested": "Dokumente",
+    "index": 174
+  },
+  {
+    "id": "D0B75638021B19A6!297132",
+    "name": "Anmeldung Vertrag.pdf",
+    "date": "2025-01-12",
+    "suggested": "Vertr\u00e4ge",
+    "index": 175
+  },
+  {
+    "id": "D0B75638021B19A6!295870",
+    "name": "Ausgabeanordnung Mauksch.pdf",
+    "date": "2024-12-17",
+    "suggested": "Dokumente",
+    "index": 176
+  },
+  {
+    "id": "D0B75638021B19A6!235886",
+    "name": "BA Voices.pdf",
+    "date": "2024-02-15",
+    "suggested": "Dokumente",
+    "index": 177
+  },
+  {
+    "id": "D0B75638021B19A6!s0164b877cb0b40beaf7a5988ca8e8fe5",
+    "name": "Entschuldigung Kind.pdf",
+    "date": "2025-11-05",
+    "suggested": "Kita/Schule",
+    "index": 178
+  },
+  {
+    "id": "D0B75638021B19A6!297133",
+    "name": "Erkl\u00e4rung der Kindertagespflegeperson.pdf",
+    "date": "2025-01-12",
+    "suggested": "Kita/Schule",
+    "index": 179
+  },
+  {
+    "id": "D0B75638021B19A6!sf958c9ead02e409fb102db81f39a8c6e",
+    "name": "FDSBPV_encrypted_.pdf",
+    "date": "2025-11-19",
+    "suggested": "Dokumente",
+    "index": 180
+  },
+  {
+    "id": "D0B75638021B19A6!235778",
+    "name": "Formular Mauksch.pdf",
+    "date": "2024-01-30",
+    "suggested": "Dokumente",
+    "index": 181
+  },
+  {
+    "id": "D0B75638021B19A6!295871",
+    "name": "Honorarvertrag Tobi.pdf",
+    "date": "2024-12-17",
+    "suggested": "Vertr\u00e4ge",
+    "index": 182
+  },
+  {
+    "id": "D0B75638021B19A6!s271e3cb49cdc4f64a829368385e340ba",
+    "name": "IMG_3172.heic",
+    "date": "2025-11-03",
+    "suggested": "Dokumente",
+    "index": 183
+  },
+  {
+    "id": "D0B75638021B19A6!s90c1da57fea44e219c72c132370d5427",
+    "name": "IMG_3173.heic",
+    "date": "2025-11-03",
+    "suggested": "Dokumente",
+    "index": 184
+  },
+  {
+    "id": "D0B75638021B19A6!235936",
+    "name": "Kn\u00f6llchen Bonn.pdf",
+    "date": "2024-02-20",
+    "suggested": "Dokumente",
+    "index": 185
+  },
+  {
+    "id": "D0B75638021B19A6!297451",
+    "name": "K\u00fcndigung Tobias Mauksch.pdf",
+    "date": "2025-02-19",
+    "suggested": "Dokumente",
+    "index": 186
+  },
+  {
+    "id": "D0B75638021B19A6!s4895abd1e65d4bdfa5aebd5582ffc82d",
+    "name": "Lohnabrechnungen_C.Mauksch.pdf",
+    "date": "2025-10-23",
+    "suggested": "Rechnungen",
+    "index": 187
+  },
+  {
+    "id": "D0B75638021B19A6!297447",
+    "name": "mahnung Zentrale Stelle Justiz.pdf",
+    "date": "2025-02-18",
+    "suggested": "Dokumente",
+    "index": 188
+  },
+  {
+    "id": "D0B75638021B19A6!228457",
+    "name": "Nachweis der Elterneigenschaft.pdf",
+    "date": "2023-09-20",
+    "suggested": "Dokumente",
+    "index": 189
+  },
+  {
+    "id": "D0B75638021B19A6!294648",
+    "name": "Ratenvertrag Zingler - Mauksch Emilian.pdf",
+    "date": "2024-09-30",
+    "suggested": "Vertr\u00e4ge",
+    "index": 190
+  },
+  {
+    "id": "D0B75638021B19A6!229175",
+    "name": "Tobias Mauksch - Anmeldung Ausbildung Change.pdf",
+    "date": "2023-12-08",
+    "suggested": "Dokumente",
+    "index": 191
+  }
 ]
