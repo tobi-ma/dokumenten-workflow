@@ -21,6 +21,9 @@ from app.data_service import (
 
 logger = logging.getLogger(__name__)
 
+# UI Constants
+NEW_MAIN_FOLDER_OPTION = "+ Neuen Hauptordner erstellen"
+
 
 def render_file_card(
     file: FileInfo,
@@ -70,47 +73,45 @@ def _render_folder_selector(file: FileInfo, on_decision: callable) -> None:
     # Load folders dynamically
     all_folders = get_all_folders()
     
-    # Main folder dropdown
+    # Main folder dropdown (includes option to create new)
     main_folder = st.selectbox(
         "Hauptordner...",
-        [""] + all_folders + [DELETE_OPTION],
+        [""] + all_folders + [NEW_MAIN_FOLDER_OPTION, DELETE_OPTION],
         key=f"main_{file['id']}",
     )
     
-    # Subfolder dropdown (if main selected and has subfolders)
+    # Handle new main folder creation
+    if main_folder == NEW_MAIN_FOLDER_OPTION:
+        new_main = st.text_input(
+            "Name des neuen Hauptordners:",
+            key=f"new_main_{file['id']}",
+        )
+        if new_main:
+            main_folder = new_main
+    
+    # Subfolder dropdown (if main selected and not delete)
     sub_folder = None
-    if main_folder and main_folder != DELETE_OPTION:
-        subfolders = get_subfolders(main_folder)
+    if main_folder and main_folder not in (DELETE_OPTION, NEW_MAIN_FOLDER_OPTION):
+        subfolders = get_subfolders(main_folder) if main_folder in all_folders else []
         if subfolders:
             sub_options = [MAIN_FOLDER_OPTION] + subfolders + [NEW_FOLDER_OPTION]
-            sub_folder = st.selectbox(
-                "Unterordner...",
-                sub_options,
-                key=f"sub_{file['id']}",
-            )
-            
-            # Handle new subfolder creation
-            if sub_folder == NEW_FOLDER_OPTION:
-                new_folder = st.text_input(
-                    "Name des neuen Unterordners:",
-                    key=f"new_{file['id']}",
-                )
-                if new_folder:
-                    sub_folder = new_folder
         else:
-            # No subfolders available, but allow creating one
-            sub_folder = st.selectbox(
-                "Unterordner...",
-                [MAIN_FOLDER_OPTION, NEW_FOLDER_OPTION],
-                key=f"sub_{file['id']}",
+            sub_options = [MAIN_FOLDER_OPTION, NEW_FOLDER_OPTION]
+        
+        sub_folder = st.selectbox(
+            "Unterordner...",
+            sub_options,
+            key=f"sub_{file['id']}",
+        )
+        
+        # Handle new subfolder creation
+        if sub_folder == NEW_FOLDER_OPTION:
+            new_folder = st.text_input(
+                "Name des neuen Unterordners:",
+                key=f"new_{file['id']}",
             )
-            if sub_folder == NEW_FOLDER_OPTION:
-                new_folder = st.text_input(
-                    "Name des neuen Unterordners:",
-                    key=f"new_{file['id']}",
-                )
-                if new_folder:
-                    sub_folder = new_folder
+            if new_folder:
+                sub_folder = new_folder
     
     # Confirm button
     if main_folder and st.button("✅ Verschieben", key=f"btn_{file['id']}"):
