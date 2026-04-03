@@ -1,1 +1,14 @@
-{"moves": [], "deletions": [], "last_updated": null}
+{
+  "moves": [
+    {
+      "file_id": "D0B75638021B19A6!201592",
+      "file_name": "2023-02-02_001.pdf",
+      "to_folder": "Kita & Schule/Kita",
+      "main_folder": "Kita & Schule",
+      "sub_folder": "Kita",
+      "decided_at": "2026-04-03T14:07:34.286786"
+    }
+  ],
+  "deletions": [],
+  "last_updated": "2026-04-03T14:07:34.288001"
+}
