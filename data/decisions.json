@@ -47,8 +47,24 @@
       "main_folder": "Kita & Schule",
       "sub_folder": null,
       "decided_at": "2026-04-03T14:17:08.143695"
+    },
+    {
+      "file_id": "D0B75638021B19A6!201771",
+      "file_name": "2023-03-05.pdf",
+      "to_folder": "Rechnungen",
+      "main_folder": "Rechnungen",
+      "sub_folder": null,
+      "decided_at": "2026-04-03T14:22:22.503406"
+    },
+    {
+      "file_id": "D0B75638021B19A6!201802",
+      "file_name": "2023-03-08_001.pdf",
+      "to_folder": "Bilder",
+      "main_folder": "Bilder",
+      "sub_folder": null,
+      "decided_at": "2026-04-03T14:23:07.038731"
     }
   ],
   "deletions": [],
-  "last_updated": "2026-04-03T14:17:19.037248"
+  "last_updated": "2026-04-03T14:23:11.149059"
 }
