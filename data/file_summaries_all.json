@@ -1,0 +1,383 @@
+{
+  "last_updated": "2026-04-03T14:45:08.888579",
+  "total_files": 167,
+  "processed": 40,
+  "summaries": {
+    "D0B75638021B19A6!sf63cdf711a154b4e9718165b3f25ecb9": {
+      "filename": "1987-01-21_Freudenberg 1119.pdf",
+      "summary": "⚠️ Kein lesbarer Text (1 Seiten)",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 816,
+      "is_readable": false
+    },
+    "D0B75638021B19A6!s344b37eb8cd24dbf8b4728abe680a903": {
+      "filename": "1987-05-11_LBS.pdf",
+      "summary": "Datum: 1987-05-11 | Von: LBS Bausparkasse der Sparkassen | Person: Claudia Mauksch | Typ: Bausparvertrag",
+      "todos": [
+        "Langfristig aufbewahren"
+      ],
+      "page_count": 5,
+      "thumbnail_created": true,
+      "text_length": 11329,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s00fc332f78e14468927931930fc0406e": {
+      "filename": "2018-03-23_BausparUrkunde.pdf",
+      "summary": "Datum: 2018-03-23 | Von: LBS Bausparkasse der Sparkassen | Person: Claudia Mauksch | Typ: Bausparurkunde",
+      "todos": [
+        "Langfristig aufbewahren"
+      ],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 1912,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!sb43cc8577a824831bacfdf10f7d67af2": {
+      "filename": "2018-03-23_BausparUrkunde_Tobi.pdf",
+      "summary": "Datum: 2018-03-23 | Von: LBS Bausparkasse der Sparkassen | Person: Tobias Mauksch | Typ: Bausparurkunde",
+      "todos": [
+        "Langfristig aufbewahren"
+      ],
+      "page_count": 7,
+      "thumbnail_created": true,
+      "text_length": 4779,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201558": {
+      "filename": "2023-01-23_Arbeltsunfähjgkelts- beschelnlgung XErstbescheinigung.pdf",
+      "summary": "Datum: 2023-01-23 | Von: Techniker Krankenkasse | Person: Tobias Mauksch | Typ: Arbeitsunfähigkeitsbescheinigung",
+      "todos": [
+        "An Arbeitgeber weiterleiten"
+      ],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 2020,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201581": {
+      "filename": "2023-02-02.pdf",
+      "summary": "⚠️ Kein lesbarer Text (2 Seiten)",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 37,
+      "is_readable": false
+    },
+    "D0B75638021B19A6!201592": {
+      "filename": "2023-02-02_001.pdf",
+      "summary": "Datum: 2023-02-02",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 493,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201563": {
+      "filename": "2023-02-02_Abrechnung der BruttoNetto-Bezüge für Deze^er 2022 -S.pdf",
+      "summary": "Datum: 2023-02-02 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3084,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201586": {
+      "filename": "2023-02-02_Garantie für Nähmaschine.pdf",
+      "summary": "Datum: 2023-02-02 | Typ: Garantie",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 1701,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201578": {
+      "filename": "2023-02-02_Ihre Mitgliedschaft im VDI Beitragsmitteilung für  20.pdf",
+      "summary": "Datum: 2023-02-02 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 4681,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201588": {
+      "filename": "2023-02-02_liebe ABC-Strolche, liebe Eltern!.pdf",
+      "summary": "Datum: 2023-02-02",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 724,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201589": {
+      "filename": "2023-02-02_rhion..pdf",
+      "summary": "Datum: 2023-02-02 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 5,
+      "thumbnail_created": true,
+      "text_length": 16086,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201596": {
+      "filename": "2023-02-02_TUV.pdf",
+      "summary": "Datum: 2023-02-02",
+      "todos": [],
+      "page_count": 16,
+      "thumbnail_created": true,
+      "text_length": 5779,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201741": {
+      "filename": "2023-02-24_Daumenschlinge Kontralndikat!onen Komplette Bandruptu.pdf",
+      "summary": "Datum: 2023-02-24",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 701,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201742": {
+      "filename": "2023-02-25_Netzwerk der Wndertagesstätten und Grundschulen.pdf",
+      "summary": "Datum: 2023-02-25",
+      "todos": [],
+      "page_count": 10,
+      "thumbnail_created": true,
+      "text_length": 3884,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201771": {
+      "filename": "2023-03-05.pdf",
+      "summary": "Datum: 2023-03-05 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 3920,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201801": {
+      "filename": "2023-03-08.pdf",
+      "summary": "Datum: 2023-03-08",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 264,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201802": {
+      "filename": "2023-03-08_001.pdf",
+      "summary": "⚠️ Kein lesbarer Text (1 Seiten)",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 3,
+      "is_readable": false
+    },
+    "D0B75638021B19A6!201792": {
+      "filename": "2023-03-08_1. Personen, bei denen es bereits zuvor zu einer Auto.pdf",
+      "summary": "Datum: 2023-03-08",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 5427,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201794": {
+      "filename": "2023-03-08_Liste der Autoimmunkrankhelten.pdf",
+      "summary": "Datum: 2023-03-08",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1666,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201793": {
+      "filename": "2023-03-08_NOTFALL -Information.pdf",
+      "summary": "Datum: 2023-03-08",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 2006,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201800": {
+      "filename": "2023-03-08_Vle.seltlg und durchsatzstark.pdf",
+      "summary": "Datum: 2023-03-08",
+      "todos": [],
+      "page_count": 11,
+      "thumbnail_created": true,
+      "text_length": 7217,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201796": {
+      "filename": "2023-03-08_Vorgehen zur £٢!3ทรนทร eines !mpfattestes (Belsple!).pdf",
+      "summary": "Datum: 2023-03-08",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2803,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201795": {
+      "filename": "2023-03-08_يSOUND CHOICE.pdf",
+      "summary": "Datum: 2023-03-08",
+      "todos": [],
+      "page_count": 4,
+      "thumbnail_created": true,
+      "text_length": 8586,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201817": {
+      "filename": "2023-03-11.pdf",
+      "summary": "Datum: 2023-03-11 | Person: Tobias Mauksch | Typ: Versicherung",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1638,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201821": {
+      "filename": "2023-03-11_001.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 270,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201825": {
+      "filename": "2023-03-11_002.pdf",
+      "summary": "Datum: 2023-03-11 | Person: Claudia Mauksch",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 207,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201827": {
+      "filename": "2023-03-11_003.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1347,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201818": {
+      "filename": "2023-03-11_Chapter 11.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 32,
+      "thumbnail_created": true,
+      "text_length": 6168,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201810": {
+      "filename": "2023-03-11_Costs.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 1502,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201813": {
+      "filename": "2023-03-11_Effectif Wording to Impro^ Risk Allocation IN Lump Su.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 10,
+      "thumbnail_created": true,
+      "text_length": 12964,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201826": {
+      "filename": "2023-03-11_Eine Ballade für Christof.pdf",
+      "summary": "Datum: 2023-03-11 | Typ: Vertrag",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3777,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201816": {
+      "filename": "2023-03-11_Maกagاng Project Uncertainty From Variation to Chaos.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 9,
+      "thumbnail_created": true,
+      "text_length": 13464,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201820": {
+      "filename": "2023-03-11_mît kàìtf Beraluwg und Çe^e^ng.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 200,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201815": {
+      "filename": "2023-03-11_Project Ri'sk Management.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 12,
+      "thumbnail_created": true,
+      "text_length": 4870,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201811": {
+      "filename": "2023-03-11_Risk Allocation in Lump-Sum Contacts—Conceit of Laten.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 7,
+      "thumbnail_created": true,
+      "text_length": 16992,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201812": {
+      "filename": "2023-03-11_Space project ^nagement.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 5,
+      "thumbnail_created": true,
+      "text_length": 2323,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201814": {
+      "filename": "2023-03-11_The usefulness of combining UAI and MAS foi studying.pdf",
+      "summary": "Datum: 2023-03-11",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 10688,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!202817": {
+      "filename": "2023-03-19.pdf",
+      "summary": "Datum: 2023-03-19",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 258,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201982": {
+      "filename": "2023-03-19_.silverette.de.pdf",
+      "summary": "Datum: 2023-03-19 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 5387,
+      "is_readable": true
+    }
+  }
+}
