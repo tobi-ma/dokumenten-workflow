@@ -119,9 +119,10 @@ else:
                 st.caption(f"📅 {file.get('date', 'unbekannt')}")
                 
                 # Thumbnail - priority: PyMuPDF (page1) > OneDrive large > OneDrive medium
-                thumb_pymupdf = f"thumbnails/{file['id']}_page1.jpg"
-                thumb_large = f"thumbnails/{file['id']}_large.jpg"
-                thumb_medium = f"thumbnails/{file['id']}_medium.jpg"
+                file_id_clean = file['id'].replace('!', '_')
+                thumb_pymupdf = f"thumbnails/{file_id_clean}_page1.jpg"
+                thumb_large = f"thumbnails/{file_id_clean}_large.jpg"
+                thumb_medium = f"thumbnails/{file_id_clean}_medium.jpg"
                 
                 if os.path.exists(thumb_pymupdf):
                     st.image(thumb_pymupdf, width=400)
