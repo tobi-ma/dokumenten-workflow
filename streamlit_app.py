@@ -6,15 +6,6 @@ import subprocess
 
 st.set_page_config(page_title="ScanSnap Organizer", layout="wide")
 
-# --- Debug Info (zeigt ob Secrets geladen werden) ---
-if st.sidebar.checkbox("Debug Mode", value=False):
-    st.sidebar.write("Secrets geladen:", list(st.secrets.keys()) if hasattr(st, 'secrets') else "N/A")
-    try:
-        auth_secrets = st.secrets.get("auth", {})
-        st.sidebar.write("Auth Secrets:", list(auth_secrets.keys()) if auth_secrets else "Leer")
-    except Exception as e:
-        st.sidebar.write("Fehler:", str(e))
-
 # --- Password Protection ---
 def check_password():
     """Returns True if the user had the correct password."""
@@ -87,32 +78,41 @@ def save_decisions(decisions):
     except Exception as e:
         st.warning(f"⚠️ Lokal gespeichert")
 
-# Folders - from actual OneDrive ScanSnap structure
-FOLDERS = [
-    "Archiv Arbeit",
-    "Ärzte Krankenhaus etc",
-    "Banken",
-    "Bedienungsanleitungen & Produktinformationsblätter",
-    "Cards",
-    "Finanzamt & Steuererklärung",
-    "Gehaltsabrechnungen",
-    "Gutscheine",
-    "Impfen etc",
-    "Kinder Erinnerungen",
-    "Kita & Schule",
-    "Kontakte",
-    "Musik",
-    "Offizielle Schreiben",
-    "Photos",
-    "Receipts",
-    "Rechnungen",
-    "Selbstständigkeit",
-    "Sprachen",
-    "Verschiedenes",
-    "Versicherungen",
-    "Verträge",
-    "⚠️ Löschen"
-]
+# Hierarchical folder structure from OneDrive ScanSnap
+FOLDER_STRUCTURE = {
+    "Archiv Arbeit": [],
+    "Ärzte Krankenhaus etc": ["Laborbefunde", "Zahnarzt"],
+    "Banken": [],
+    "Bedienungsanleitungen & Produktinformationsblätter": [],
+    "Cards": [],
+    "Finanzamt & Steuererklärung": ["Lohnsteuerbescheinigungen"],
+    "Gehaltsabrechnungen": [],
+    "Gutscheine": [],
+    "Impfen etc": [],
+    "Kinder Erinnerungen": [],
+    "Kita & Schule": [],
+    "Kontakte": [],
+    "Musik": [],
+    "Offizielle Schreiben": [],
+    "Photos": [],
+    "Receipts": [],
+    "Rechnungen": ["Saturn"],
+    "Selbstständigkeit": ["Gewerbeanmeldung"],
+    "Sprachen": [],
+    "Verschiedenes": [],
+    "Versicherungen": ["Auto ADAC", "Auto Haftpflicht", "BU Claudi", "BU Tobi", "Hausrat", "Privathaftpflicht", "Rechtsschutz", "Risikoleben", "TK"],
+    "Verträge": [],
+}
+
+# Flat list for main folders
+ALL_FOLDERS = list(FOLDER_STRUCTURE.keys())
+
+# Helper function to get full path
+def get_folder_path(main_folder, sub_folder=None):
+    """Returns the full path for OneDrive"""
+    if sub_folder and sub_folder != "(Hauptordner)":
+        return f"{main_folder}/{sub_folder}"
+    return main_folder
 
 # Main UI
 st.title("📄 ScanSnap Document Organizer")
@@ -184,24 +184,50 @@ else:
             
             with cols[3]:
                 if file["id"] not in processed_ids:
-                    selected = st.selectbox(
-                        "Nach...",
-                        [""] + FOLDERS,
-                        key=f"select_{file['id']}"
+                    # First dropdown: Main folder
+                    main_folder = st.selectbox(
+                        "Hauptordner...",
+                        [""] + ALL_FOLDERS + ["⚠️ Löschen"],
+                        key=f"main_{file['id']}"
                     )
                     
-                    if selected:
-                        if selected == "⚠️ Löschen":
+                    # Second dropdown: Subfolder (if main selected and has subfolders)
+                    sub_folder = None
+                    if main_folder and main_folder in FOLDER_STRUCTURE and main_folder != "⚠️ Löschen":
+                        subfolders = FOLDER_STRUCTURE[main_folder]
+                        if subfolders:
+                            sub_options = ["(Hauptordner)"] + subfolders + ["+ Neuen Unterordner anlegen"]
+                            sub_folder = st.selectbox(
+                                "Unterordner...",
+                                sub_options,
+                                key=f"sub_{file['id']}"
+                            )
+                            
+                            # Handle new subfolder creation
+                            if sub_folder == "+ Neuen Unterordner anlegen":
+                                new_folder = st.text_input(
+                                    "Name des neuen Unterordners:",
+                                    key=f"new_{file['id']}"
+                                )
+                                if new_folder:
+                                    sub_folder = new_folder
+                    
+                    # Confirm button
+                    if main_folder and st.button("✅ Verschieben", key=f"btn_{file['id']}"):
+                        if main_folder == "⚠️ Löschen":
                             decisions["deletions"].append({
                                 "file_id": file["id"],
                                 "file_name": file["name"],
                                 "decided_at": datetime.now().isoformat()
                             })
                         else:
+                            target_path = get_folder_path(main_folder, sub_folder)
                             decisions["moves"].append({
                                 "file_id": file["id"],
                                 "file_name": file["name"],
-                                "to_folder": selected,
+                                "to_folder": target_path,
+                                "main_folder": main_folder,
+                                "sub_folder": sub_folder,
                                 "decided_at": datetime.now().isoformat()
                             })
                         save_decisions(decisions)
