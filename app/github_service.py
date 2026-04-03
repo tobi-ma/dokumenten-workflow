@@ -122,15 +122,18 @@ def commit_file_via_api(
 
 def commit_decisions_to_github(
     decisions_content: dict,
-    moves_count: int
+    moves_count: int,
+    max_retries: int = 3
 ) -> tuple[bool, str]:
-    """Commit decisions.json to GitHub via API.
+    """Commit decisions.json to GitHub via API with retry on SHA conflict.
     
     This is the main entry point for Streamlit Cloud to save decisions.
+    Handles race conditions by retrying with fresh SHA if conflict occurs.
     
     Args:
         decisions_content: The decisions dictionary to save
         moves_count: Number of moves for the commit message
+        max_retries: Maximum retry attempts on SHA conflict (default: 3)
         
     Returns:
         Tuple of (success, message)
@@ -141,27 +144,142 @@ def commit_decisions_to_github(
         logger.warning("GitHub token not configured - falling back to local save")
         return False, "⚠️ GitHub nicht konfiguriert - lokal gespeichert"
     
-    # Convert decisions to JSON string
-    json_content = json.dumps(decisions_content, indent=2, ensure_ascii=False)
+    file_path = "data/decisions.json"
     
-    # Get current file SHA (for updates)
-    file_sha = get_file_sha(token, "data/decisions.json")
+    for attempt in range(max_retries):
+        try:
+            # Get current file SHA (fresh for each retry)
+            file_sha = get_file_sha(token, file_path)
+            
+            # If file exists on GitHub, we need to merge with remote changes
+            if file_sha and attempt > 0:
+                logger.info(f"Retry {attempt}: Fetching remote decisions to merge...")
+                remote_decisions = _fetch_remote_decisions(token, file_path)
+                if remote_decisions:
+                    decisions_content = _merge_decisions(remote_decisions, decisions_content)
+            
+            # Convert decisions to JSON string
+            json_content = json.dumps(decisions_content, indent=2, ensure_ascii=False)
+            
+            # Commit via API
+            commit_msg = f"Update decisions: {moves_count} moves - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+            
+            success = commit_file_via_api(
+                token=token,
+                file_path=file_path,
+                content=json_content,
+                commit_message=commit_msg,
+                sha=file_sha
+            )
+            
+            if success:
+                return True, "✅ Gespeichert & zu GitHub gepusht!"
+            else:
+                # Check if it's a SHA conflict (422)
+                # GitHub returns 422 when SHA doesn't match
+                logger.warning(f"Commit failed on attempt {attempt + 1}, retrying...")
+                
+                if attempt < max_retries - 1:
+                    import time
+                    time.sleep(0.5 * (attempt + 1))  # Exponential backoff
+                    continue
+                else:
+                    return False, "⚠️ Lokal gespeichert (GitHub Konflikt nach mehreren Versuchen)"
+                    
+        except Exception as e:
+            logger.error(f"Error on attempt {attempt + 1}: {e}")
+            if attempt < max_retries - 1:
+                continue
+            else:
+                return False, f"⚠️ Lokal gespeichert (Fehler: {str(e)[:50]})"
     
-    # Commit via API
-    commit_msg = f"Update decisions: {moves_count} moves - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+    return False, "⚠️ Lokal gespeichert (Maximale Versuche erreicht)"
+
+
+def _fetch_remote_decisions(token: str, file_path: str) -> Optional[dict]:
+    """Fetch current decisions.json from GitHub API.
     
-    success = commit_file_via_api(
-        token=token,
-        file_path="data/decisions.json",
-        content=json_content,
-        commit_message=commit_msg,
-        sha=file_sha
-    )
+    Args:
+        token: GitHub token
+        file_path: Path to decisions.json
+        
+    Returns:
+        Decisions dict if successful, None otherwise
+    """
+    import base64
     
-    if success:
-        return True, "✅ Gespeichert & zu GitHub gepusht!"
-    else:
-        return False, "⚠️ Lokal gespeichert (GitHub API Fehler)"
+    url = f"{GITHUB_API_URL}/repos/{REPO_OWNER}/{REPO_NAME}/contents/{file_path}?ref={BRANCH}"
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        if response.status_code == 200:
+            data = response.json()
+            content_b64 = data.get("content", "")
+            content = base64.b64decode(content_b64).decode("utf-8")
+            return json.loads(content)
+        else:
+            logger.warning(f"Could not fetch remote decisions: {response.status_code}")
+            return None
+    except Exception as e:
+        logger.error(f"Error fetching remote decisions: {e}")
+        return None
+
+
+def _merge_decisions(remote: dict, local: dict) -> dict:
+    """Merge remote and local decisions (union of both).
+    
+    Args:
+        remote: Decisions from GitHub
+        local: Local decisions to save
+        
+    Returns:
+        Merged decisions dict
+    """
+    merged = {
+        "moves": [],
+        "deletions": [],
+        "last_updated": datetime.now().isoformat()
+    }
+    
+    # Create sets of file IDs for deduplication
+    move_ids = set()
+    delete_ids = set()
+    
+    # Add all remote moves
+    for move in remote.get("moves", []):
+        file_id = move.get("file_id")
+        if file_id and file_id not in move_ids:
+            merged["moves"].append(move)
+            move_ids.add(file_id)
+    
+    # Add all remote deletions
+    for deletion in remote.get("deletions", []):
+        file_id = deletion.get("file_id")
+        if file_id and file_id not in delete_ids:
+            merged["deletions"].append(deletion)
+            delete_ids.add(file_id)
+    
+    # Add local moves (overwrite remote if same file_id)
+    for move in local.get("moves", []):
+        file_id = move.get("file_id")
+        if file_id:
+            # Remove existing entry for this file
+            merged["moves"] = [m for m in merged["moves"] if m.get("file_id") != file_id]
+            merged["moves"].append(move)
+    
+    # Add local deletions (overwrite remote if same file_id)
+    for deletion in local.get("deletions", []):
+        file_id = deletion.get("file_id")
+        if file_id:
+            merged["deletions"] = [d for d in merged["deletions"] if d.get("file_id") != file_id]
+            merged["deletions"].append(deletion)
+    
+    logger.info(f"Merged decisions: {len(merged['moves'])} moves, {len(merged['deletions'])} deletions")
+    return merged
 
 
 def commit_folder_structure_to_github(folder_structure: dict) -> tuple[bool, str]:
