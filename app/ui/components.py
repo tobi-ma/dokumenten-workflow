@@ -186,9 +186,14 @@ def _render_completed_status(file: FileInfo, decisions: Decisions) -> None:
             return
 
 
-def render_sidebar(files: list[FileInfo], decisions: Decisions) -> bool:
+def render_sidebar(files: list[FileInfo], decisions: Decisions, pending_count: int = 0) -> bool:
     """Render sidebar with status and controls.
     
+    Args:
+        files: List of all files
+        decisions: Current decisions from storage
+        pending_count: Number of pending (not yet committed) decisions
+        
     Returns:
         True if refresh was requested
     """
@@ -196,10 +201,15 @@ def render_sidebar(files: list[FileInfo], decisions: Decisions) -> bool:
         st.header("📊 Status")
         
         completed, moves_count, deletions_count = get_decision_stats(decisions)
+        total_completed = completed + pending_count
         
-        st.metric("Erledigt", f"{completed}/{len(files)}")
-        st.metric("Verschieben", moves_count)
-        st.metric("Löschen", deletions_count)
+        st.metric("Erledigt", f"{total_completed}/{len(files)}")
+        st.metric("Verschieben", moves_count + len([m for m in st.session_state.get('pending_moves', [])]))
+        st.metric("Löschen", deletions_count + len([d for d in st.session_state.get('pending_deletions', [])]))
+        
+        # Pending changes indicator
+        if pending_count > 0:
+            st.warning(f"📤 {pending_count} Änderungen ausstehend")
         
         if st.button("🔄 Status aktualisieren"):
             st.cache_data.clear()
@@ -237,6 +247,41 @@ def render_sidebar(files: list[FileInfo], decisions: Decisions) -> bool:
         st.info("💡 Thumbnails und Zusammenfassungen werden von Tim bereitgestellt.")
         
         return False
+
+
+def render_pending_changes(pending_moves: list, pending_deletions: list) -> bool:
+    """Render pending changes section with send button.
+    
+    Args:
+        pending_moves: List of pending move decisions
+        pending_deletions: List of pending delete decisions
+        
+    Returns:
+        True if send button was clicked
+    """
+    total_pending = len(pending_moves) + len(pending_deletions)
+    
+    if total_pending == 0:
+        return False
+    
+    with st.container():
+        st.markdown("---")
+        col1, col2 = st.columns([3, 1])
+        
+        with col1:
+            st.info(f"📤 **{total_pending} Entscheidungen** bereit zum Senden")
+            
+            # Show details in expander
+            with st.expander("Details anzeigen"):
+                for move in pending_moves:
+                    st.caption(f"📁 {move['file_name'][:40]} → {move['to_folder']}")
+                for deletion in pending_deletions:
+                    st.caption(f"🗑️ {deletion['file_name'][:40]}")
+        
+        with col2:
+            return st.button("🚀 Alle senden", type="primary", use_container_width=True)
+    
+    return False
 
 
 def render_filters() -> tuple[bool, int]:
