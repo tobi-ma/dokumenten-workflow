@@ -14,11 +14,12 @@ from app.config import (
 )
 from app.utils import get_folder_path, find_thumbnail
 from app.data_service import (
-    get_decision_stats, 
+    get_decision_stats,
     get_processed_file_ids,
     get_all_folders,
     get_subfolders,
     get_file_summary,
+    get_suggested_filename,
 )
 
 logger = logging.getLogger(__name__)
@@ -88,8 +89,20 @@ def render_file_card(
 
 
 def _render_folder_selector(file: FileInfo, on_decision: callable) -> None:
-    """Render folder selection with unlimited nesting levels."""
+    """Render folder selection with unlimited nesting levels and filename editing."""
     all_folders = get_all_folders()
+    
+    # Get suggested filename (from Tim or current name)
+    suggested_name = get_suggested_filename(file["id"], file["name"])
+    
+    # Filename editing (with suggestion as default)
+    st.markdown("✏️ **Dateiname**")
+    new_filename = st.text_input(
+        "",
+        value=suggested_name,
+        key=f"filename_{file['id']}",
+        label_visibility="collapsed"
+    )
     
     # Main folder selection
     main_folder = st.selectbox(
@@ -171,10 +184,14 @@ def _render_folder_selector(file: FileInfo, on_decision: callable) -> None:
                 target_path = "/".join(selected_path)
                 sub_folder = "/".join(selected_path[1:]) if len(selected_path) > 1 else None
             
+            # Check if filename was changed
+            final_filename = new_filename if new_filename != file["name"] else None
+            
             on_decision(file, "move", {
                 "to_folder": target_path,
                 "main_folder": selected_path[0] if selected_path else main_folder,
                 "sub_folder": sub_folder,
+                "new_file_name": final_filename,
             })
 
 
@@ -233,7 +250,9 @@ def render_sidebar(
             # Show list of pending items
             with st.expander("Anzeigen", expanded=False):
                 for move in pending_moves:
-                    st.caption(f"📁 {move['file_name'][:30]}...")
+                    display_name = move.get("new_file_name") or move["file_name"]
+                    rename_indicator = " ✏️" if move.get("new_file_name") else ""
+                    st.caption(f"📁 {display_name[:30]}{rename_indicator}")
                 for deletion in pending_deletions:
                     st.caption(f"🗑️ {deletion['file_name'][:30]}...")
 

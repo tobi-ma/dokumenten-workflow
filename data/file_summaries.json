@@ -6,13 +6,15 @@
       "summary": "Freudenberg Dokument aus 1987",
       "keywords": ["Freudenberg", "1119"],
       "page_count": 2,
-      "ocr_text": "Optional: erster Absatz oder wichtiger Text..."
+      "ocr_text": "Optional: erster Absatz oder wichtiger Text...",
+      "suggested_filename": "1987-01-21_Freudenberg_Vertrag_1119.pdf"
     },
     "D0B75638021B19A6!s00fc332f78e14468927931930fc0406e": {
       "summary": "Bausparvertrag mit LBS, Abschlussdatum März 2018",
       "keywords": ["Bauspar", "LBS", "Vertrag", "2018"],
       "page_count": 5,
-      "ocr_text": "Bausparurkunde..."
+      "ocr_text": "Bausparurkunde...",
+      "suggested_filename": "2018-03-23_Bausparvertrag_LBS_Tobi.pdf"
     }
   }
 }

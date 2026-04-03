@@ -65,12 +65,14 @@ class FileInfo(TypedDict):
 
 
 class MoveDecision(TypedDict):
+    """A decision to move a file."""
     file_id: str
     file_name: str
     to_folder: str
     main_folder: str
     sub_folder: str | None
     decided_at: str
+    new_file_name: str | None  # Optional: neuer Dateiname falls geändert
 
 
 class DeleteDecision(TypedDict):
@@ -103,6 +105,7 @@ class FileSummary(TypedDict, total=False):
     keywords: list[str]
     page_count: int
     ocr_text: str | None
+    suggested_filename: str | None  # KI-Vorschlag für neuen Dateinamen
 
 
 class FileSummaries(TypedDict):

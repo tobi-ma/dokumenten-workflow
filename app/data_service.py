@@ -337,6 +337,22 @@ def get_file_summary(file_id: str) -> FileSummary | None:
     return summaries.get(file_id)
 
 
+def get_suggested_filename(file_id: str, current_name: str) -> str:
+    """Get suggested filename for a file.
+    
+    Args:
+        file_id: The file ID
+        current_name: Current filename (fallback if no suggestion)
+        
+    Returns:
+        Suggested filename from Tim, or current_name if none available
+    """
+    summary = get_file_summary(file_id)
+    if summary and summary.get("suggested_filename"):
+        return summary["suggested_filename"]
+    return current_name
+
+
 def clear_file_summary_cache() -> None:
     """Clear the cached file summaries. Call when file_summaries.json changes."""
     global _file_summaries

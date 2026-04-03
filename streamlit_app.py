@@ -91,6 +91,8 @@ def on_decision(file: FileInfo, action: str, data: dict | None) -> None:
         })
         st.info(f"🗑️ **{file['name'][:30]}** zum Löschen vorgemerkt")
     elif action == "move" and data:
+        # Build display name (with new filename if changed)
+        display_name = data.get("new_file_name") or file["name"]
         st.session_state.pending_moves.append({
             "file_id": file["id"],
             "file_name": file["name"],
@@ -98,8 +100,9 @@ def on_decision(file: FileInfo, action: str, data: dict | None) -> None:
             "main_folder": data["main_folder"],
             "sub_folder": data["sub_folder"],
             "decided_at": timestamp,
+            "new_file_name": data.get("new_file_name"),  # None if not changed
         })
-        st.info(f"📁 **{file['name'][:30]}** → {data['to_folder']} vorgemerkt")
+        st.info(f"📁 **{display_name[:30]}** → {data['to_folder']} vorgemerkt")
     
     st.rerun()
 

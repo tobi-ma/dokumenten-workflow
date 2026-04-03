@@ -85,13 +85,8 @@ Du pflegst 3 JSON-Dateien, die von der Streamlit-App verwendet werden:
       "summary": "Bausparvertrag mit LBS, Abschlussdatum März 2018, 50.000€ Vertragssumme",
       "keywords": ["Bauspar", "LBS", "Vertrag", "2018", "50000"],
       "page_count": 5,
-      "ocr_text": "Bausparurkunde Nr. 12345. Herr Max Mustermann schließt einen Bausparvertrag..."
-    },
-    "D0B75638021B19A6!s00fc332f78e14468927931930fc0406e": {
-      "summary": "TK Krankenversicherung Mitgliedsbescheinigung für 2024",
-      "keywords": ["TK", "Krankenversicherung", "2024", "Bescheinigung"],
-      "page_count": 1,
-      "ocr_text": "Techniker Krankenkasse - Mitgliedsbescheinigung gemäß §5 Abs. 1..."
+      "ocr_text": "Bausparurkunde Nr. 12345...",
+      "suggested_filename": "2018-03-23_Bausparvertrag_LBS_Tobi_50000.pdf"
     }
   }
 }
@@ -102,6 +97,7 @@ Du pflegst 3 JSON-Dateien, die von der Streamlit-App verwendet werden:
 - `keywords` - **Wichtige Begriffe** für Suche/Filter (5-10 Stück)
 - `page_count` - **Seitenanzahl** des Dokuments
 - `ocr_text` - **Erster Absatz oder Auszug** (max. 500 Zeichen, optional)
+- `suggested_filename` - **Vorgeschlagener neuer Dateiname** (optional, KI-generiert)
 
 **Generierung:**
 1. OCR auf PDF durchführen (z.B. mit PyMuPDF, Tesseract, oder Azure AI Vision)
@@ -160,8 +156,11 @@ In der Streamlit-App wird deine Arbeit angezeigt als:
 
 Jede Datei zeigt:
 - Thumbnail (von dir generiert)
-- 📄 **Zusammenfassung** (Expander mit summary, keywords, page_count, ocr_text)
+- 📄 **Zusammenfassung** (direkt neben Thumbnail: summary, keywords, page_count)
+- ✏️ **Dateiname** (editierbar, mit `suggested_filename` als Vorschlag)
 - Ordner-Auswahl (basierend auf folder_structure.json)
+
+**Neu:** Dateiname-Änderungen werden mitgespeichert (Feld `new_file_name` in decisions.json)
 
 ---
 
