@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-04-03T14:47:42.697395",
+  "last_updated": "2026-04-03T14:48:55.431121",
   "total_files": 167,
-  "processed": 120,
+  "processed": 160,
   "summaries": {
     "D0B75638021B19A6!sf63cdf711a154b4e9718165b3f25ecb9": {
       "filename": "1987-01-21_Freudenberg 1119.pdf",
@@ -1163,6 +1163,396 @@
       "page_count": 3,
       "thumbnail_created": true,
       "text_length": 17362,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!297152": {
+      "filename": "2025-01-15_SOLMECKE.pdf",
+      "summary": "Datum: 2025-01-15 | Person: Claudia Mauksch | Typ: Versicherung",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 2544,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!297150": {
+      "filename": "2025-01-15_Stadt Freudenberg.pdf",
+      "summary": "Datum: 2025-01-15 | Person: Claudia Mauksch",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 1370,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!297277": {
+      "filename": "2025-01-24_KALTEICH.pdf",
+      "summary": "Datum: 2025-01-24 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1160,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!297278": {
+      "filename": "2025-01-26_R509262998 Rechtsschutz Versicherung Folgebeitrag dar.pdf",
+      "summary": "Datum: 2025-01-26 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2485,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!297294": {
+      "filename": "2025-02-02.pdf",
+      "summary": "Datum: 2025-02-02",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2490,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!297410": {
+      "filename": "2025-02-05_Kre!spollzelbehörde SlegenWlttgensteln.pdf",
+      "summary": "Datum: 2025-02-05 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2369,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!297295": {
+      "filename": "2025-02-28_EGEN!؟ CHULE؟.pdf",
+      "summary": "Datum: 2025-02-28 | Typ: Vertrag",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 2008,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s0a0922b8dd8f4dc4bae7f9cbe427467a": {
+      "filename": "2025-04-05_Rechnung_Probenwochenende_04_25.pdf",
+      "summary": "Datum: 2025-04-05 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 754,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s7568d8216c054e759a5ac809afa67d50": {
+      "filename": "2025-06-15_Erklärung.pdf",
+      "summary": "Datum: 2025-06-15",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 346,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!sae2121759d7e4a31b39a6f72f8f49e9a": {
+      "filename": "2025-06-15_Erklärung_001.pdf",
+      "summary": "Datum: 2025-06-15",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 364,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!se73ac054d1674ac4b0f9f16dc31945a3": {
+      "filename": "2025-06-17_NRV.pdf",
+      "summary": "Datum: 2025-06-17 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 4304,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s56e9f44323ed434eb10b0cb535372b84": {
+      "filename": "2025-07-03_Auftritt_Bielstein_Pfingsten.pdf",
+      "summary": "Datum: 2025-07-03 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 693,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s9fad9d60369e45b28b14cfd5fef9edae": {
+      "filename": "2025-07-07_٠BG ETEM.pdf",
+      "summary": "Datum: 2025-07-07 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 5,
+      "thumbnail_created": true,
+      "text_length": 4703,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s89e0c4605e794175a5921ce0ac08e1e4": {
+      "filename": "2025-07-26_ه١ةئ؟1.pdf",
+      "summary": "Datum: 2025-07-26",
+      "todos": [],
+      "page_count": 6,
+      "thumbnail_created": true,
+      "text_length": 4142,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!203399": {
+      "filename": "2025-08-01_Stadt Freudenberg.pdf",
+      "summary": "Datum: 2025-08-01 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2946,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s14fa74ba2712412fb32c4bbf3580ea21": {
+      "filename": "2025-10-08_Festnetz-Rechnung für oktober 2025.pdf",
+      "summary": "Datum: 2025-10-08 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 4324,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s9b33e5bde7a24026b1d8e4fe9d8e5236": {
+      "filename": "2025-10-14_.^ENZLER Immobilien.pdf",
+      "summary": "Datum: 2025-10-14",
+      "todos": [],
+      "page_count": 9,
+      "thumbnail_created": true,
+      "text_length": 5621,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!sc879809c3d9c4e74b56f347388df6c86": {
+      "filename": "2025-10-14_.^ENZLER Immobilien_001.pdf",
+      "summary": "Datum: 2025-10-14",
+      "todos": [],
+      "page_count": 9,
+      "thumbnail_created": true,
+      "text_length": 5621,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s3a8dc1d06b494cb99a737f7f306fd84b": {
+      "filename": "2025-10-28_Selbstauskunft_Mauksch.pdf",
+      "summary": "Datum: 2025-10-28",
+      "todos": [],
+      "page_count": 5,
+      "thumbnail_created": true,
+      "text_length": 2589,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s4b66d3dce4754c11b41c455bf8650969": {
+      "filename": "2025-10-30_Kündigung Claudia & Tobias Mauksch.pdf",
+      "summary": "Datum: 2025-10-30 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 714,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s51650f9f6d694bc5a95dbe62af9367aa": {
+      "filename": "2025-10-31_Stadt Freudenberg.pdf",
+      "summary": "Datum: 2025-10-31 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3854,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!sc0335973805242d1bfefc0e419224b1b": {
+      "filename": "2025-11-11_Verwaltungsgericht Arnsberg.pdf",
+      "summary": "Datum: 2025-11-11 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 6685,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s0467bb38128b4cafb04a86ae48c159bd": {
+      "filename": "2025-11-17_Heb Deinen Aktivierungscode bitte gut auf und gib ihn.pdf",
+      "summary": "Datum: 2025-11-17 | Person: Tobias Mauksch | Typ: Vertrag",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1862,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s6e8ebb93dceb4dc8a98b8a812c7084a3": {
+      "filename": "2025-11-18_BergMaukschGKV.pdf",
+      "summary": "Datum: 2025-11-18 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2529,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s949107198b13450aa21b455b3cb4f260": {
+      "filename": "2025-12-04_Festnetz-Rechnung für Dezember 2025.pdf",
+      "summary": "Datum: 2025-12-04 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3673,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s361c1299e5eb4bddb21d952ed2ebf4d9": {
+      "filename": "2025-12-07_Jetzt ٥R-Code scannen.pdf",
+      "summary": "Datum: 2025-12-07 | Person: Tobias Mauksch | Typ: Vertrag",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2009,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s2b20e868e206432baee815bc959bfad3": {
+      "filename": "2025-12-18_írkenho.pdf",
+      "summary": "Datum: 2025-12-18",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 764,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201590": {
+      "filename": "2219-10-20_(DokTitel).pdf",
+      "summary": "Datum: 2219-10-20 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2463,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!sc061810322ad46d6a2b6b4112885e34d": {
+      "filename": "2518-11-15_Ergebnis der Schuleingangsuntersuchung vom.pdf",
+      "summary": "Datum: 2518-11-15",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 2310,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295675": {
+      "filename": "2524-12-06_iilill tabel ist..pdf",
+      "summary": "⚠️ Kein lesbarer Text (1 Seiten)",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 151,
+      "is_readable": false
+    },
+    "D0B75638021B19A6!203569": {
+      "filename": "5164-08-04_sSparkasse Gummersbach.pdf",
+      "summary": "Datum: 5164-08-04 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 1366,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!293989": {
+      "filename": "Anamnesebogen Dana 2024-08.pdf",
+      "summary": "Dokument (1 Seiten)",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 811,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!297132": {
+      "filename": "Anmeldung Vertrag.pdf",
+      "summary": "Person: Claudia Mauksch",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2790,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295870": {
+      "filename": "Ausgabeanordnung Mauksch.pdf",
+      "summary": "Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 4977,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!235886": {
+      "filename": "BA Voices.pdf",
+      "summary": "Dokument (2 Seiten)",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 712,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!s0164b877cb0b40beaf7a5988ca8e8fe5": {
+      "filename": "Entschuldigung Kind.pdf",
+      "summary": "Dokument (1 Seiten)",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 899,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!297133": {
+      "filename": "Erklärung der Kindertagespflegeperson.pdf",
+      "summary": "Typ: Versicherung",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 5016,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!sf958c9ead02e409fb102db81f39a8c6e": {
+      "filename": "FDSBPV_encrypted_.pdf",
+      "summary": "Person: Claudia Mauksch | Typ: Vertrag",
+      "todos": [],
+      "page_count": 39,
+      "thumbnail_created": true,
+      "text_length": 5984,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!235778": {
+      "filename": "Formular Mauksch.pdf",
+      "summary": "Dokument (2 Seiten)",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3959,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295871": {
+      "filename": "Honorarvertrag Tobi.pdf",
+      "summary": "Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 4934,
       "is_readable": true
     }
   }
