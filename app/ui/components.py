@@ -52,22 +52,26 @@ def render_file_card(
             st.markdown(f"**{file['name'][:50]}**")
             st.caption(f"📅 {file.get('date', 'unbekannt')}")
             
-            # Show summary if available
-            if summary:
-                with st.expander("📄 Zusammenfassung", expanded=False):
-                    st.markdown(f"**{summary.get('summary', 'Keine Zusammenfassung')}**")
-                    if summary.get('keywords'):
-                        st.caption(f"🏷️ {', '.join(summary['keywords'][:5])}")
-                    if summary.get('page_count'):
-                        st.caption(f"📄 {summary['page_count']} Seiten")
-                    if summary.get('ocr_text'):
-                        st.markdown("---")
-                        st.text(summary['ocr_text'][:200] + "..." if len(summary['ocr_text']) > 200 else summary['ocr_text'])
-            
-            # Thumbnail
+            # Thumbnail and summary side by side
             thumb_path = find_thumbnail(file["id"])
-            if thumb_path:
-                st.image(thumb_path, width=400)
+            if thumb_path or summary:
+                thumb_col, summary_col = st.columns([1, 1])
+                
+                with thumb_col:
+                    if thumb_path:
+                        st.image(thumb_path, use_container_width=True)
+                    else:
+                        st.info("�️ Kein Thumbnail")
+                
+                with summary_col:
+                    if summary:
+                        st.markdown(f"**{summary.get('summary', '')}**")
+                        if summary.get('keywords'):
+                            st.caption(f"🏷️ {', '.join(summary['keywords'][:5])}")
+                        if summary.get('page_count'):
+                            st.caption(f"📄 {summary['page_count']} Seiten")
+                    else:
+                        st.caption("📝 Keine Zusammenfassung")
             else:
                 st.info("🖼️ Kein Thumbnail vorhanden")
         
