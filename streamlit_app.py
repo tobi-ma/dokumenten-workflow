@@ -73,14 +73,22 @@ def on_decision(file: FileInfo, action: str, data: dict | None) -> None:
     """Handle a decision (move or delete)."""
     timestamp = datetime.now().isoformat()
     
+    # Create a copy of decisions to avoid modifying cached data
+    updated_decisions = {
+        "moves": list(decisions.get("moves", [])),
+        "deletions": list(decisions.get("deletions", [])),
+        "last_updated": decisions.get("last_updated"),
+    }
+    
     if action == "delete":
-        decisions["deletions"].append({
+        updated_decisions["deletions"].append({
             "file_id": file["id"],
             "file_name": file["name"],
             "decided_at": timestamp,
         })
+        st.info(f"🗑️ **{file['name'][:30]}** zum Löschen markiert")
     elif action == "move" and data:
-        decisions["moves"].append({
+        updated_decisions["moves"].append({
             "file_id": file["id"],
             "file_name": file["name"],
             "to_folder": data["to_folder"],
@@ -88,16 +96,23 @@ def on_decision(file: FileInfo, action: str, data: dict | None) -> None:
             "sub_folder": data["sub_folder"],
             "decided_at": timestamp,
         })
+        st.info(f"📁 **{file['name'][:30]}** → {data['to_folder']}")
     
     # Save decisions
-    save_decisions(decisions)
+    save_decisions(updated_decisions)
+    
+    # Clear cache so new data is loaded on rerun
+    st.cache_data.clear()
     
     # Try to commit
-    success, message = save_and_commit(len(decisions["moves"]))
-    if success:
-        st.success(message)
-    else:
-        st.warning(message)
+    try:
+        success, message = save_and_commit(len(updated_decisions["moves"]))
+        if success:
+            st.success(message)
+        else:
+            st.warning(message)
+    except Exception as e:
+        st.warning(f"⚠️ Lokal gespeichert")
     
     st.rerun()
 
