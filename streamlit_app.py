@@ -10,8 +10,16 @@ st.set_page_config(page_title="ScanSnap Organizer", layout="wide")
 # --- Password Protection ---
 def check_password():
     """Returns True if the user had the correct password."""
+    
+    # Get password from secrets with fallback
+    try:
+        correct_password = st.secrets.get("auth", {}).get("password", "")
+    except:
+        correct_password = ""
+    
     def password_entered():
-        if hmac.compare_digest(st.session_state["password"], st.secrets["auth"]["password"]):
+        entered = st.session_state.get("password", "")
+        if correct_password and entered == correct_password:
             st.session_state["password_correct"] = True
             del st.session_state["password"]
         else:
@@ -21,8 +29,10 @@ def check_password():
         return True
 
     st.text_input("Passwort", type="password", on_change=password_entered, key="password")
-    if "password_correct" in st.session_state:
+    if st.session_state.get("password_correct") is False:
         st.error("😕 Falsches Passwort")
+    elif not correct_password:
+        st.warning("⚠️ Kein Passwort konfiguriert")
     return False
 
 if not check_password():
