@@ -186,35 +186,89 @@ def _render_completed_status(file: FileInfo, decisions: Decisions) -> None:
             return
 
 
-def render_sidebar(files: list[FileInfo], decisions: Decisions, pending_count: int = 0) -> bool:
-    """Render sidebar with status and controls.
-    
+def render_sidebar(
+    files: list[FileInfo],
+    decisions: Decisions,
+    pending_count: int = 0,
+    pending_moves: list | None = None,
+    pending_deletions: list | None = None
+) -> bool:
+    """Render sidebar with status, controls, and pending changes.
+
     Args:
         files: List of all files
         decisions: Current decisions from storage
         pending_count: Number of pending (not yet committed) decisions
-        
+        pending_moves: List of pending move decisions
+        pending_deletions: List of pending delete decisions
+
     Returns:
-        True if refresh was requested
+        True if refresh/send was triggered
     """
+    from datetime import datetime
+
+    pending_moves = pending_moves or []
+    pending_deletions = pending_deletions or []
+
     with st.sidebar:
         st.header("📊 Status")
-        
+
         completed, moves_count, deletions_count = get_decision_stats(decisions)
         total_completed = completed + pending_count
-        
+
         st.metric("Erledigt", f"{total_completed}/{len(files)}")
-        st.metric("Verschieben", moves_count + len([m for m in st.session_state.get('pending_moves', [])]))
-        st.metric("Löschen", deletions_count + len([d for d in st.session_state.get('pending_deletions', [])]))
-        
-        # Pending changes indicator
+        st.metric("Verschieben", moves_count + len(pending_moves))
+        st.metric("Löschen", deletions_count + len(pending_deletions))
+
+        st.markdown("---")
+
+        # Pending changes section
         if pending_count > 0:
-            st.warning(f"📤 {pending_count} Änderungen ausstehend")
-        
-        if st.button("🔄 Status aktualisieren"):
+            st.subheader(f"📤 {pending_count} ausstehend")
+
+            # Show list of pending items
+            with st.expander("Anzeigen", expanded=False):
+                for move in pending_moves:
+                    st.caption(f"📁 {move['file_name'][:30]}...")
+                for deletion in pending_deletions:
+                    st.caption(f"🗑️ {deletion['file_name'][:30]}...")
+
+            # Send button in sidebar
+            if st.button("🚀 Alle senden", type="primary", use_container_width=True):
+                # Perform the send action
+                from app.data_service import save_decisions
+                from app.git_service import save_and_commit
+
+                # Merge pending with existing decisions
+                updated_decisions = {
+                    "moves": list(decisions.get("moves", [])) + pending_moves,
+                    "deletions": list(decisions.get("deletions", [])) + pending_deletions,
+                    "last_updated": datetime.now().isoformat(),
+                }
+
+                # Save locally first
+                save_decisions(updated_decisions)
+
+                # Try to commit to GitHub
+                try:
+                    success, message = save_and_commit(len(updated_decisions["moves"]))
+                    if success:
+                        st.success("✅ Gesendet!")
+                        # Clear pending by modifying session state (caller should rerun)
+                        return True
+                    else:
+                        st.warning(message)
+                        return True  # Still trigger rerun to show updated state
+                except Exception as e:
+                    st.error(f"⚠️ Fehler: {e}")
+                    return True
+
+            st.markdown("---")
+
+        if st.button("🔄 Aktualisieren", use_container_width=True):
             st.cache_data.clear()
             return True
-        
+
         st.markdown("---")
         
         # Show folder structure info

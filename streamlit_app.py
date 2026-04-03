@@ -107,38 +107,15 @@ def on_decision(file: FileInfo, action: str, data: dict | None) -> None:
 # Display files
 st.markdown("---")
 
-# Show pending changes banner if there are any
-pending_count = len(st.session_state.pending_moves) + len(st.session_state.pending_deletions)
-if pending_count > 0:
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        st.info(f"📤 **{pending_count} Entscheidungen** zum Senden vorgemerkt")
-    with col2:
-        if st.button("🚀 Alle senden", type="primary", use_container_width=True):
-            # Merge pending with existing decisions
-            updated_decisions = {
-                "moves": list(decisions.get("moves", [])) + st.session_state.pending_moves,
-                "deletions": list(decisions.get("deletions", [])) + st.session_state.pending_deletions,
-                "last_updated": datetime.now().isoformat(),
-            }
-            
-            # Save locally first
-            save_decisions(updated_decisions)
-            
-            # Try to commit to GitHub
-            try:
-                success, message = save_and_commit(len(updated_decisions["moves"]))
-                if success:
-                    st.success(message)
-                    # Clear pending
-                    st.session_state.pending_moves = []
-                    st.session_state.pending_deletions = []
-                    st.cache_data.clear()
-                    st.rerun()
-                else:
-                    st.warning(message)
-            except Exception as e:
-                st.error(f"⚠️ Fehler beim Senden: {e}")
+# Filter files to display
+processed_ids = get_processed_file_ids(decisions)
+pending_ids = {m["file_id"] for m in st.session_state.pending_moves} | {d["file_id"] for d in st.session_state.pending_deletions}
+all_processed = processed_ids | pending_ids
+
+if show_completed:
+    display_files = files
+else:
+    display_files = [f for f in files if f["id"] not in all_processed]
 
 
 if not display_files:
@@ -148,6 +125,19 @@ else:
         render_file_card(file, decisions, on_decision)
 
 
-# Sidebar with pending changes info
-if render_sidebar(files, decisions, pending_count):
+# Sidebar with pending changes and send button
+pending_count = len(st.session_state.pending_moves) + len(st.session_state.pending_deletions)
+send_triggered = render_sidebar(
+    files,
+    decisions,
+    pending_count,
+    st.session_state.pending_moves,
+    st.session_state.pending_deletions
+)
+
+if send_triggered:
+    # Clear pending after successful send
+    st.session_state.pending_moves = []
+    st.session_state.pending_deletions = []
+    st.cache_data.clear()
     st.rerun()
