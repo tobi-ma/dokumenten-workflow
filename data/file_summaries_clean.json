@@ -1,0 +1,48 @@
+{
+  "_comment": "Document summaries - NO speculation, NO hallucination",
+  "extraction_method": "PyMuPDF text extraction",
+  "last_updated": "2026-04-03T14:41:22.317588",
+  "summaries": {
+    "D0B75638021B19A6!sf63cdf711a154b4e9718165b3f25ecb9": {
+      "filename": "1987-01-21_Freudenberg 1119.pdf",
+      "summary": "⚠️ Kein lesbarer Text (1 Seiten) - möglicherweise Bild/Plan/Handschift",
+      "todos": [],
+      "page_count": 1,
+      "text_length": 816
+    },
+    "D0B75638021B19A6!s344b37eb8cd24dbf8b4728abe680a903": {
+      "filename": "1987-05-11_LBS.pdf",
+      "summary": "Datum: 1987-05-11 | Von: LBS Bausparkasse der Sparkassen | Person: Mauksch\nBausparer | Typ: Bausparvertrag | Betrag: 157,50 €",
+      "todos": [
+        "Wichtig: Langfristig aufbewahren"
+      ],
+      "page_count": 5,
+      "text_length": 11329
+    },
+    "D0B75638021B19A6!s00fc332f78e14468927931930fc0406e": {
+      "filename": "2018-03-23_BausparUrkunde.pdf",
+      "summary": "Datum: 2018-03-23 | Von: LBS Bausparkasse der Sparkassen | Person: Claudia Mauksch | Typ: Bausparurkunde | Betrag: 0,10 €",
+      "todos": [
+        "Wichtig: Langfristig aufbewahren"
+      ],
+      "page_count": 1,
+      "text_length": 1912
+    },
+    "D0B75638021B19A6!sb43cc8577a824831bacfdf10f7d67af2": {
+      "filename": "2018-03-23_BausparUrkunde_Tobi.pdf",
+      "summary": "Datum: 2018-03-23 | Von: LBS Bausparkasse der Sparkassen | Person: Tobias Mauksch | Typ: Bausparurkunde | Betrag: 0,10 €",
+      "todos": [
+        "Wichtig: Langfristig aufbewahren"
+      ],
+      "page_count": 7,
+      "text_length": 4779
+    },
+    "D0B75638021B19A6!201558": {
+      "filename": "2023-01-23_Arbeltsunfähjgkelts- beschelnlgung XErstbescheinigung.pdf",
+      "summary": "Datum: 2023-01-23 | Von: Techniker Krankenkasse | Person: Tobias Mauksch | Typ: Vertrag",
+      "todos": [],
+      "page_count": 1,
+      "text_length": 2020
+    }
+  }
+}
