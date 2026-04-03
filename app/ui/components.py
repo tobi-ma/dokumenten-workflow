@@ -374,7 +374,7 @@ def render_filters() -> tuple[bool, int]:
     with col1:
         show_completed = st.checkbox("Erledigte anzeigen", value=False)
     with col2:
-        batch_size = st.selectbox("Anzahl", [5, 10, 20], index=1)
+        batch_size = st.selectbox("Anzahl", [5, 10, 20, 50, 100], index=1)
     
     return show_completed, batch_size
 
