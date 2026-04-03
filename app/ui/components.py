@@ -10,6 +10,7 @@ from app.config import (
     NEW_FOLDER_OPTION,
     FileInfo,
     Decisions,
+    FileSummary,
 )
 from app.utils import get_folder_path, find_thumbnail
 from app.data_service import (
@@ -17,6 +18,7 @@ from app.data_service import (
     get_processed_file_ids,
     get_all_folders,
     get_subfolders,
+    get_file_summary,
 )
 
 logger = logging.getLogger(__name__)
@@ -30,7 +32,7 @@ def render_file_card(
     decisions: Decisions,
     on_decision: callable,
 ) -> None:
-    """Render a single file card with thumbnail and folder selector.
+    """Render a single file card with thumbnail, summary and folder selector.
     
     Args:
         file: File information
@@ -38,6 +40,7 @@ def render_file_card(
         on_decision: Callback when a decision is made (file_id, action, data)
     """
     processed_ids = get_processed_file_ids(decisions)
+    summary = get_file_summary(file["id"])
     
     with st.container():
         cols = st.columns([1, 4, 2, 2])
@@ -48,6 +51,18 @@ def render_file_card(
         with cols[1]:
             st.markdown(f"**{file['name'][:50]}**")
             st.caption(f"📅 {file.get('date', 'unbekannt')}")
+            
+            # Show summary if available
+            if summary:
+                with st.expander("📄 Zusammenfassung", expanded=False):
+                    st.markdown(f"**{summary.get('summary', 'Keine Zusammenfassung')}**")
+                    if summary.get('keywords'):
+                        st.caption(f"🏷️ {', '.join(summary['keywords'][:5])}")
+                    if summary.get('page_count'):
+                        st.caption(f"📄 {summary['page_count']} Seiten")
+                    if summary.get('ocr_text'):
+                        st.markdown("---")
+                        st.text(summary['ocr_text'][:200] + "..." if len(summary['ocr_text']) > 200 else summary['ocr_text'])
             
             # Thumbnail
             thumb_path = find_thumbnail(file["id"])
@@ -193,9 +208,9 @@ def render_sidebar(files: list[FileInfo], decisions: Decisions) -> bool:
         st.markdown("---")
         
         # Show folder structure info
-        from app.data_service import load_folder_structure
+        from app.data_service import load_folder_structure, load_file_summaries
         import os
-        from app.config import FOLDER_STRUCTURE_JSON
+        from app.config import FOLDER_STRUCTURE_JSON, FILE_SUMMARIES_JSON
         
         folder_count = len(load_folder_structure())
         st.caption(f"📁 {folder_count} Ordner geladen")
@@ -205,10 +220,21 @@ def render_sidebar(files: list[FileInfo], decisions: Decisions) -> bool:
             with open(FOLDER_STRUCTURE_JSON) as f:
                 data = json.load(f)
                 if data.get("last_updated"):
-                    st.caption(f"🕐 Stand: {data['last_updated'][:10]}")
+                    st.caption(f"🕐 Ordner-Stand: {data['last_updated'][:10]}")
+        
+        # Show file summaries info
+        summary_count = len(load_file_summaries())
+        st.caption(f"📝 {summary_count} Zusammenfassungen geladen")
+        
+        if os.path.exists(FILE_SUMMARIES_JSON):
+            import json
+            with open(FILE_SUMMARIES_JSON) as f:
+                data = json.load(f)
+                if data.get("last_updated"):
+                    st.caption(f"🕐 Zusammenfassungen-Stand: {data['last_updated'][:10]}")
         
         st.markdown("---")
-        st.info("💡 Thumbnails werden von Tim bereitgestellt und automatisch aktualisiert.")
+        st.info("💡 Thumbnails und Zusammenfassungen werden von Tim bereitgestellt.")
         
         return False
 

@@ -10,10 +10,13 @@ from app.config import (
     DECISIONS_JSON, 
     DATA_DIR, 
     FOLDER_STRUCTURE_JSON,
+    FILE_SUMMARIES_JSON,
     DEFAULT_FOLDER_STRUCTURE,
     Decisions, 
     FileInfo,
     FolderStructure,
+    FileSummaries,
+    FileSummary,
 )
 
 logger = logging.getLogger(__name__)
@@ -244,3 +247,77 @@ def get_processed_file_ids(decisions: Decisions) -> set[str]:
     moved_ids = {m["file_id"] for m in decisions.get("moves", [])}
     deleted_ids = {d["file_id"] for d in decisions.get("deletions", [])}
     return moved_ids | deleted_ids
+
+
+# Global cache for file summaries
+_file_summaries: dict[str, FileSummary] | None = None
+
+
+def load_file_summaries() -> dict[str, FileSummary]:
+    """Load file summaries from JSON file.
+    
+    Returns empty dict if file doesn't exist or is invalid.
+    Uses cached value on subsequent calls.
+    
+    Returns:
+        Dictionary mapping file IDs to their summaries
+    """
+    global _file_summaries
+    
+    if _file_summaries is not None:
+        return _file_summaries
+    
+    if not os.path.exists(FILE_SUMMARIES_JSON):
+        logger.info(f"File summaries JSON not found: {FILE_SUMMARIES_JSON}")
+        _file_summaries = {}
+        return _file_summaries
+    
+    try:
+        with open(FILE_SUMMARIES_JSON, encoding="utf-8") as f:
+            data: FileSummaries = json.load(f)
+            
+            # Validate structure
+            if not isinstance(data, dict) or "summaries" not in data:
+                logger.error(f"Invalid file summaries format: missing 'summaries' key")
+                _file_summaries = {}
+                return _file_summaries
+            
+            summaries = data["summaries"]
+            if not isinstance(summaries, dict):
+                logger.error(f"Invalid file summaries format: 'summaries' is not a dict")
+                _file_summaries = {}
+                return _file_summaries
+            
+            last_updated = data.get("last_updated", "unknown")
+            logger.info(f"Loaded file summaries from {FILE_SUMMARIES_JSON} (updated: {last_updated})")
+            _file_summaries = summaries
+            return _file_summaries
+            
+    except json.JSONDecodeError as e:
+        logger.error(f"Failed to parse file summaries JSON: {e}")
+        _file_summaries = {}
+        return _file_summaries
+    except OSError as e:
+        logger.error(f"Failed to read file summaries JSON: {e}")
+        _file_summaries = {}
+        return _file_summaries
+
+
+def get_file_summary(file_id: str) -> FileSummary | None:
+    """Get summary for a specific file.
+    
+    Args:
+        file_id: The file ID to look up
+        
+    Returns:
+        FileSummary if found, None otherwise
+    """
+    summaries = load_file_summaries()
+    return summaries.get(file_id)
+
+
+def clear_file_summary_cache() -> None:
+    """Clear the cached file summaries. Call when file_summaries.json changes."""
+    global _file_summaries
+    _file_summaries = None
+    logger.info("File summary cache cleared")

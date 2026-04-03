@@ -7,6 +7,7 @@ DATA_DIR = "data"
 FILES_JSON = f"{DATA_DIR}/files.json"
 DECISIONS_JSON = f"{DATA_DIR}/decisions.json"
 FOLDER_STRUCTURE_JSON = f"{DATA_DIR}/folder_structure.json"
+FILE_SUMMARIES_JSON = f"{DATA_DIR}/file_summaries.json"
 THUMBNAILS_DIR = "thumbnails"
 
 # UI Options
@@ -94,3 +95,18 @@ class FolderStructure(TypedDict):
     last_updated: str | None
     root_path: str
     folders: dict[str, FolderNode]
+
+
+class FileSummary(TypedDict, total=False):
+    """Summary of a file's content from OCR/analysis."""
+    summary: str
+    keywords: list[str]
+    page_count: int
+    ocr_text: str | None
+
+
+class FileSummaries(TypedDict):
+    """Container for all file summaries."""
+    _comment: str
+    last_updated: str | None
+    summaries: dict[str, FileSummary]
