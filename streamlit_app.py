@@ -87,11 +87,31 @@ def save_decisions(decisions):
     except Exception as e:
         st.warning(f"⚠️ Lokal gespeichert")
 
-# Folders
+# Folders - from actual OneDrive ScanSnap structure
 FOLDERS = [
-    "Rechnungen", "Verträge", "Versicherungen", "Gesundheit",
-    "Finanzen", "Steuern", "Behörden", "Kita/Schule",
-    "Vereine", "Dokumente", "Sonstiges", "⚠️ Löschen"
+    "Archiv Arbeit",
+    "Ärzte Krankenhaus etc",
+    "Banken",
+    "Bedienungsanleitungen & Produktinformationsblätter",
+    "Cards",
+    "Finanzamt & Steuererklärung",
+    "Gehaltsabrechnungen",
+    "Gutscheine",
+    "Impfen etc",
+    "Kinder Erinnerungen",
+    "Kita & Schule",
+    "Kontakte",
+    "Musik",
+    "Offizielle Schreiben",
+    "Photos",
+    "Receipts",
+    "Rechnungen",
+    "Selbstständigkeit",
+    "Sprachen",
+    "Verschiedenes",
+    "Versicherungen",
+    "Verträge",
+    "⚠️ Löschen"
 ]
 
 # Main UI
