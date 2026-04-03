@@ -1,23 +1,23 @@
 """UI components for the document organizer."""
 
 import logging
-from datetime import datetime
 
 import streamlit as st
 
 from app.config import (
-    ALL_FOLDERS,
     DELETE_OPTION,
     MAIN_FOLDER_OPTION,
     NEW_FOLDER_OPTION,
-    FOLDER_STRUCTURE,
     FileInfo,
     Decisions,
-    MoveDecision,
-    DeleteDecision,
 )
 from app.utils import get_folder_path, find_thumbnail
-from app.data_service import get_decision_stats, get_processed_file_ids
+from app.data_service import (
+    get_decision_stats, 
+    get_processed_file_ids,
+    get_all_folders,
+    get_subfolders,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -67,17 +67,20 @@ def render_file_card(
 
 def _render_folder_selector(file: FileInfo, on_decision: callable) -> None:
     """Render folder selection dropdowns for a file."""
+    # Load folders dynamically
+    all_folders = get_all_folders()
+    
     # Main folder dropdown
     main_folder = st.selectbox(
         "Hauptordner...",
-        [""] + ALL_FOLDERS + [DELETE_OPTION],
+        [""] + all_folders + [DELETE_OPTION],
         key=f"main_{file['id']}",
     )
     
     # Subfolder dropdown (if main selected and has subfolders)
     sub_folder = None
-    if main_folder and main_folder in FOLDER_STRUCTURE and main_folder != DELETE_OPTION:
-        subfolders = FOLDER_STRUCTURE[main_folder]
+    if main_folder and main_folder != DELETE_OPTION:
+        subfolders = get_subfolders(main_folder)
         if subfolders:
             sub_options = [MAIN_FOLDER_OPTION] + subfolders + [NEW_FOLDER_OPTION]
             sub_folder = st.selectbox(
@@ -87,6 +90,20 @@ def _render_folder_selector(file: FileInfo, on_decision: callable) -> None:
             )
             
             # Handle new subfolder creation
+            if sub_folder == NEW_FOLDER_OPTION:
+                new_folder = st.text_input(
+                    "Name des neuen Unterordners:",
+                    key=f"new_{file['id']}",
+                )
+                if new_folder:
+                    sub_folder = new_folder
+        else:
+            # No subfolders available, but allow creating one
+            sub_folder = st.selectbox(
+                "Unterordner...",
+                [MAIN_FOLDER_OPTION, NEW_FOLDER_OPTION],
+                key=f"sub_{file['id']}",
+            )
             if sub_folder == NEW_FOLDER_OPTION:
                 new_folder = st.text_input(
                     "Name des neuen Unterordners:",
@@ -138,6 +155,23 @@ def render_sidebar(files: list[FileInfo], decisions: Decisions) -> bool:
         if st.button("🔄 Status aktualisieren"):
             st.cache_data.clear()
             return True
+        
+        st.markdown("---")
+        
+        # Show folder structure info
+        from app.data_service import load_folder_structure
+        import os
+        from app.config import FOLDER_STRUCTURE_JSON
+        
+        folder_count = len(load_folder_structure())
+        st.caption(f"📁 {folder_count} Ordner geladen")
+        
+        if os.path.exists(FOLDER_STRUCTURE_JSON):
+            import json
+            with open(FOLDER_STRUCTURE_JSON) as f:
+                data = json.load(f)
+                if data.get("last_updated"):
+                    st.caption(f"🕐 Stand: {data['last_updated'][:10]}")
         
         st.markdown("---")
         st.info("💡 Thumbnails werden von Tim bereitgestellt und automatisch aktualisiert.")

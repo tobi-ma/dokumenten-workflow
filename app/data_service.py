@@ -95,6 +95,13 @@ def get_subfolders(main_folder: str) -> list[str]:
     return structure.get(main_folder, [])
 
 
+def clear_folder_cache() -> None:
+    """Clear the cached folder structure. Call when folder_structure.json changes."""
+    global _folder_structure
+    _folder_structure = None
+    logger.info("Folder structure cache cleared")
+
+
 def load_files() -> list[FileInfo]:
     """Load file list from JSON.
     
