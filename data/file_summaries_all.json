@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-04-03T14:45:21.844108",
+  "last_updated": "2026-04-03T14:46:23.918933",
   "total_files": 167,
-  "processed": 40,
+  "processed": 80,
   "summaries": {
     "D0B75638021B19A6!sf63cdf711a154b4e9718165b3f25ecb9": {
       "filename": "1987-01-21_Freudenberg 1119.pdf",
@@ -377,6 +377,408 @@
       "page_count": 2,
       "thumbnail_created": true,
       "text_length": 5387,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201980": {
+      "filename": "2023-03-19_Leitfaden zum Begleiten für The Work of Byron Katie v.pdf",
+      "summary": "Datum: 2023-03-19",
+      "todos": [],
+      "page_count": 6,
+      "thumbnail_created": true,
+      "text_length": 5157,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201981": {
+      "filename": "2023-03-19_You Become What You Focus .n.pdf",
+      "summary": "Datum: 2023-03-19",
+      "todos": [],
+      "page_count": 6,
+      "thumbnail_created": true,
+      "text_length": 3253,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!202819": {
+      "filename": "2023-03-20 Fragebogen Personalvermittlung Mauksch.pdf",
+      "summary": "Datum: 2023-03-20 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 9643,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!203968": {
+      "filename": "2023-03-20_Arbeltsunfählgkeits- bescheinigung XErstbescheinigung.pdf",
+      "summary": "Datum: 2023-03-20 | Von: Techniker Krankenkasse | Person: Tobias Mauksch | Typ: Arbeitsunfähigkeitsbescheinigung",
+      "todos": [
+        "An Arbeitgeber weiterleiten"
+      ],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 2034,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!202839": {
+      "filename": "2023-03-21 Beratungsvertrag Dornseifer Mauksch.pdf",
+      "summary": "Datum: 2023-03-21 | Person: Tobias Mauksch | Typ: Versicherung",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 5004,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!202838": {
+      "filename": "2023-03-21_Antrag für Sparkassen-Card (Debitkarte).pdf",
+      "summary": "Datum: 2023-03-21 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3954,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!202857": {
+      "filename": "2023-03-23.pdf",
+      "summary": "Datum: 2023-03-23",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 110,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!202858": {
+      "filename": "2023-03-23_Ể-KISSEN -ANARIL.pdf",
+      "summary": "Datum: 2023-03-23 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 4835,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!203359": {
+      "filename": "2023-03-23_Kreispo.lzelbehOrde Slegen. Wittgenstein.pdf",
+      "summary": "Datum: 2023-03-23 | Person: Tobias Mauksch | Typ: Versicherung",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1385,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!203357": {
+      "filename": "2023-04-04_بءعطفافنثغف.pdf",
+      "summary": "Datum: 2023-04-04 | Person: Claudia Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3073,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204349": {
+      "filename": "2023-04-08_PROVINZIAL.pdf",
+      "summary": "Datum: 2023-04-08 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 4520,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204146": {
+      "filename": "2023-04-18_AUFTRAGSBESTÄTIGUNG zu UNSEREM ANGEBOT.pdf",
+      "summary": "Datum: 2023-04-18 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 11,
+      "thumbnail_created": true,
+      "text_length": 3778,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!203568": {
+      "filename": "2023-04-21_نسفلتقة.pdf",
+      "summary": "Datum: 2023-04-21 | Von: Techniker Krankenkasse | Typ: Versicherung",
+      "todos": [],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 3735,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!203905": {
+      "filename": "2023-04-24_ARBE!TS٧ERTRAG.pdf",
+      "summary": "Datum: 2023-04-24 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 9,
+      "thumbnail_created": true,
+      "text_length": 4494,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!234923": {
+      "filename": "2023-05-15_Arbeitszeugnis U-CI.pdf",
+      "summary": "Datum: 2023-05-15 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3171,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204738": {
+      "filename": "2023-05-15_Besteuerungsgrund.agen aus der Beteiligung an der Geb.pdf",
+      "summary": "Datum: 2023-05-15 | Person: Claudia Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 4,
+      "thumbnail_created": true,
+      "text_length": 5685,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204184": {
+      "filename": "2023-05-15_PersönlichVertraulich Frau Claudia Mauksch Bahnhofstr.pdf",
+      "summary": "Datum: 2023-05-15 | Person: Claudia Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 4,
+      "thumbnail_created": true,
+      "text_length": 5670,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204148": {
+      "filename": "2023-05-25_KAWAI.pdf",
+      "summary": "Datum: 2023-05-25 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1509,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204147": {
+      "filename": "2023-05-30_ىBundesagentur für Arbeit Agentur für A٢be!t Dortmund.pdf",
+      "summary": "Datum: 2023-05-30 | Person: Tobias Mauksch | Typ: Arbeitsunfähigkeitsbescheinigung",
+      "todos": [
+        "An Arbeitgeber weiterleiten"
+      ],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 4192,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204306": {
+      "filename": "2023-06-18_د.pdf",
+      "summary": "Datum: 2023-06-18",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2029,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204307": {
+      "filename": "2023-06-18_لๅ -ฟ.pdf",
+      "summary": "Datum: 2023-06-18",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 775,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204371": {
+      "filename": "2023-06-29_rhíon..pdf",
+      "summary": "Datum: 2023-06-29 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 4947,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204433": {
+      "filename": "2023-07-05_Anmeldung Ihres Sohnes Emilian Mauksch für die verläs.pdf",
+      "summary": "Datum: 2023-07-05 | Person: Tobias Mauksch | Typ: Vertrag",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2452,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204490": {
+      "filename": "2023-07-14_3. An٠ab٥n zur Sach, fffreiwillioe Angaben).pdf",
+      "summary": "Datum: 2023-07-14",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 315,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204533": {
+      "filename": "2023-07-18_ν5Α.pdf",
+      "summary": "Datum: 2023-07-18 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2648,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204650": {
+      "filename": "2023-08-09_ÌH.og.ĩoĩa.pdf",
+      "summary": "Datum: 2023-08-09 | Typ: Vertrag",
+      "todos": [],
+      "page_count": 15,
+      "thumbnail_created": true,
+      "text_length": 2444,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!204769": {
+      "filename": "2023-09-02_Herr Tobias Mauksch -Bahnhofstr. 53 57258 Freudenbe.pdf",
+      "summary": "Datum: 2023-09-02 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 11137,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201594": {
+      "filename": "2023-09-20_rhion..pdf",
+      "summary": "Datum: 2023-09-20 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 9,
+      "thumbnail_created": true,
+      "text_length": 5525,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!228578": {
+      "filename": "2023-10-09_JUlMIu.pdf",
+      "summary": "Datum: 2023-10-09 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 13228,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!228751": {
+      "filename": "2023-10-11_Amtsgericht Siegeil..pdf",
+      "summary": "Datum: 2023-10-11 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1868,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!228750": {
+      "filename": "2023-10-16_Vorblatt zur.pdf",
+      "summary": "Datum: 2023-10-16 | Person: Tobias Mauksch | Typ: Arbeitsunfähigkeitsbescheinigung",
+      "todos": [
+        "An Arbeitgeber weiterleiten"
+      ],
+      "page_count": 4,
+      "thumbnail_created": true,
+      "text_length": 4461,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!228800": {
+      "filename": "2023-10-18_Arbeltsunfähigkelts- beschejnlgung XErstbescheinigung.pdf",
+      "summary": "Datum: 2023-10-18 | Von: Techniker Krankenkasse | Person: Tobias Mauksch | Typ: Arbeitsunfähigkeitsbescheinigung",
+      "todos": [
+        "An Arbeitgeber weiterleiten"
+      ],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 1162,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!228818": {
+      "filename": "2023-10-20_EGEN!؟ CHULE؟.pdf",
+      "summary": "Datum: 2023-10-20 | Typ: Vertrag",
+      "todos": [],
+      "page_count": 6,
+      "thumbnail_created": true,
+      "text_length": 4250,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!228819": {
+      "filename": "2023-10-23_ANDERUNG 02 -ARBEÍTSVERTRAG.pdf",
+      "summary": "Datum: 2023-10-23 | Person: Tobias Mauksch | Typ: Vertrag",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1262,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!228862": {
+      "filename": "2023-10-26.pdf",
+      "summary": "⚠️ Kein lesbarer Text (2 Seiten)",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 8,
+      "is_readable": false
+    },
+    "D0B75638021B19A6!228952": {
+      "filename": "2023-11-05_ADAC.pdf",
+      "summary": "Datum: 2023-11-05 | Von: ADAC | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 11768,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!229123": {
+      "filename": "2023-11-28_Bescheid.pdf",
+      "summary": "Datum: 2023-11-28 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 7,
+      "thumbnail_created": true,
+      "text_length": 4609,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!233906": {
+      "filename": "2023-11-29_Amtsgericht Slegen.pdf",
+      "summary": "Datum: 2023-11-29 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1792,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!231526": {
+      "filename": "2023-12-17.pdf",
+      "summary": "⚠️ Kein lesbarer Text (2 Seiten)",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 242,
+      "is_readable": false
+    },
+    "D0B75638021B19A6!233951": {
+      "filename": "2024-01-02_Kündigung Ihres Arbeitsvertrages.pdf",
+      "summary": "Datum: 2024-01-02 | Person: Tobias Mauksch | Typ: Vertrag",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 1148,
       "is_readable": true
     }
   }
