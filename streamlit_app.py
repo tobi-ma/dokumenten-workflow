@@ -3,7 +3,7 @@
 import streamlit as st
 from datetime import datetime
 
-from app.auth import require_auth
+# from app.auth import require_auth
 from app.data_service import (
     load_files,
     load_decisions,
@@ -28,8 +28,8 @@ st.set_page_config(
 )
 
 
-# Authentication
-require_auth()
+# Authentication disabled for development
+# require_auth()
 
 
 # Title
