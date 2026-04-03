@@ -5,9 +5,94 @@ import os
 import logging
 from datetime import datetime
 
-from app.config import FILES_JSON, DECISIONS_JSON, DATA_DIR, Decisions, FileInfo
+from app.config import (
+    FILES_JSON, 
+    DECISIONS_JSON, 
+    DATA_DIR, 
+    FOLDER_STRUCTURE_JSON,
+    DEFAULT_FOLDER_STRUCTURE,
+    Decisions, 
+    FileInfo,
+    FolderStructure,
+)
 
 logger = logging.getLogger(__name__)
+
+
+# Global cache for folder structure
+_folder_structure: dict[str, list[str]] | None = None
+
+
+def load_folder_structure() -> dict[str, list[str]]:
+    """Load folder structure from JSON file.
+    
+    Falls back to DEFAULT_FOLDER_STRUCTURE if file doesn't exist or is invalid.
+    Uses cached value on subsequent calls.
+    
+    Returns:
+        Dictionary mapping main folders to list of subfolders
+    """
+    global _folder_structure
+    
+    if _folder_structure is not None:
+        return _folder_structure
+    
+    if not os.path.exists(FOLDER_STRUCTURE_JSON):
+        logger.info(f"Folder structure JSON not found, using defaults: {FOLDER_STRUCTURE_JSON}")
+        _folder_structure = DEFAULT_FOLDER_STRUCTURE
+        return _folder_structure
+    
+    try:
+        with open(FOLDER_STRUCTURE_JSON, encoding="utf-8") as f:
+            data: FolderStructure = json.load(f)
+            
+            # Validate structure
+            if not isinstance(data, dict) or "folders" not in data:
+                logger.error(f"Invalid folder structure format: missing 'folders' key")
+                _folder_structure = DEFAULT_FOLDER_STRUCTURE
+                return _folder_structure
+            
+            folders = data["folders"]
+            if not isinstance(folders, dict):
+                logger.error(f"Invalid folder structure format: 'folders' is not a dict")
+                _folder_structure = DEFAULT_FOLDER_STRUCTURE
+                return _folder_structure
+            
+            last_updated = data.get("last_updated", "unknown")
+            logger.info(f"Loaded folder structure from {FOLDER_STRUCTURE_JSON} (updated: {last_updated})")
+            _folder_structure = folders
+            return _folder_structure
+            
+    except json.JSONDecodeError as e:
+        logger.error(f"Failed to parse folder structure JSON: {e}")
+        _folder_structure = DEFAULT_FOLDER_STRUCTURE
+        return _folder_structure
+    except OSError as e:
+        logger.error(f"Failed to read folder structure JSON: {e}")
+        _folder_structure = DEFAULT_FOLDER_STRUCTURE
+        return _folder_structure
+
+
+def get_all_folders() -> list[str]:
+    """Get list of all main folder names.
+    
+    Loads from JSON if available, otherwise uses defaults.
+    """
+    structure = load_folder_structure()
+    return list(structure.keys())
+
+
+def get_subfolders(main_folder: str) -> list[str]:
+    """Get list of subfolders for a main folder.
+    
+    Args:
+        main_folder: Name of the main folder
+        
+    Returns:
+        List of subfolder names (empty if none or folder not found)
+    """
+    structure = load_folder_structure()
+    return structure.get(main_folder, [])
 
 
 def load_files() -> list[FileInfo]:

@@ -6,6 +6,7 @@ from typing import TypedDict
 DATA_DIR = "data"
 FILES_JSON = f"{DATA_DIR}/files.json"
 DECISIONS_JSON = f"{DATA_DIR}/decisions.json"
+FOLDER_STRUCTURE_JSON = f"{DATA_DIR}/folder_structure.json"
 THUMBNAILS_DIR = "thumbnails"
 
 # UI Options
@@ -13,8 +14,8 @@ DELETE_OPTION = "⚠️ Löschen"
 MAIN_FOLDER_OPTION = "(Hauptordner)"
 NEW_FOLDER_OPTION = "+ Neuen Unterordner anlegen"
 
-# Hierarchical folder structure from OneDrive ScanSnap
-FOLDER_STRUCTURE: dict[str, list[str]] = {
+# Hierarchical folder structure - can be overridden by folder_structure.json
+DEFAULT_FOLDER_STRUCTURE: dict[str, list[str]] = {
     "Archiv Arbeit": [],
     "Ärzte Krankenhaus etc": ["Laborbefunde", "Zahnarzt"],
     "Banken": [],
@@ -49,8 +50,8 @@ FOLDER_STRUCTURE: dict[str, list[str]] = {
     "Verträge": [],
 }
 
-# Flat list for main folders
-ALL_FOLDERS: list[str] = list(FOLDER_STRUCTURE.keys())
+# Flat list for main folders (populated dynamically)
+ALL_FOLDERS: list[str] = []
 
 
 # Type definitions
@@ -81,3 +82,10 @@ class Decisions(TypedDict):
     moves: list[MoveDecision]
     deletions: list[DeleteDecision]
     last_updated: str | None
+
+
+class FolderStructure(TypedDict):
+    _comment: str
+    last_updated: str | None
+    root_path: str
+    folders: dict[str, list[str]]
