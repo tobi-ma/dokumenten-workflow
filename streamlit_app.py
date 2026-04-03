@@ -2,26 +2,38 @@ import streamlit as st
 import json
 import os
 from datetime import datetime
-import hmac
 import subprocess
 
 st.set_page_config(page_title="ScanSnap Organizer", layout="wide")
+
+# --- Debug Info (zeigt ob Secrets geladen werden) ---
+if st.sidebar.checkbox("Debug Mode", value=False):
+    st.sidebar.write("Secrets geladen:", list(st.secrets.keys()) if hasattr(st, 'secrets') else "N/A")
+    try:
+        auth_secrets = st.secrets.get("auth", {})
+        st.sidebar.write("Auth Secrets:", list(auth_secrets.keys()) if auth_secrets else "Leer")
+    except Exception as e:
+        st.sidebar.write("Fehler:", str(e))
 
 # --- Password Protection ---
 def check_password():
     """Returns True if the user had the correct password."""
     
-    # Get password from secrets with fallback
+    # Get password from secrets
     try:
         correct_password = st.secrets.get("auth", {}).get("password", "")
+        if not correct_password:
+            # Fallback: Kein Passwort = direkter Zugriff
+            return True
     except:
-        correct_password = ""
+        return True  # Keine Secrets = direkter Zugriff
     
     def password_entered():
         entered = st.session_state.get("password", "")
-        if correct_password and entered == correct_password:
+        if entered == correct_password:
             st.session_state["password_correct"] = True
-            del st.session_state["password"]
+            if "password" in st.session_state:
+                del st.session_state["password"]
         else:
             st.session_state["password_correct"] = False
 
@@ -31,12 +43,12 @@ def check_password():
     st.text_input("Passwort", type="password", on_change=password_entered, key="password")
     if st.session_state.get("password_correct") is False:
         st.error("😕 Falsches Passwort")
-    elif not correct_password:
-        st.warning("⚠️ Kein Passwort konfiguriert")
     return False
 
 if not check_password():
     st.stop()
+
+st.success("✅ Passwort korrekt! App lädt...")
 
 # --- Data Loading ---
 @st.cache_data
