@@ -55,26 +55,29 @@ def render_file_card(
             
             # Thumbnail and summary side by side
             thumb_path = find_thumbnail(file["id"])
-            if thumb_path or summary:
-                thumb_col, summary_col = st.columns([1, 1])
+            
+            # ALWAYS show summary if available
+            if summary:
+                thumb_col, summary_col = st.columns([1, 2])
                 
                 with thumb_col:
                     if thumb_path:
                         st.image(thumb_path, use_container_width=True)
                     else:
-                        st.info("�️ Kein Thumbnail")
+                        st.info("🖼️ Kein Thumbnail")
                 
                 with summary_col:
-                    if summary:
-                        st.markdown(f"**{summary.get('summary', '')}**")
-                        if summary.get('keywords'):
-                            st.caption(f"🏷️ {', '.join(summary['keywords'][:5])}")
-                        if summary.get('page_count'):
-                            st.caption(f"📄 {summary['page_count']} Seiten")
-                    else:
-                        st.caption("📝 Keine Zusammenfassung")
+                    st.markdown(f"**{summary.get('summary', '')}**")
+                    if summary.get('keywords'):
+                        st.caption(f"🏷️ {', '.join(summary['keywords'][:5])}")
+                    if summary.get('page_count'):
+                        st.caption(f"📄 {summary['page_count']} Seiten")
+            elif thumb_path:
+                # Only thumbnail, no summary
+                st.image(thumb_path, use_container_width=True)
             else:
-                st.info("🖼️ Kein Thumbnail vorhanden")
+                # Neither thumbnail nor summary
+                st.info("📝 Keine Vorschau verfügbar")
         
         with cols[2]:
             st.markdown(f"📁 **{file.get('suggested', 'Dokumente')}**")
