@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-04-03T14:46:23.918933",
+  "last_updated": "2026-04-03T14:47:42.697395",
   "total_files": 167,
-  "processed": 80,
+  "processed": 120,
   "summaries": {
     "D0B75638021B19A6!sf63cdf711a154b4e9718165b3f25ecb9": {
       "filename": "1987-01-21_Freudenberg 1119.pdf",
@@ -779,6 +779,390 @@
       "page_count": 1,
       "thumbnail_created": true,
       "text_length": 1148,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!233907": {
+      "filename": "2024-01-25_0Bundesagentur für Arbeit Agentur für Arbeit Siegen.pdf",
+      "summary": "Datum: 2024-01-25 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 7359,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!235744": {
+      "filename": "2024-01-26.pdf",
+      "summary": "Datum: 2024-01-26",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 731,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!236072": {
+      "filename": "2024-01-26_Centra؛. Hotel &Restaurant Stadtplatz 24 84478 Waidkr.pdf",
+      "summary": "Datum: 2024-01-26 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1361,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!235887": {
+      "filename": "2024-01-31_Bundesagentur fiJr Arbeit Agentur für Arbe!t siegen-٥.pdf",
+      "summary": "Datum: 2024-01-31 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 748,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!235779": {
+      "filename": "2024-01-31_DORNSEIFER MAUKSCH.pdf",
+      "summary": "Datum: 2024-01-31 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 3309,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!236397": {
+      "filename": "2024-02-01_Bundesagentur für Arbeit Agentur für Arbeit Dortmund.pdf",
+      "summary": "Datum: 2024-02-01 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 4,
+      "thumbnail_created": true,
+      "text_length": 7134,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!235822": {
+      "filename": "2024-02-01_ỢBGETEM.pdf",
+      "summary": "Datum: 2024-02-01 | Person: Tobias Mauksch | Typ: Versicherung",
+      "todos": [],
+      "page_count": 10,
+      "thumbnail_created": true,
+      "text_length": 4668,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!235821": {
+      "filename": "2024-02-02_Bestätigung.pdf",
+      "summary": "Datum: 2024-02-02 | Person: Tobias Mauksch | Typ: Vertrag",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 1064,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!235853": {
+      "filename": "2024-02-08_Unser Zeichens 86110026 Name Mauksch Vorname Tobias.pdf",
+      "summary": "Datum: 2024-02-08 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1134,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!235949": {
+      "filename": "2024-02-22_оBundesagentur für Arbeit Agentur für Arbeit siegen.pdf",
+      "summary": "Datum: 2024-02-22 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 8485,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!294624": {
+      "filename": "2024-02-29_SAMMELBESCHEINIGUNG 1011138.pdf",
+      "summary": "Datum: 2024-02-29",
+      "todos": [],
+      "page_count": 4,
+      "thumbnail_created": true,
+      "text_length": 2859,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!236071": {
+      "filename": "2024-03-04_Bildungsgutschein_Entwurf_Mauksch.pdf",
+      "summary": "Datum: 2024-03-04 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 5995,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!236070": {
+      "filename": "2024-03-04_Fragebogen_Mauksch.pdf",
+      "summary": "Datum: 2024-03-04 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 4,
+      "thumbnail_created": true,
+      "text_length": 7308,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!236073": {
+      "filename": "2024-03-06_Chorleitervertrag.pdf",
+      "summary": "Datum: 2024-03-06 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 4,
+      "thumbnail_created": true,
+      "text_length": 16478,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!240209": {
+      "filename": "2024-03-10_Bundesagentur für Arbeit Agentu٢ für Arbeit Dortmund.pdf",
+      "summary": "Datum: 2024-03-10 | Typ: Versicherung",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3086,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!240377": {
+      "filename": "2024-04-05_٠.pdf",
+      "summary": "Datum: 2024-04-05 | Typ: Versicherung",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3165,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!240470": {
+      "filename": "2024-04-09_Schriftliche Anhörung ZeuginZeuge.pdf",
+      "summary": "Datum: 2024-04-09 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 6700,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!241056": {
+      "filename": "2024-04-30_s٢؟vlçe Onlíne-Anhorung htt^sowlg.slegen-wIttgenste!n.pdf",
+      "summary": "Datum: 2024-04-30 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 6305,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!293726": {
+      "filename": "2024-06-30_ÊLV1877.pdf",
+      "summary": "Datum: 2024-06-30 | Person: Claudia Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 6,
+      "thumbnail_created": true,
+      "text_length": 6154,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!293988": {
+      "filename": "2024-07-08_.BGETEM.pdf",
+      "summary": "Datum: 2024-07-08 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 4,
+      "thumbnail_created": true,
+      "text_length": 4183,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!293958": {
+      "filename": "2024-07-12_Bundesagentur für Arbeit Agentur für Arbeit Dortmund.pdf",
+      "summary": "Datum: 2024-07-12 | Typ: Versicherung",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 3131,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!293725": {
+      "filename": "2024-07-23_ههه٢ه.pdf",
+      "summary": "Datum: 2024-07-23 | Person: Tobias Mauksch | Typ: Versicherung",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2978,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!293724": {
+      "filename": "2024-07-24_ه4ءهص.pdf",
+      "summary": "Datum: 2024-07-24 | Person: Tobias Mauksch | Typ: Versicherung",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2288,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!293953": {
+      "filename": "2024-07-29_[¿]sailer.pdf",
+      "summary": "Datum: 2024-07-29 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 2913,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!293987": {
+      "filename": "2024-08-14.pdf",
+      "summary": "Datum: 2024-08-14",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 881,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!294425": {
+      "filename": "2024-08-15_Kontoauszug.pdf",
+      "summary": "Datum: 2024-08-15 | Person: Tobias Mauksch | Typ: Versicherung",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2345,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!294608": {
+      "filename": "2024-09-16 Erstes Schreiben GA.pdf",
+      "summary": "⚠️ Kein lesbarer Text (5 Seiten)",
+      "todos": [],
+      "page_count": 5,
+      "thumbnail_created": true,
+      "text_length": 4776,
+      "is_readable": false
+    },
+    "D0B75638021B19A6!293723": {
+      "filename": "2024-09-20_rhlon..pdf",
+      "summary": "Datum: 2024-09-20 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2935,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!294900": {
+      "filename": "2024-10-28 Mauksch Antrag Fristverlängerung.pdf",
+      "summary": "Datum: 2024-10-28 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 1,
+      "thumbnail_created": true,
+      "text_length": 1163,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295272": {
+      "filename": "2024-11-05 Kostenvoranschlag.pdf",
+      "summary": "Datum: 2024-11-05 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 3858,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!296765": {
+      "filename": "2024-11-23_Rechnung.pdf",
+      "summary": "Datum: 2024-11-23 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 1047,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295593": {
+      "filename": "2024-11-26_1. Risiken und Bedeutung der Individuellen Nutzen-Ris.pdf",
+      "summary": "Datum: 2024-11-26 | Person: Tobias Mauksch",
+      "todos": [],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 6610,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295639": {
+      "filename": "2024-12-01_Datenschutznchtlinie.pdf",
+      "summary": "Datum: 2024-12-01",
+      "todos": [],
+      "page_count": 22,
+      "thumbnail_created": true,
+      "text_length": 1237,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295644": {
+      "filename": "2024-12-01_Einwilligung der MitarbeiterInnen zur Verwendung von.pdf",
+      "summary": "Datum: 2024-12-01",
+      "todos": [],
+      "page_count": 5,
+      "thumbnail_created": true,
+      "text_length": 1095,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295641": {
+      "filename": "2024-12-01_HDATASEC.pdf",
+      "summary": "Datum: 2024-12-01 | Person: Tobias Mauksch | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2701,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295643": {
+      "filename": "2024-12-01_HDATASEC_001.pdf",
+      "summary": "Datum: 2024-12-01 | Typ: Rechnung",
+      "todos": [
+        "Zahlung prüfen"
+      ],
+      "page_count": 4,
+      "thumbnail_created": true,
+      "text_length": 5285,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295645": {
+      "filename": "2024-12-01_Verpflichtung auf dle Vertraulichkeit nach DSGVO.pdf",
+      "summary": "Datum: 2024-12-01",
+      "todos": [],
+      "page_count": 10,
+      "thumbnail_created": true,
+      "text_length": 972,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295640": {
+      "filename": "2024-12-01_ةةغقهلمبه.pdf",
+      "summary": "Datum: 2024-12-01",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 435,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!295642": {
+      "filename": "2024-12-01_حع٨5اً0٨ه.pdf",
+      "summary": "Datum: 2024-12-01",
+      "todos": [],
+      "page_count": 2,
+      "thumbnail_created": true,
+      "text_length": 2219,
+      "is_readable": true
+    },
+    "D0B75638021B19A6!201568": {
+      "filename": "2024-12-31_BHW.pdf",
+      "summary": "Datum: 2024-12-31 | Von: LBS Bausparkasse der Sparkassen | Person: Claudia Mauksch | Typ: Bausparvertrag",
+      "todos": [
+        "Langfristig aufbewahren"
+      ],
+      "page_count": 3,
+      "thumbnail_created": true,
+      "text_length": 17362,
       "is_readable": true
     }
   }
