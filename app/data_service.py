@@ -20,17 +20,17 @@ logger = logging.getLogger(__name__)
 
 
 # Global cache for folder structure
-_folder_structure: dict[str, list[str]] | None = None
+_folder_structure: dict[str, dict] | None = None
 
 
-def load_folder_structure() -> dict[str, list[str]]:
+def load_folder_structure() -> dict[str, dict]:
     """Load folder structure from JSON file.
     
     Falls back to DEFAULT_FOLDER_STRUCTURE if file doesn't exist or is invalid.
     Uses cached value on subsequent calls.
     
     Returns:
-        Dictionary mapping main folders to list of subfolders
+        Dictionary mapping main folders to folder nodes with 'subfolders'
     """
     global _folder_structure
     
@@ -82,17 +82,66 @@ def get_all_folders() -> list[str]:
     return list(structure.keys())
 
 
-def get_subfolders(main_folder: str) -> list[str]:
-    """Get list of subfolders for a main folder.
+def get_subfolders(path_parts: list[str]) -> list[str]:
+    """Get list of subfolders for a given path.
     
     Args:
-        main_folder: Name of the main folder
+        path_parts: List of folder names representing the path (e.g., ["Versicherungen", "Auto ADAC"])
         
     Returns:
-        List of subfolder names (empty if none or folder not found)
+        List of subfolder names at that level (empty if none or path not found)
     """
     structure = load_folder_structure()
-    return structure.get(main_folder, [])
+    
+    # Navigate to the correct level
+    current = structure
+    for part in path_parts:
+        if part in current:
+            current = current[part].get("subfolders", {})
+        else:
+            return []
+    
+    return list(current.keys())
+
+
+def get_all_paths() -> list[str]:
+    """Get all possible folder paths (flattened).
+    
+    Returns list of paths like ["Archiv Arbeit", "Versicherungen/Auto ADAC", ...]
+    """
+    structure = load_folder_structure()
+    paths = []
+    
+    def collect_paths(node: dict, prefix: str = "") -> None:
+        for name, data in node.items():
+            current_path = f"{prefix}/{name}" if prefix else name
+            paths.append(current_path)
+            subfolders = data.get("subfolders", {})
+            if subfolders:
+                collect_paths(subfolders, current_path)
+    
+    collect_paths(structure)
+    return sorted(paths)
+
+
+def path_exists(path_parts: list[str]) -> bool:
+    """Check if a path exists in the folder structure.
+    
+    Args:
+        path_parts: List of folder names representing the path
+        
+    Returns:
+        True if path exists, False otherwise
+    """
+    structure = load_folder_structure()
+    
+    current = structure
+    for part in path_parts:
+        if part not in current:
+            return False
+        current = current[part].get("subfolders", {})
+    
+    return True
 
 
 def clear_folder_cache() -> None:

@@ -14,40 +14,40 @@ DELETE_OPTION = "⚠️ Löschen"
 MAIN_FOLDER_OPTION = "(Hauptordner)"
 NEW_FOLDER_OPTION = "+ Neuen Unterordner anlegen"
 
-# Hierarchical folder structure - can be overridden by folder_structure.json
-DEFAULT_FOLDER_STRUCTURE: dict[str, list[str]] = {
-    "Archiv Arbeit": [],
-    "Ärzte Krankenhaus etc": ["Laborbefunde", "Zahnarzt"],
-    "Banken": [],
-    "Bedienungsanleitungen & Produktinformationsblätter": [],
-    "Cards": [],
-    "Finanzamt & Steuererklärung": ["Lohnsteuerbescheinigungen"],
-    "Gehaltsabrechnungen": [],
-    "Gutscheine": [],
-    "Impfen etc": [],
-    "Kinder Erinnerungen": [],
-    "Kita & Schule": [],
-    "Kontakte": [],
-    "Musik": [],
-    "Offizielle Schreiben": [],
-    "Photos": [],
-    "Receipts": [],
-    "Rechnungen": ["Saturn"],
-    "Selbstständigkeit": ["Gewerbeanmeldung"],
-    "Sprachen": [],
-    "Verschiedenes": [],
-    "Versicherungen": [
-        "Auto ADAC",
-        "Auto Haftpflicht",
-        "BU Claudi",
-        "BU Tobi",
-        "Hausrat",
-        "Privathaftpflicht",
-        "Rechtsschutz",
-        "Risikoleben",
-        "TK",
-    ],
-    "Verträge": [],
+# Hierarchical folder structure - recursive format with 'subfolders'
+DEFAULT_FOLDER_STRUCTURE: dict[str, dict] = {
+    "Archiv Arbeit": {"subfolders": {}},
+    "Ärzte Krankenhaus etc": {"subfolders": {"Laborbefunde": {"subfolders": {}}, "Zahnarzt": {"subfolders": {}}}},
+    "Banken": {"subfolders": {}},
+    "Bedienungsanleitungen & Produktinformationsblätter": {"subfolders": {}},
+    "Cards": {"subfolders": {}},
+    "Finanzamt & Steuererklärung": {"subfolders": {"Lohnsteuerbescheinigungen": {"subfolders": {}}}},
+    "Gehaltsabrechnungen": {"subfolders": {}},
+    "Gutscheine": {"subfolders": {}},
+    "Impfen etc": {"subfolders": {}},
+    "Kinder Erinnerungen": {"subfolders": {}},
+    "Kita & Schule": {"subfolders": {}},
+    "Kontakte": {"subfolders": {}},
+    "Musik": {"subfolders": {}},
+    "Offizielle Schreiben": {"subfolders": {}},
+    "Photos": {"subfolders": {}},
+    "Receipts": {"subfolders": {}},
+    "Rechnungen": {"subfolders": {"Saturn": {"subfolders": {}}}},
+    "Selbstständigkeit": {"subfolders": {"Gewerbeanmeldung": {"subfolders": {}}}},
+    "Sprachen": {"subfolders": {}},
+    "Verschiedenes": {"subfolders": {}},
+    "Versicherungen": {"subfolders": {
+        "Auto ADAC": {"subfolders": {}},
+        "Auto Haftpflicht": {"subfolders": {}},
+        "BU Claudi": {"subfolders": {}},
+        "BU Tobi": {"subfolders": {}},
+        "Hausrat": {"subfolders": {}},
+        "Privathaftpflicht": {"subfolders": {}},
+        "Rechtsschutz": {"subfolders": {}},
+        "Risikoleben": {"subfolders": {}},
+        "TK": {"subfolders": {}},
+    }},
+    "Verträge": {"subfolders": {}},
 }
 
 # Flat list for main folders (populated dynamically)
@@ -84,8 +84,13 @@ class Decisions(TypedDict):
     last_updated: str | None
 
 
+class FolderNode(TypedDict, total=False):
+    """Recursive folder node with optional subfolders."""
+    subfolders: dict[str, "FolderNode"]
+
+
 class FolderStructure(TypedDict):
     _comment: str
     last_updated: str | None
     root_path: str
-    folders: dict[str, list[str]]
+    folders: dict[str, FolderNode]

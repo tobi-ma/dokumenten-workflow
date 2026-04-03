@@ -69,11 +69,10 @@ def render_file_card(
 
 
 def _render_folder_selector(file: FileInfo, on_decision: callable) -> None:
-    """Render folder selection dropdowns for a file."""
-    # Load folders dynamically
+    """Render folder selection with unlimited nesting levels."""
     all_folders = get_all_folders()
     
-    # Main folder dropdown (includes option to create new)
+    # Main folder selection
     main_folder = st.selectbox(
         "Hauptordner...",
         [""] + all_folders + [NEW_MAIN_FOLDER_OPTION, DELETE_OPTION],
@@ -89,39 +88,73 @@ def _render_folder_selector(file: FileInfo, on_decision: callable) -> None:
         if new_main:
             main_folder = new_main
     
-    # Subfolder dropdown (if main selected and not delete)
-    sub_folder = None
-    if main_folder and main_folder not in (DELETE_OPTION, NEW_MAIN_FOLDER_OPTION):
-        subfolders = get_subfolders(main_folder) if main_folder in all_folders else []
-        if subfolders:
-            sub_options = [MAIN_FOLDER_OPTION] + subfolders + [NEW_FOLDER_OPTION]
-        else:
-            sub_options = [MAIN_FOLDER_OPTION, NEW_FOLDER_OPTION]
+    # Build path progressively
+    selected_path = []
+    if main_folder and main_folder not in (DELETE_OPTION, NEW_MAIN_FOLDER_OPTION, ""):
+        selected_path = [main_folder]
         
-        sub_folder = st.selectbox(
-            "Unterordner...",
-            sub_options,
-            key=f"sub_{file['id']}",
-        )
+        # Check if this is a known folder with subfolders
+        is_known = main_folder in all_folders
         
-        # Handle new subfolder creation
-        if sub_folder == NEW_FOLDER_OPTION:
-            new_folder = st.text_input(
-                "Name des neuen Unterordners:",
-                key=f"new_{file['id']}",
+        # Keep adding subfolder selectors as long as there are subfolders or user wants to create one
+        level = 0
+        while True:
+            current_subfolders = get_subfolders(selected_path) if is_known else []
+            
+            # Options for this level
+            options = [MAIN_FOLDER_OPTION]
+            if current_subfolders:
+                options.extend(current_subfolders)
+            options.append(NEW_FOLDER_OPTION)
+            
+            # Show dropdown for this level
+            sub_choice = st.selectbox(
+                f"{'Unterordner' if level == 0 else 'Unterunterordner'}...",
+                options,
+                key=f"sub_{level}_{file['id']}",
             )
-            if new_folder:
-                sub_folder = new_folder
+            
+            if sub_choice == MAIN_FOLDER_OPTION:
+                # Stop here, use current path
+                break
+            elif sub_choice == NEW_FOLDER_OPTION:
+                # Create new folder at this level
+                new_name = st.text_input(
+                    f"Name des neuen {'Unterordners' if level == 0 else 'Unterunterordners'}:",
+                    key=f"new_sub_{level}_{file['id']}",
+                )
+                if new_name:
+                    selected_path.append(new_name)
+                break
+            else:
+                # Selected existing subfolder, go deeper
+                selected_path.append(sub_choice)
+                level += 1
+                
+                # Check if there are deeper levels
+                deeper_subfolders = get_subfolders(selected_path) if is_known else []
+                if not deeper_subfolders:
+                    # No deeper levels available, but user can still add more
+                    continue
     
     # Confirm button
     if main_folder and st.button("✅ Verschieben", key=f"btn_{file['id']}"):
         if main_folder == DELETE_OPTION:
             on_decision(file, "delete", None)
         else:
-            target_path = get_folder_path(main_folder, sub_folder)
+            # Build target path
+            if len(selected_path) == 1:
+                # Just main folder
+                target_path = selected_path[0]
+                sub_folder = None
+            else:
+                # Main + subfolders
+                target_path = "/".join(selected_path)
+                sub_folder = "/".join(selected_path[1:]) if len(selected_path) > 1 else None
+            
             on_decision(file, "move", {
                 "to_folder": target_path,
-                "main_folder": main_folder,
+                "main_folder": selected_path[0] if selected_path else main_folder,
                 "sub_folder": sub_folder,
             })
 
