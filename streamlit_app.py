@@ -141,19 +141,23 @@ else:
                 st.caption(f"📅 {file.get('date', 'unbekannt')}")
                 
                 # Thumbnail - priority: PyMuPDF (page1) > OneDrive large > OneDrive medium
+                # Thumbnails exist with both '!' and '_' as separator, check both
                 file_id_clean = file['id'].replace('!', '_')
-                thumb_pymupdf = f"thumbnails/{file_id_clean}_page1.jpg"
-                thumb_large = f"thumbnails/{file_id_clean}_large.jpg"
-                thumb_medium = f"thumbnails/{file_id_clean}_medium.jpg"
+                file_id_raw = file['id']
+                thumb_candidates = [
+                    f"thumbnails/{file_id_clean}_page1.jpg",
+                    f"thumbnails/{file_id_raw}_page1.jpg",
+                    f"thumbnails/{file_id_clean}_large.jpg",
+                    f"thumbnails/{file_id_raw}_large.jpg",
+                    f"thumbnails/{file_id_clean}_medium.jpg",
+                    f"thumbnails/{file_id_raw}_medium.jpg",
+                ]
                 
-                if os.path.exists(thumb_pymupdf):
-                    st.image(thumb_pymupdf, width=400)
-                elif os.path.exists(thumb_large):
-                    st.image(thumb_large, width=400)
-                elif os.path.exists(thumb_medium):
-                    st.image(thumb_medium, width=400)
+                thumb_path = next((t for t in thumb_candidates if os.path.exists(t)), None)
+                if thumb_path:
+                    st.image(thumb_path, width=400)
                 else:
-                    st.info("🖼️ Thumbnail wird erstellt... (kommt bald)")
+                    st.info("🖼️ Kein Thumbnail vorhanden")
             
             with cols[2]:
                 st.markdown(f"📁 **{file.get('suggested', 'Dokumente')}**")
