@@ -272,12 +272,14 @@ def render_sidebar(
                     "last_updated": datetime.now().isoformat(),
                 }
 
-                # Save locally first
-                save_decisions(updated_decisions)
+                # Save locally only (no GitHub commit yet)
+                save_decisions(updated_decisions, commit_to_github=False)
 
-                # Try to commit to GitHub
+                # Commit to GitHub with the actual content
                 try:
-                    success, message = save_and_commit(len(updated_decisions["moves"]))
+                    success, message = save_and_commit(
+                        decisions_content=updated_decisions
+                    )
                     if success:
                         st.success("✅ Gesendet!")
                         # Clear pending by modifying session state (caller should rerun)
