@@ -10,7 +10,6 @@ from app.data_service import (
     save_decisions,
     get_processed_file_ids,
 )
-from app.git_service import save_and_commit
 from app.ui.components import (
     render_file_card,
     render_sidebar,

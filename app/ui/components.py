@@ -262,9 +262,6 @@ def render_sidebar(
             # Send button in sidebar
             if st.button("🚀 Alle senden", type="primary", use_container_width=True):
                 # Perform the send action
-                from app.data_service import save_decisions
-                from app.git_service import save_and_commit
-
                 # Merge pending with existing decisions
                 updated_decisions = {
                     "moves": list(decisions.get("moves", [])) + pending_moves,
@@ -272,24 +269,15 @@ def render_sidebar(
                     "last_updated": datetime.now().isoformat(),
                 }
 
-                # Save locally only (no GitHub commit yet)
-                save_decisions(updated_decisions, commit_to_github=False)
+                # Save locally and commit to GitHub atomically
+                from app.data_service import save_decisions
+                success, message = save_decisions(updated_decisions)
 
-                # Commit to GitHub with the actual content
-                try:
-                    success, message = save_and_commit(
-                        decisions_content=updated_decisions
-                    )
-                    if success:
-                        st.success("✅ Gesendet!")
-                        # Clear pending by modifying session state (caller should rerun)
-                        return True
-                    else:
-                        st.warning(message)
-                        return True  # Still trigger rerun to show updated state
-                except Exception as e:
-                    st.error(f"⚠️ Fehler: {e}")
-                    return True
+                if success:
+                    st.success(message)
+                else:
+                    st.warning(message)
+                return True
 
             st.markdown("---")
 
