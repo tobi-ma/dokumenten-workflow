@@ -154,6 +154,58 @@ def clear_folder_cache() -> None:
     logger.info("Folder structure cache cleared")
 
 
+def add_folder_to_structure(path_parts: list[str]) -> bool:
+    """Add a new folder path to the local folder structure.
+    
+    This allows newly created folders to appear immediately in the UI
+    without waiting for the daily OneDrive sync.
+    
+    Args:
+        path_parts: List of folder names representing the path (e.g., ["Versicherungen", "Neuer Ordner"])
+        
+    Returns:
+        True if folder was added, False if it already exists
+    """
+    global _folder_structure
+    
+    if _folder_structure is None:
+        _folder_structure = load_folder_structure()
+    
+    # Check if path already exists
+    if path_exists(path_parts):
+        logger.info(f"Folder path already exists: {'/'.join(path_parts)}")
+        return False
+    
+    # Navigate to parent and add new folder
+    current = _folder_structure
+    for part in path_parts[:-1]:
+        if part not in current:
+            current[part] = {"subfolders": {}}
+        current = current[part].setdefault("subfolders", {})
+    
+    # Add the new folder
+    new_folder = path_parts[-1]
+    if new_folder not in current:
+        current[new_folder] = {"subfolders": {}}
+        
+        # Save to JSON file
+        try:
+            full_structure: FolderStructure = {
+                "last_updated": datetime.now().isoformat(),
+                "source": "streamlit_app_user_created",
+                "folders": _folder_structure,
+            }
+            with open(FOLDER_STRUCTURE_JSON, "w", encoding="utf-8") as f:
+                json.dump(full_structure, f, indent=2, ensure_ascii=False)
+            logger.info(f"Added new folder to structure: {'/'.join(path_parts)}")
+            return True
+        except OSError as e:
+            logger.error(f"Failed to save folder structure: {e}")
+            return False
+    
+    return False
+
+
 def load_files() -> list[FileInfo]:
     """Load file list from JSON.
     

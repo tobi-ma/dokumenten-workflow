@@ -20,6 +20,7 @@ from app.data_service import (
     get_subfolders,
     get_file_summary,
     get_suggested_filename,
+    add_folder_to_structure,
 )
 
 logger = logging.getLogger(__name__)
@@ -186,6 +187,12 @@ def _render_folder_selector(file: FileInfo, on_decision: callable) -> None:
                 # Main + subfolders
                 target_path = "/".join(selected_path)
                 sub_folder = "/".join(selected_path[1:]) if len(selected_path) > 1 else None
+            
+            # Add new folder to local structure immediately (so it appears in UI)
+            if selected_path:
+                is_new_folder = selected_path[0] not in all_folders
+                if is_new_folder or len(selected_path) > 1:
+                    add_folder_to_structure(selected_path)
             
             # Check if filename was changed
             final_filename = new_filename if new_filename != file["name"] else None
