@@ -4,6 +4,7 @@ import json
 import os
 import logging
 from datetime import datetime
+from pathlib import Path
 
 from app.config import (
     FILES_JSON, 
@@ -20,6 +21,7 @@ from app.config import (
 )
 
 logger = logging.getLogger(__name__)
+COMPLETED_MOVES_JSON = Path(DATA_DIR) / "completed_moves.json"
 
 
 # Global cache for folder structure
@@ -283,21 +285,47 @@ def save_decisions(decisions: Decisions) -> None:
     )
 
 
+def load_completed_moves() -> dict:
+    """Load archived completed moves from JSON."""
+    if not os.path.exists(COMPLETED_MOVES_JSON):
+        return {"moves": [], "deletions": []}
+
+    try:
+        with open(COMPLETED_MOVES_JSON, encoding="utf-8") as f:
+            data = json.load(f)
+            if not isinstance(data, dict):
+                return {"moves": [], "deletions": []}
+
+            moves = data.get("moves", [])
+            deletions = data.get("deletions", [])
+            return {
+                "moves": moves if isinstance(moves, list) else [],
+                "deletions": deletions if isinstance(deletions, list) else [],
+            }
+    except (json.JSONDecodeError, OSError) as e:
+        logger.error(f"Failed to read completed moves JSON: {e}")
+        return {"moves": [], "deletions": []}
+
+
 def get_decision_stats(decisions: Decisions) -> tuple[int, int, int]:
     """Get statistics about decisions.
     
     Returns (completed_count, moves_count, deletions_count)
     """
-    moves_count = len(decisions.get("moves", []))
-    deletions_count = len(decisions.get("deletions", []))
+    archived = load_completed_moves()
+    moves_count = len(decisions.get("moves", [])) + len(archived.get("moves", []))
+    deletions_count = len(decisions.get("deletions", [])) + len(archived.get("deletions", []))
     completed = moves_count + deletions_count
     return completed, moves_count, deletions_count
 
 
 def get_processed_file_ids(decisions: Decisions) -> set[str]:
     """Get set of all processed file IDs (moved or deleted)."""
-    moved_ids = {m["file_id"] for m in decisions.get("moves", [])}
-    deleted_ids = {d["file_id"] for d in decisions.get("deletions", [])}
+    archived = load_completed_moves()
+    moved_ids = {m["file_id"] for m in decisions.get("moves", []) if "file_id" in m}
+    moved_ids |= {m["file_id"] for m in archived.get("moves", []) if isinstance(m, dict) and "file_id" in m}
+    deleted_ids = {d["file_id"] for d in decisions.get("deletions", []) if "file_id" in d}
+    deleted_ids |= {d["file_id"] for d in archived.get("deletions", []) if isinstance(d, dict) and "file_id" in d}
     return moved_ids | deleted_ids
 
 
