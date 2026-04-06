@@ -265,43 +265,22 @@ def load_decisions() -> Decisions:
         return {"moves": [], "deletions": [], "last_updated": None}
 
 
-def save_decisions(decisions: Decisions, commit_to_github: bool = True) -> tuple[bool, str]:
-    """Save decisions with timestamp.
-    
+def save_decisions(decisions: Decisions) -> None:
+    """Save decisions locally with timestamp.
+
     Creates data directory if it doesn't exist.
-    Also commits to GitHub via API if commit_to_github is True.
-    
-    Args:
-        decisions: The decisions dictionary to save
-        commit_to_github: Whether to also commit to GitHub (default: True)
-        
-    Returns:
-        Tuple of (success, message) where success indicates if GitHub commit succeeded
+    This only writes to disk — GitHub commit is handled separately.
     """
     os.makedirs(DATA_DIR, exist_ok=True)
     decisions["last_updated"] = datetime.now().isoformat()
-    
-    # Always save locally first
-    try:
-        with open(DECISIONS_JSON, "w", encoding="utf-8") as f:
-            json.dump(decisions, f, indent=2, ensure_ascii=False)
-        logger.info(f"Saved decisions locally: {len(decisions['moves'])} moves, {len(decisions['deletions'])} deletions")
-    except OSError as e:
-        logger.error(f"Failed to write decisions JSON: {e}")
-        raise
-    
-    # Commit to GitHub via API if requested
-    if commit_to_github:
-        try:
-            from app.github_service import commit_decisions_to_github
-            moves_count = len(decisions.get("moves", []))
-            success, message = commit_decisions_to_github(decisions, moves_count)
-            return success, message
-        except Exception as e:
-            logger.error(f"Failed to commit to GitHub: {e}")
-            return False, f"⚠️ Lokal gespeichert (GitHub Fehler: {str(e)[:50]})"
-    
-    return True, "✅ Lokal gespeichert"
+
+    with open(DECISIONS_JSON, "w", encoding="utf-8") as f:
+        json.dump(decisions, f, indent=2, ensure_ascii=False)
+    logger.info(
+        "Saved decisions locally: %d moves, %d deletions",
+        len(decisions["moves"]),
+        len(decisions["deletions"]),
+    )
 
 
 def get_decision_stats(decisions: Decisions) -> tuple[int, int, int]:

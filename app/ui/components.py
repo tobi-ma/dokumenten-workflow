@@ -222,26 +222,46 @@ def render_sidebar(
     decisions: Decisions,
     pending_count: int = 0,
     pending_moves: list | None = None,
-    pending_deletions: list | None = None
+    pending_deletions: list | None = None,
 ) -> bool:
     """Render sidebar with status, controls, and pending changes.
 
-    Args:
-        files: List of all files
-        decisions: Current decisions from storage
-        pending_count: Number of pending (not yet committed) decisions
-        pending_moves: List of pending move decisions
-        pending_deletions: List of pending delete decisions
-
-    Returns:
-        True if refresh/send was triggered
+    Returns True if a rerun is needed (send succeeded or refresh clicked).
     """
     from datetime import datetime
+
+    from app.config import (
+        FOLDER_STRUCTURE_JSON,
+        FILE_SUMMARIES_JSON,
+        decrypt_github_token,
+    )
+    from app.data_service import save_decisions, load_folder_structure, load_file_summaries
+    from app.github_service import commit_decisions
 
     pending_moves = pending_moves or []
     pending_deletions = pending_deletions or []
 
     with st.sidebar:
+        # ---- Password / Token unlock ----
+        st.header("🔑 Zugang")
+        if "github_token" not in st.session_state:
+            st.session_state.github_token = None
+
+        if st.session_state.github_token:
+            st.success("Token entsperrt")
+        else:
+            pwd = st.text_input("Passwort", type="password", key="unlock_pw")
+            if pwd:
+                token = decrypt_github_token(pwd)
+                if token:
+                    st.session_state.github_token = token
+                    st.rerun()
+                else:
+                    st.error("Falsches Passwort")
+
+        st.markdown("---")
+
+        # ---- Status metrics ----
         st.header("📊 Status")
 
         completed, moves_count, deletions_count = get_decision_stats(decisions)
@@ -253,11 +273,10 @@ def render_sidebar(
 
         st.markdown("---")
 
-        # Pending changes section
+        # ---- Pending changes + send ----
         if pending_count > 0:
             st.subheader(f"📤 {pending_count} ausstehend")
 
-            # Show list of pending items
             with st.expander("Anzeigen", expanded=False):
                 for move in pending_moves:
                     display_name = move.get("new_file_name") or move["file_name"]
@@ -266,65 +285,64 @@ def render_sidebar(
                 for deletion in pending_deletions:
                     st.caption(f"🗑️ {deletion['file_name'][:30]}...")
 
-            # Send button in sidebar
             if st.button("🚀 Alle senden", type="primary", use_container_width=True):
-                # Perform the send action
-                # Merge pending with existing decisions
+                token = st.session_state.get("github_token")
+                if not token:
+                    st.error("Bitte zuerst Passwort eingeben")
+                    return False
+
                 updated_decisions = {
                     "moves": list(decisions.get("moves", [])) + pending_moves,
                     "deletions": list(decisions.get("deletions", [])) + pending_deletions,
                     "last_updated": datetime.now().isoformat(),
                 }
 
-                # Save locally and commit to GitHub atomically
-                from app.data_service import save_decisions
-                success, message = save_decisions(updated_decisions)
+                # 1) Save locally
+                save_decisions(updated_decisions)
 
+                # 2) Push to GitHub
+                success, message = commit_decisions(token, updated_decisions)
                 if success:
-                    st.success(message)
-                    st.cache_data.clear()
-                    return True
+                    st.success(f"✅ {message}")
                 else:
-                    st.warning(message)
-                    return False
+                    st.warning(f"⚠️ {message}")
+
+                return True
 
             st.markdown("---")
 
+        # ---- Refresh ----
         if st.button("🔄 Aktualisieren", use_container_width=True):
             st.cache_data.clear()
             return True
 
         st.markdown("---")
-        
-        # Show folder structure info
-        from app.data_service import load_folder_structure, load_file_summaries
+
+        # ---- Info section ----
+        import json as _json
         import os
-        from app.config import FOLDER_STRUCTURE_JSON, FILE_SUMMARIES_JSON
-        
+
         folder_count = len(load_folder_structure())
         st.caption(f"📁 {folder_count} Ordner geladen")
-        
+
         if os.path.exists(FOLDER_STRUCTURE_JSON):
-            import json
             with open(FOLDER_STRUCTURE_JSON) as f:
-                data = json.load(f)
+                data = _json.load(f)
                 if data.get("last_updated"):
                     st.caption(f"🕐 Ordner-Stand: {data['last_updated'][:10]}")
-        
-        # Show file summaries info
+
         summary_count = len(load_file_summaries())
         st.caption(f"📝 {summary_count} Zusammenfassungen geladen")
-        
+
         if os.path.exists(FILE_SUMMARIES_JSON):
-            import json
             with open(FILE_SUMMARIES_JSON) as f:
-                data = json.load(f)
+                data = _json.load(f)
                 if data.get("last_updated"):
                     st.caption(f"🕐 Zusammenfassungen-Stand: {data['last_updated'][:10]}")
-        
+
         st.markdown("---")
         st.info("💡 Thumbnails und Zusammenfassungen werden von Tim bereitgestellt.")
-        
+
         return False
 
 

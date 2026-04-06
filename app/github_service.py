@@ -1,391 +1,115 @@
-"""GitHub API integration for committing decisions from Streamlit Cloud."""
+"""GitHub REST API integration for committing files.
 
+Single module for all GitHub operations. Token is always passed explicitly
+(decrypted from the encrypted constant via the user's password).
+"""
+
+import base64
 import json
 import logging
-import os
 from datetime import datetime
-from typing import Optional
 
 import requests
-import streamlit as st
+
+from app.config import GITHUB_REPO_OWNER, GITHUB_REPO_NAME, GITHUB_BRANCH
 
 logger = logging.getLogger(__name__)
 
-# GitHub API Configuration
-GITHUB_API_URL = "https://api.github.com"
-REPO_OWNER = "tobi-ma"
-REPO_NAME = "dokumenten-workflow"
-BRANCH = "main"
+_API = "https://api.github.com"
+_TIMEOUT = 15
 
 
-def _read_secret_value(section: object, key: str) -> str:
-    """Read a value from a Streamlit secrets section or dict-like object."""
-    if section is None:
-        return ""
-
-    if isinstance(section, dict):
-        value = section.get(key, "")
-        return str(value).strip() if value else ""
-
-    try:
-        value = section[key]
-        return str(value).strip() if value else ""
-    except Exception:
-        pass
-
-    try:
-        value = getattr(section, key, "")
-        return str(value).strip() if value else ""
-    except Exception:
-        return ""
-
-
-def get_github_token() -> Optional[str]:
-    """Get GitHub token from Streamlit secrets.
-    
-    Returns None if not configured.
-    """
-    try:
-        github_section = None
-
-        try:
-            github_section = st.secrets["github"]
-        except Exception:
-            github_section = None
-
-        token = _read_secret_value(github_section, "token")
-        if token:
-            return token
-
-        token = _read_secret_value(st.secrets, "GITHUB_TOKEN")
-        if token:
-            return token
-
-        token = _read_secret_value(st.secrets, "github_token")
-        if token:
-            return token
-    except Exception as e:
-        logger.debug(f"Could not read GitHub token from Streamlit secrets: {e}")
-        pass
-
-    # Fallback: check environment variable
-    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("github_token")
-    return token.strip() if token else None
-
-
-def get_file_sha(token: str, file_path: str) -> Optional[str]:
-    """Get the SHA of a file in the repo.
-    
-    Args:
-        token: GitHub personal access token
-        file_path: Path to file in repo (e.g., "data/decisions.json")
-        
-    Returns:
-        SHA hash if file exists, None if file doesn't exist
-    """
-    url = f"{GITHUB_API_URL}/repos/{REPO_OWNER}/{REPO_NAME}/contents/{file_path}?ref={BRANCH}"
-    headers = {
+def _headers(token: str) -> dict:
+    return {
         "Authorization": f"token {token}",
-        "Accept": "application/vnd.github.v3+json"
+        "Accept": "application/vnd.github.v3+json",
     }
-    
+
+
+def _get_file_sha(token: str, path: str) -> str | None:
+    """Get the current SHA of a file on GitHub (needed to update it)."""
+    url = f"{_API}/repos/{GITHUB_REPO_OWNER}/{GITHUB_REPO_NAME}/contents/{path}?ref={GITHUB_BRANCH}"
     try:
-        response = requests.get(url, headers=headers, timeout=10)
-        if response.status_code == 200:
-            return response.json().get("sha")
-        elif response.status_code == 404:
+        r = requests.get(url, headers=_headers(token), timeout=_TIMEOUT)
+        if r.status_code == 200:
+            return r.json().get("sha")
+        if r.status_code == 404:
             return None
-        else:
-            logger.error(f"GitHub API error getting file SHA: {response.status_code} - {response.text}")
-            return None
+        logger.error("SHA lookup failed: %s %s", r.status_code, r.text[:200])
+        return None
     except Exception as e:
-        logger.error(f"Error getting file SHA: {e}")
+        logger.error("SHA lookup error: %s", e)
         return None
 
 
-def commit_file_via_api(
-    token: str,
-    file_path: str,
-    content: str,
-    commit_message: str,
-    sha: Optional[str] = None
-) -> bool:
-    """Commit a file to GitHub via API.
-    
-    Args:
-        token: GitHub personal access token
-        file_path: Path to file in repo (e.g., "data/decisions.json")
-        content: File content (will be base64 encoded)
-        commit_message: Git commit message
-        sha: SHA of existing file (for updates), None for new files
-        
-    Returns:
-        True if successful, False otherwise
-    """
-    import base64
-    
-    url = f"{GITHUB_API_URL}/repos/{REPO_OWNER}/{REPO_NAME}/contents/{file_path}"
-    headers = {
-        "Authorization": f"token {token}",
-        "Accept": "application/vnd.github.v3+json"
+def _put_file(token: str, path: str, content: str, message: str, sha: str | None) -> bool:
+    """Create or update a file via the GitHub Contents API."""
+    url = f"{_API}/repos/{GITHUB_REPO_OWNER}/{GITHUB_REPO_NAME}/contents/{path}"
+    body: dict = {
+        "message": message,
+        "content": base64.b64encode(content.encode()).decode(),
+        "branch": GITHUB_BRANCH,
     }
-    
-    # Encode content to base64
-    content_bytes = content.encode("utf-8")
-    content_b64 = base64.b64encode(content_bytes).decode("ascii")
-    
-    data = {
-        "message": commit_message,
-        "content": content_b64,
-        "branch": BRANCH
-    }
-    
     if sha:
-        data["sha"] = sha
-    
+        body["sha"] = sha
+
     try:
-        response = requests.put(url, headers=headers, json=data, timeout=15)
-        
-        if response.status_code in [200, 201]:
-            logger.info(f"Successfully committed {file_path}: {commit_message}")
+        r = requests.put(url, headers=_headers(token), json=body, timeout=_TIMEOUT)
+        if r.status_code in (200, 201):
+            logger.info("Committed %s: %s", path, message)
             return True
-        else:
-            logger.error(f"GitHub API error: {response.status_code} - {response.text}")
-            return False
-            
+        logger.error("Commit failed: %s %s", r.status_code, r.text[:300])
+        return False
+    except requests.exceptions.Timeout:
+        logger.error("Timeout committing %s", path)
+        return False
     except Exception as e:
-        logger.error(f"Error committing file: {e}")
+        logger.error("Commit error: %s", e)
         return False
 
 
-def commit_decisions_to_github(
-    decisions_content: dict,
-    moves_count: int,
-    max_retries: int = 3
-) -> tuple[bool, str]:
-    """Commit decisions.json to GitHub via API with retry on SHA conflict.
-    
-    This is the main entry point for Streamlit Cloud to save decisions.
-    Handles race conditions by retrying with fresh SHA if conflict occurs.
-    
+# ---------------------------------------------------------------------------
+# Public API
+# ---------------------------------------------------------------------------
+
+def commit_decisions(token: str, decisions: dict) -> tuple[bool, str]:
+    """Commit decisions.json to GitHub.
+
     Args:
-        decisions_content: The decisions dictionary to save
-        moves_count: Number of moves for the commit message
-        max_retries: Maximum retry attempts on SHA conflict (default: 3)
-        
+        token: Decrypted GitHub PAT.
+        decisions: The full decisions dictionary.
+
     Returns:
-        Tuple of (success, message)
+        (success, user-facing message)
     """
-    token = get_github_token()
-    
-    if not token:
-        logger.warning("GitHub token not configured - falling back to local save")
-        return False, "⚠️ GitHub nicht konfiguriert - lokal gespeichert"
-    
-    file_path = "data/decisions.json"
-    
-    for attempt in range(max_retries):
-        try:
-            # Get current file SHA (fresh for each retry)
-            file_sha = get_file_sha(token, file_path)
-            
-            # If file exists on GitHub, we need to merge with remote changes
-            if file_sha and attempt > 0:
-                logger.info(f"Retry {attempt}: Fetching remote decisions to merge...")
-                remote_decisions = _fetch_remote_decisions(token, file_path)
-                if remote_decisions:
-                    decisions_content = _merge_decisions(remote_decisions, decisions_content)
-            
-            # Convert decisions to JSON string
-            json_content = json.dumps(decisions_content, indent=2, ensure_ascii=False)
-            
-            # Commit via API
-            commit_msg = f"Update decisions: {moves_count} moves - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
-            
-            success = commit_file_via_api(
-                token=token,
-                file_path=file_path,
-                content=json_content,
-                commit_message=commit_msg,
-                sha=file_sha
-            )
-            
-            if success:
-                return True, "✅ Gespeichert & zu GitHub gepusht!"
-            else:
-                # Check if it's a SHA conflict (422)
-                # GitHub returns 422 when SHA doesn't match
-                logger.warning(f"Commit failed on attempt {attempt + 1}, retrying...")
-                
-                if attempt < max_retries - 1:
-                    import time
-                    time.sleep(0.5 * (attempt + 1))  # Exponential backoff
-                    continue
-                else:
-                    return False, "⚠️ Lokal gespeichert (GitHub Konflikt nach mehreren Versuchen)"
-                    
-        except Exception as e:
-            logger.error(f"Error on attempt {attempt + 1}: {e}")
-            if attempt < max_retries - 1:
-                continue
-            else:
-                return False, f"⚠️ Lokal gespeichert (Fehler: {str(e)[:50]})"
-    
-    return False, "⚠️ Lokal gespeichert (Maximale Versuche erreicht)"
+    path = "data/decisions.json"
+    content = json.dumps(decisions, indent=2, ensure_ascii=False)
+
+    sha = _get_file_sha(token, path)
+
+    moves = len(decisions.get("moves", []))
+    deletions = len(decisions.get("deletions", []))
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M")
+    message = f"Update decisions: {moves} moves, {deletions} deletions - {ts}"
+
+    if _put_file(token, path, content, message, sha):
+        return True, "Gespeichert & zu GitHub gepusht!"
+    return False, "GitHub API Fehler — lokal gespeichert"
 
 
-def _fetch_remote_decisions(token: str, file_path: str) -> Optional[dict]:
-    """Fetch current decisions.json from GitHub API.
-    
+def commit_file(token: str, path: str, content: str, message: str) -> tuple[bool, str]:
+    """Commit any file to GitHub (e.g. folder_structure.json).
+
     Args:
-        token: GitHub token
-        file_path: Path to decisions.json
-        
+        token: Decrypted GitHub PAT.
+        path: Repo-relative path (e.g. "data/folder_structure.json").
+        content: File content as string.
+        message: Commit message.
+
     Returns:
-        Decisions dict if successful, None otherwise
+        (success, user-facing message)
     """
-    import base64
-    
-    url = f"{GITHUB_API_URL}/repos/{REPO_OWNER}/{REPO_NAME}/contents/{file_path}?ref={BRANCH}"
-    headers = {
-        "Authorization": f"token {token}",
-        "Accept": "application/vnd.github.v3+json"
-    }
-    
-    try:
-        response = requests.get(url, headers=headers, timeout=10)
-        if response.status_code == 200:
-            data = response.json()
-            content_b64 = data.get("content", "")
-            content = base64.b64decode(content_b64).decode("utf-8")
-            return json.loads(content)
-        else:
-            logger.warning(f"Could not fetch remote decisions: {response.status_code}")
-            return None
-    except Exception as e:
-        logger.error(f"Error fetching remote decisions: {e}")
-        return None
-
-
-def _merge_decisions(remote: dict, local: dict) -> dict:
-    """Merge remote and local decisions (union of both).
-    
-    Args:
-        remote: Decisions from GitHub
-        local: Local decisions to save
-        
-    Returns:
-        Merged decisions dict
-    """
-    merged = {
-        "moves": [],
-        "deletions": [],
-        "last_updated": datetime.now().isoformat()
-    }
-    
-    # Create sets of file IDs for deduplication
-    move_ids = set()
-    delete_ids = set()
-    
-    # Add all remote moves
-    for move in remote.get("moves", []):
-        file_id = move.get("file_id")
-        if file_id and file_id not in move_ids:
-            merged["moves"].append(move)
-            move_ids.add(file_id)
-    
-    # Add all remote deletions
-    for deletion in remote.get("deletions", []):
-        file_id = deletion.get("file_id")
-        if file_id and file_id not in delete_ids:
-            merged["deletions"].append(deletion)
-            delete_ids.add(file_id)
-    
-    # Add local moves (overwrite remote if same file_id)
-    for move in local.get("moves", []):
-        file_id = move.get("file_id")
-        if file_id:
-            # Remove existing entry for this file
-            merged["moves"] = [m for m in merged["moves"] if m.get("file_id") != file_id]
-            merged["moves"].append(move)
-    
-    # Add local deletions (overwrite remote if same file_id)
-    for deletion in local.get("deletions", []):
-        file_id = deletion.get("file_id")
-        if file_id:
-            merged["deletions"] = [d for d in merged["deletions"] if d.get("file_id") != file_id]
-            merged["deletions"].append(deletion)
-    
-    logger.info(f"Merged decisions: {len(merged['moves'])} moves, {len(merged['deletions'])} deletions")
-    return merged
-
-
-def commit_folder_structure_to_github(folder_structure: dict) -> tuple[bool, str]:
-    """Commit folder_structure.json to GitHub via API.
-    
-    Called by the update_folder_structure script.
-    
-    Args:
-        folder_structure: The folder structure dictionary to save
-        
-    Returns:
-        Tuple of (success, message)
-    """
-    token = get_github_token()
-    
-    if not token:
-        return False, "GitHub token not configured"
-    
-    # Add metadata
-    output = {
-        "_comment": "Auto-generated by Tim",
-        "last_updated": datetime.now().isoformat(),
-        "root_path": "Dokumente/ScanSnap",
-        "folders": folder_structure
-    }
-    
-    json_content = json.dumps(output, indent=2, ensure_ascii=False)
-    file_sha = get_file_sha(token, "data/folder_structure.json")
-    
-    commit_msg = f"Update folder structure - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
-    
-    success = commit_file_via_api(
-        token=token,
-        file_path="data/folder_structure.json",
-        content=json_content,
-        commit_message=commit_msg,
-        sha=file_sha
-    )
-    
-    if success:
-        return True, "✅ Ordnerstruktur zu GitHub gepusht!"
-    else:
-        return False, "⚠️ GitHub API Fehler"
-
-
-# Legacy wrapper for backward compatibility
-def commit_decisions(moves_count: int) -> bool:
-    """Legacy function - imports from data_service and commits.
-    
-    This maintains compatibility with existing code that imports git_service.
-    In new code, use commit_decisions_to_github directly.
-    """
-    # Import here to avoid circular imports
-    from app.data_service import load_decisions
-    
-    decisions = load_decisions()
-    success, _ = commit_decisions_to_github(decisions, moves_count)
-    return success
-
-
-def save_and_commit(moves_count: int) -> tuple[bool, str]:
-    """Legacy wrapper for backward compatibility.
-    
-    New code should:
-    1. Call data_service.save_decisions(decisions) to save locally
-    2. Call github_service.commit_decisions_to_github(decisions, moves_count)
-    """
-    from app.data_service import load_decisions
-    
-    decisions = load_decisions()
-    return commit_decisions_to_github(decisions, moves_count)
+    sha = _get_file_sha(token, path)
+    if _put_file(token, path, content, message, sha):
+        return True, f"{path} zu GitHub gepusht!"
+    return False, f"GitHub API Fehler bei {path}"

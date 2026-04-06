@@ -3,20 +3,13 @@
 import streamlit as st
 from datetime import datetime
 
-# from app.auth import require_auth
-from app.data_service import (
-    load_files,
-    load_decisions,
-    save_decisions,
-    get_processed_file_ids,
-)
+from app.data_service import load_files, load_decisions, get_processed_file_ids
 from app.ui.components import (
     render_file_card,
     render_sidebar,
     render_filters,
     render_progress,
     render_empty_state,
-    render_pending_changes,
 )
 from app.config import FileInfo
 
@@ -25,10 +18,6 @@ st.set_page_config(
     page_title="ScanSnap Organizer",
     layout="wide",
 )
-
-
-# Authentication disabled for development
-# require_auth()
 
 
 # Title
