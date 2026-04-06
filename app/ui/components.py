@@ -282,9 +282,11 @@ def render_sidebar(
 
                 if success:
                     st.success(message)
+                    st.cache_data.clear()
+                    return True
                 else:
                     st.warning(message)
-                return True
+                    return False
 
             st.markdown("---")
 
