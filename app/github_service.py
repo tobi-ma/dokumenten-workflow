@@ -18,21 +18,59 @@ REPO_NAME = "dokumenten-workflow"
 BRANCH = "main"
 
 
+def _read_secret_value(section: object, key: str) -> str:
+    """Read a value from a Streamlit secrets section or dict-like object."""
+    if section is None:
+        return ""
+
+    if isinstance(section, dict):
+        value = section.get(key, "")
+        return str(value).strip() if value else ""
+
+    try:
+        value = section[key]
+        return str(value).strip() if value else ""
+    except Exception:
+        pass
+
+    try:
+        value = getattr(section, key, "")
+        return str(value).strip() if value else ""
+    except Exception:
+        return ""
+
+
 def get_github_token() -> Optional[str]:
     """Get GitHub token from Streamlit secrets.
     
     Returns None if not configured.
     """
     try:
-        token = st.secrets.get("github", {}).get("token")
+        github_section = None
+
+        try:
+            github_section = st.secrets["github"]
+        except Exception:
+            github_section = None
+
+        token = _read_secret_value(github_section, "token")
         if token:
             return token
-    except Exception:
+
+        token = _read_secret_value(st.secrets, "GITHUB_TOKEN")
+        if token:
+            return token
+
+        token = _read_secret_value(st.secrets, "github_token")
+        if token:
+            return token
+    except Exception as e:
+        logger.debug(f"Could not read GitHub token from Streamlit secrets: {e}")
         pass
-    
+
     # Fallback: check environment variable
-    token = os.environ.get("GITHUB_TOKEN")
-    return token
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("github_token")
+    return token.strip() if token else None
 
 
 def get_file_sha(token: str, file_path: str) -> Optional[str]:
