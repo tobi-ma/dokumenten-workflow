@@ -1,14 +1,16 @@
 """App configuration and constants."""
 
+from pathlib import Path
 from typing import TypedDict
 
 # File paths
-DATA_DIR = "data"
-FILES_JSON = f"{DATA_DIR}/files.json"
-DECISIONS_JSON = f"{DATA_DIR}/decisions.json"
-FOLDER_STRUCTURE_JSON = f"{DATA_DIR}/folder_structure.json"
-FILE_SUMMARIES_JSON = f"{DATA_DIR}/file_summaries.json"
-THUMBNAILS_DIR = "thumbnails"
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+FILES_JSON = DATA_DIR / "files.json"
+DECISIONS_JSON = DATA_DIR / "decisions.json"
+FOLDER_STRUCTURE_JSON = DATA_DIR / "folder_structure.json"
+FILE_SUMMARIES_JSON = DATA_DIR / "file_summaries.json"
+THUMBNAILS_DIR = BASE_DIR / "thumbnails"
 
 # UI Options
 DELETE_OPTION = "⚠️ Löschen"

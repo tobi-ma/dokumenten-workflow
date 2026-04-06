@@ -1,7 +1,7 @@
 """Utility functions."""
 
-import os
 import logging
+from pathlib import Path
 from app.config import THUMBNAILS_DIR, MAIN_FOLDER_OPTION
 
 logger = logging.getLogger(__name__)
@@ -46,16 +46,16 @@ def find_thumbnail(file_id: str) -> str | None:
     
     for suffix in suffixes:
         # Check cleaned ID first
-        path = f"{THUMBNAILS_DIR}/{file_id_clean}{suffix}"
-        if os.path.exists(path):
+        path = Path(THUMBNAILS_DIR) / f"{file_id_clean}{suffix}"
+        if path.exists():
             logger.debug(f"Found thumbnail: {path}")
-            return path
+            return str(path)
         
         # Then raw ID
-        path = f"{THUMBNAILS_DIR}/{file_id_raw}{suffix}"
-        if os.path.exists(path):
+        path = Path(THUMBNAILS_DIR) / f"{file_id_raw}{suffix}"
+        if path.exists():
             logger.debug(f"Found thumbnail: {path}")
-            return path
+            return str(path)
     
     logger.debug(f"No thumbnail found for {file_id}")
     return None
