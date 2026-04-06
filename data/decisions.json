@@ -1,16 +1,6 @@
 {
   "moves": [],
-  "deletions": [
-    {
-      "file_id": "D0B75638021B19A6!201558",
-      "file_name": "2023-01-23_Arbeltsunfähjgkelts- beschelnlgung XErstbescheinigung.pdf",
-      "decided_at": "2026-04-06T11:10:10.596619"
-    },
-    {
-      "file_id": "D0B75638021B19A6!201578",
-      "file_name": "2023-02-02_Ihre Mitgliedschaft im VDI Beitragsmitteilung für  20.pdf",
-      "decided_at": "2026-04-06T11:10:18.294974"
-    }
-  ],
-  "last_updated": "2026-04-06T11:10:28.843223"
+  "deletions": [],
+  "last_updated": "2026-04-06T11:27:02.637200",
+  "_comment": "All pending decisions completed."
 }

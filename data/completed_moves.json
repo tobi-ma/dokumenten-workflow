@@ -1,6 +1,6 @@
 {
   "_comment": "Track completed moves to avoid confusion",
-  "last_updated": "2026-04-06T11:04:20.730902",
+  "last_updated": "2026-04-06T11:27:02.636701",
   "completed_count": 8,
   "moves": [
     {
@@ -170,7 +170,24 @@
       "executed_by": "Tim"
     }
   ],
-  "deletions": [],
+  "deletions": [
+    {
+      "file_id": "D0B75638021B19A6!201558",
+      "file_name": "2023-01-23_Arbeltsunf\u00e4hjgkelts- beschelnlgung XErstbescheinigung.pdf",
+      "decided_at": "2026-04-06T11:10:10.596619",
+      "executed_at": "2026-04-06T11:27:02.636664",
+      "executed_by": "Tim",
+      "action": "deleted"
+    },
+    {
+      "file_id": "D0B75638021B19A6!201578",
+      "file_name": "2023-02-02_Ihre Mitgliedschaft im VDI Beitragsmitteilung f\u00fcr  20.pdf",
+      "decided_at": "2026-04-06T11:10:18.294974",
+      "executed_at": "2026-04-06T11:27:02.636699",
+      "executed_by": "Tim",
+      "action": "deleted"
+    }
+  ],
   "new_folders_created": [
     "Kita & Schule/Kita",
     "Auto",
