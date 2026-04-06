@@ -1,24 +1,6 @@
 {
-  "moves": [
-    {
-      "file_id": "D0B75638021B19A6!sf63cdf711a154b4e9718165b3f25ecb9",
-      "file_name": "1987-01-21_Freudenberg 1119.pdf",
-      "to_folder": "Haus",
-      "main_folder": "Haus",
-      "sub_folder": null,
-      "decided_at": "2026-04-06T10:51:39.763482",
-      "new_file_name": "Grundbuchauszug_Haus_1.pdf"
-    },
-    {
-      "file_id": "D0B75638021B19A6!s344b37eb8cd24dbf8b4728abe680a903",
-      "file_name": "1987-05-11_LBS.pdf",
-      "to_folder": "Versicherungen/Bausparer",
-      "main_folder": "Versicherungen",
-      "sub_folder": "Bausparer",
-      "decided_at": "2026-04-06T10:52:03.350569",
-      "new_file_name": "19870511_Bausparvertrag_LBS_Claudi.pdf"
-    }
-  ],
+  "moves": [],
   "deletions": [],
-  "last_updated": "2026-04-06T10:52:18.625756"
+  "last_updated": "2026-04-06T10:54:38.891188",
+  "_comment": "All pending moves completed. See completed_moves.json for history."
 }
