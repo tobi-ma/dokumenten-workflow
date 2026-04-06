@@ -1,6 +1,99 @@
 {
-  "moves": [],
-  "deletions": [],
-  "last_updated": "2026-04-06T10:54:38.891188",
-  "_comment": "All pending moves completed. See completed_moves.json for history."
+  "moves": [
+    {
+      "file_id": "D0B75638021B19A6!sf63cdf711a154b4e9718165b3f25ecb9",
+      "file_name": "1987-01-21_Freudenberg 1119.pdf",
+      "to_folder": "Haus",
+      "main_folder": "Haus",
+      "sub_folder": null,
+      "decided_at": "2026-04-06T10:51:39.763482",
+      "new_file_name": "Grundbuchauszug_Haus_1.pdf"
+    },
+    {
+      "file_id": "D0B75638021B19A6!s344b37eb8cd24dbf8b4728abe680a903",
+      "file_name": "1987-05-11_LBS.pdf",
+      "to_folder": "Versicherungen/Bausparer",
+      "main_folder": "Versicherungen",
+      "sub_folder": "Bausparer",
+      "decided_at": "2026-04-06T10:52:03.350569",
+      "new_file_name": "19870511_Bausparvertrag_LBS_Claudi.pdf"
+    },
+    {
+      "file_id": "D0B75638021B19A6!s00fc332f78e14468927931930fc0406e",
+      "file_name": "2018-03-23_BausparUrkunde.pdf",
+      "to_folder": "Versicherungen/Bausparer",
+      "main_folder": "Versicherungen",
+      "sub_folder": "Bausparer",
+      "decided_at": "2026-04-06T10:58:55.394473",
+      "new_file_name": "20180323_Bausparurkunde_LBS_Claudi.pdf"
+    },
+    {
+      "file_id": "D0B75638021B19A6!sb43cc8577a824831bacfdf10f7d67af2",
+      "file_name": "2018-03-23_BausparUrkunde_Tobi.pdf",
+      "to_folder": "Versicherungen/Bausparer",
+      "main_folder": "Versicherungen",
+      "sub_folder": "Bausparer",
+      "decided_at": "2026-04-06T10:59:24.813263",
+      "new_file_name": "20180323_Bausparurkunde_LBS_Tobi.pdf"
+    },
+    {
+      "file_id": "D0B75638021B19A6!201581",
+      "file_name": "2023-02-02.pdf",
+      "to_folder": "Kinder Erinnerungen",
+      "main_folder": "Kinder Erinnerungen",
+      "sub_folder": null,
+      "decided_at": "2026-04-06T10:59:52.680122",
+      "new_file_name": null
+    },
+    {
+      "file_id": "D0B75638021B19A6!201563",
+      "file_name": "2023-02-02_Abrechnung der BruttoNetto-Bezüge für Deze^er 2022 -S.pdf",
+      "to_folder": "Gehaltsabrechnungen",
+      "main_folder": "Gehaltsabrechnungen",
+      "sub_folder": null,
+      "decided_at": "2026-04-06T11:01:10.624179",
+      "new_file_name": "202312_Gehaltsabrechnung_Tobi.pdf"
+    },
+    {
+      "file_id": "D0B75638021B19A6!201586",
+      "file_name": "2023-02-02_Garantie für Nähmaschine.pdf",
+      "to_folder": "Bedienungsanleitungen & Produktinformationsblätter",
+      "main_folder": "Bedienungsanleitungen & Produktinformationsblätter",
+      "sub_folder": null,
+      "decided_at": "2026-04-06T11:01:29.960117",
+      "new_file_name": "Garantieunterlage_Nähmaschine.pdf"
+    },
+    {
+      "file_id": "D0B75638021B19A6!201589",
+      "file_name": "2023-02-02_rhion..pdf",
+      "to_folder": "Versicherungen/Risikoleben",
+      "main_folder": "Versicherungen",
+      "sub_folder": "Risikoleben",
+      "decided_at": "2026-04-06T11:02:35.254417",
+      "new_file_name": "Rhion_Datenschutzhinweise.pdf"
+    }
+  ],
+  "deletions": [
+    {
+      "file_id": "D0B75638021B19A6!201558",
+      "file_name": "2023-01-23_Arbeltsunfähjgkelts- beschelnlgung XErstbescheinigung.pdf",
+      "decided_at": "2026-04-06T10:59:36.122024"
+    },
+    {
+      "file_id": "D0B75638021B19A6!201592",
+      "file_name": "2023-02-02_001.pdf",
+      "decided_at": "2026-04-06T11:00:13.586436"
+    },
+    {
+      "file_id": "D0B75638021B19A6!201578",
+      "file_name": "2023-02-02_Ihre Mitgliedschaft im VDI Beitragsmitteilung für  20.pdf",
+      "decided_at": "2026-04-06T11:01:39.536156"
+    },
+    {
+      "file_id": "D0B75638021B19A6!201588",
+      "file_name": "2023-02-02_liebe ABC-Strolche, liebe Eltern!.pdf",
+      "decided_at": "2026-04-06T11:01:59.912857"
+    }
+  ],
+  "last_updated": "2026-04-06T11:02:44.233174"
 }
